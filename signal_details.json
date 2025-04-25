@@ -1,0 +1,588 @@
+[
+    {
+        "signal_name": "Signal_1",
+        "signal_position": [
+            48,
+            165
+        ],
+        "lamp_position": [
+            56,
+            150
+        ],
+        "signal_type": "auto",
+        "position": "left",
+        "next_signals": ["Signal_2"],
+        "conflicting_signals": null
+    },
+    {
+        "signal_name": "Signal_2",
+        "signal_position": [
+            184,
+            165
+        ],
+        "lamp_position": [
+            192,
+            150
+        ],
+        "signal_type": "auto",
+        "position": "left",
+        "next_signals": ["Signal_4"],
+        "conflicting_signals": null
+    },
+    {
+        "signal_name": "Signal_3",
+        "signal_position": [
+            192,
+            213
+        ],
+        "lamp_position": [
+            184,
+            230
+        ],
+        "signal_type": "auto",
+        "position": "right",
+        "next_signals": [""],
+        "conflicting_signals": null
+    },
+    {
+        "signal_name": "Signal_4",
+        "signal_position": [
+            320,
+            165
+        ],
+        "lamp_position": [
+            328,
+            150
+        ],
+        "signal_type": "manual",
+        "position": "left",
+        "next_signals": ["Signal_7"],
+        "conflicting_signals": null
+    },
+    {
+        "signal_name": "Signal_5",
+        "signal_position": [
+            328,
+            213
+        ],
+        "lamp_position": [
+            320,
+            230
+        ],
+        "signal_type": "auto",
+        "position": "right",
+        "next_signals": ["Signal_3"],
+        "conflicting_signals": null
+    },
+    {
+        "signal_name": "Signal_6",
+        "signal_position": [
+            392,
+            133
+        ],
+        "lamp_position": [
+            400,
+            118
+        ],
+        "signal_type": "manual",
+        "position": "left",
+        "next_signals": ["Signal_7"],
+        "conflicting_signals": null
+    },
+    {
+        "signal_name": "Signal_7",
+        "signal_position": [
+            496,
+            165
+        ],
+        "lamp_position": [
+            504,
+            150
+        ],
+        "signal_type": "auto",
+        "position": "left",
+        "next_signals": ["Signal_9"],
+        "conflicting_signals": null
+    },
+    {
+        "signal_name": "Signal_8",
+        "signal_position": [
+            504,
+            213
+        ],
+        "lamp_position": [
+            496,
+            230
+        ],
+        "signal_type": "auto",
+        "position": "right",
+        "next_signals": ["Signal_5"],
+        "conflicting_signals": null
+    },
+    {
+        "signal_name": "Signal_9",
+        "signal_position": [
+            584,
+            165
+        ],
+        "lamp_position": [
+            592,
+            150
+        ],
+        "signal_type": "auto",
+        "position": "left",
+        "next_signals": ["Signal_11"],
+        "conflicting_signals": null
+    },
+    {
+        "signal_name": "Signal_10",
+        "signal_position": [
+            592,
+            213
+        ],
+        "lamp_position": [
+            584,
+            230
+        ],
+        "signal_type": "auto",
+        "position": "right",
+        "next_signals": ["Signal_8"],
+        "conflicting_signals": null
+    },
+    {
+        "signal_name": "Signal_11",
+        "signal_position": [
+            680,
+            165
+        ],
+        "lamp_position": [
+            688,
+            150
+        ],
+        "signal_type": "auto",
+        "position": "left",
+        "next_signals": ["Signal_13"],
+        "conflicting_signals": null
+    },
+    {
+        "signal_name": "Signal_12",
+        "signal_position": [
+            688,
+            213
+        ],
+        "lamp_position": [
+            680,
+            230
+        ],
+        "signal_type": "auto",
+        "position": "right",
+        "next_signals": ["Signal_10"],
+        "conflicting_signals": null
+    },
+    {
+        "signal_name": "Signal_13",
+        "signal_position": [
+            776,
+            165
+        ],
+        "lamp_position": [
+            784,
+            150
+        ],
+        "signal_type": "auto",
+        "position": "left",
+        "next_signals": ["Signal_15"],
+        "conflicting_signals": null
+    },
+    {
+        "signal_name": "Signal_14",
+        "signal_position": [
+            784,
+            213
+        ],
+        "lamp_position": [
+            776,
+            230
+        ],
+        "signal_type": "auto",
+        "position": "right",
+        "next_signals": ["Signal_12"],
+        "conflicting_signals": null
+    },
+    {
+        "signal_name": "Signal_15",
+        "signal_position": [
+            832,
+            165
+        ],
+        "lamp_position": [
+            840,
+            150
+        ],
+        "signal_type": "auto",
+        "position": "left",
+        "next_signals": ["Signal_17"],
+        "conflicting_signals": null
+    },
+    {
+        "signal_name": "Signal_16",
+        "signal_position": [
+            840,
+            213
+        ],
+        "lamp_position": [
+            832,
+            230
+        ],
+        "signal_type": "auto",
+        "position": "right",
+        "next_signals": ["Signal_14"],
+        "conflicting_signals": null
+    },
+    {
+        "signal_name": "Signal_17",
+        "signal_position": [
+            928,
+            165
+        ],
+        "lamp_position": [
+            936,
+            150
+        ],
+        "signal_type": "auto",
+        "position": "left",
+        "next_signals": ["Signal_19"],
+        "conflicting_signals": null
+    },
+    {
+        "signal_name": "Signal_18",
+        "signal_position": [
+            936,
+            213
+        ],
+        "lamp_position": [
+            928,
+            230
+        ],
+        "signal_type": "auto",
+        "position": "right",
+        "next_signals": ["Signal_16"],
+        "conflicting_signals": null
+    },
+    {
+        "signal_name": "Signal_19",
+        "signal_position": [
+            1024,
+            165
+        ],
+        "lamp_position": [
+            1032,
+            150
+        ],
+        "signal_type": "manual",
+        "position": "left",
+        "next_signals": ["Signal_20", "Signal_22"],
+        "conflicting_signals": ["Signal_21"],
+        "next_signals_in_same_block": true
+    },
+    {
+        "signal_name": "Signal_20",
+        "signal_position": [
+            1104,
+            165
+        ],
+        "lamp_position": [
+            1096,
+            182
+        ],
+        "signal_type": "manual",
+        "position": "right",
+        "next_signals": ["Signal_18"],
+        "conflicting_signals": null
+    },
+    {
+        "signal_name": "Signal_21",
+        "signal_position": [
+            1104,
+            213
+        ],
+        "lamp_position": [
+            1096,
+            230
+        ],
+        "signal_type": "manual",
+        "position": "right",
+        "next_signals": ["Signal_18"],
+        "conflicting_signals": null
+    },
+    {
+        "signal_name": "Signal_22",
+        "signal_position": [
+            1152,
+            165
+        ],
+        "lamp_position": [
+            1160,
+            150
+        ],
+        "signal_type": "auto",
+        "position": "left",
+        "next_signals": ["Signal_24"],
+        "conflicting_signals": null
+    },
+    {
+        "signal_name": "Signal_23",
+        "signal_position": [
+            1160,
+            213
+        ],
+        "lamp_position": [
+            1152,
+            230
+        ],
+        "signal_type": "auto",
+        "position": "right",
+        "next_signals": ["Signal_21"],
+        "conflicting_signals": null
+    },
+    {
+        "signal_name": "Signal_24",
+        "signal_position": [
+            1208,
+            165
+        ],
+        "lamp_position": [
+            1216,
+            150
+        ],
+        "signal_type": "auto",
+        "position": "left",
+        "next_signals": ["Signal_26"],
+        "conflicting_signals": null
+    },
+    {
+        "signal_name": "Signal_25",
+        "signal_position": [
+            1216,
+            213
+        ],
+        "lamp_position": [
+            1208,
+            230
+        ],
+        "signal_type": "auto",
+        "position": "right",
+        "next_signals": ["Signal_23"],
+        "conflicting_signals": null
+    },
+    {
+        "signal_name": "Signal_26",
+        "signal_position": [
+            1264,
+            165
+        ],
+        "lamp_position": [
+            1272,
+            150
+        ],
+        "signal_type": "auto",
+        "position": "left",
+        "next_signals": ["Signal_29"],
+        "conflicting_signals": null
+    },
+    {
+        "signal_name": "Signal_27",
+        "signal_position": [
+            1272,
+            213
+        ],
+        "lamp_position": [
+            1264,
+            230
+        ],
+        "signal_type": "auto",
+        "position": "right",
+        "next_signals": ["Signal_25"],
+        "conflicting_signals": null
+    },
+    {
+        "signal_name": "Signal_28",
+        "signal_position": [
+            1328,
+            213
+        ],
+        "lamp_position": [
+            1320,
+            230
+        ],
+        "signal_type": "auto",
+        "position": "right",
+        "next_signals": ["Signal_27"],
+        "conflicting_signals": null
+    },
+    {
+        "signal_name": "Signal_29",
+        "signal_position": [
+            1376,
+            165
+        ],
+        "lamp_position": [
+            1384,
+            150
+        ],
+        "signal_type": "auto",
+        "position": "left",
+        "next_signals": ["Signal_33"],
+        "conflicting_signals": null
+    },
+    {
+        "signal_name": "Signal_30",
+        "signal_position": [
+            1384,
+            213
+        ],
+        "lamp_position": [
+            1376,
+            230
+        ],
+        "signal_type": "auto",
+        "position": "right",
+        "next_signals": ["Signal_28"],
+        "conflicting_signals": null
+    },
+    {
+        "signal_name": "Signal_31",
+        "signal_position": [
+            1440,
+            213
+        ],
+        "lamp_position": [
+            1432,
+            230
+        ],
+        "signal_type": "auto",
+        "position": "right",
+        "next_signals": ["Signal_30"],
+        "conflicting_signals": null
+    },
+    {
+        "signal_name": "Signal_32",
+        "signal_position": [
+            1520,
+            245
+        ],
+        "lamp_position": [
+            1512,
+            262
+        ],
+        "signal_type": "manual",
+        "position": "right",
+        "next_signals": ["Signal_31"],
+        "conflicting_signals": null
+    },
+    {
+        "signal_name": "Signal_33",
+        "signal_position": [
+            1528,
+            165
+        ],
+        "lamp_position": [
+            1536,
+            150
+        ],
+        "signal_type": "manual",
+        "position": "left",
+        "next_signals": ["Signal_36", "Signal_37", "Signal_38", "Signal_39"],
+        "conflicting_signals": ["Signal_34","Signal_36", "Signal_37", "Signal_38", "Signal_39"]
+    },
+    {
+        "signal_name": "Signal_34",
+        "signal_position": [
+            1560,
+            213
+        ],
+        "lamp_position": [
+            1552,
+            230
+        ],
+        "signal_type": "manual",
+        "position": "right",
+        "next_signals": ["Signal_31"],
+        "conflicting_signals": null
+    },
+    {
+        "signal_name": "Signal_35",
+        "signal_position": [
+            1600,
+            293
+        ],
+        "lamp_position": [
+            1608,
+            310
+        ],
+        "signal_type": "manual",
+        "position": "left",
+        "next_signals": ["Signal_36", "Signal_37", "Signal_38", "Signal_39"],
+        "conflicting_signals": null
+    },
+    {
+        "signal_name": "Signal_36",
+        "signal_position": [
+            1736,
+            117
+        ],
+        "lamp_position": [
+            1728,
+            134
+        ],
+        "signal_type": "manual",
+        "position": "right",
+        "next_signals": ["Signal_34"],
+        "conflicting_signals": ["Signal_34","Signal_36", "Signal_37", "Signal_38", "Signal_39"]
+    },
+    {
+        "signal_name": "Signal_37",
+        "signal_position": [
+            1736,
+            165
+        ],
+        "lamp_position": [
+            1728,
+            182
+        ],
+        "signal_type": "manual",
+        "position": "right",
+        "next_signals": ["Signal_34"],
+        "conflicting_signals": ["Signal_34","Signal_36", "Signal_37", "Signal_38", "Signal_39"]
+    },
+    {
+        "signal_name": "Signal_38",
+        "signal_position": [
+            1736,
+            213
+        ],
+        "lamp_position": [
+            1728,
+            230
+        ],
+        "signal_type": "manual",
+        "position": "right",
+        "next_signals": ["Signal_34"],
+        "conflicting_signals": ["Signal_34","Signal_36", "Signal_37", "Signal_38", "Signal_39"]
+    },
+    {
+        "signal_name": "Signal_39",
+        "signal_position": [
+            1736,
+            261
+        ],
+        "lamp_position": [
+            1728,
+            278
+        ],
+        "signal_type": "manual",
+        "position": "right",
+        "next_signals": ["Signal_34"],
+        "conflicting_signals": ["Signal_34","Signal_36", "Signal_37", "Signal_38", "Signal_39"]
+    }
+]
