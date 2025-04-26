@@ -57,7 +57,6 @@ class Drawer:
 
     def draw_TRTS(self, signal_details,signal_name, color):
         #get the signal from signal_names by looping through signal_details
-        print(signal_name,color)
         for signal in signal_details:
             if signal.signal_name == signal_name:
                 x, y = signal.lamp_position  # Use the lamp position for drawing
@@ -69,7 +68,6 @@ class Drawer:
                     x += 15
                 radius = 3.5  # Keep the radius as set
                 # Draw the signal circle (no border)
-                print(x,y,radius)
                 self.canvas.create_oval(
                     x - radius, y - radius, x + radius, y + radius, fill=color, outline="", tags="TRTS"
                 )
@@ -221,7 +219,7 @@ class Game:
             (signal for signal in self.signal_details if signal.signal_name == spawning_signal_name),
             None
         )
-        if spawning_signal is None or spawning_signal.train_at_signal:
+        if spawning_signal is None or spawning_signal.train_at_signal is not None:
             return  # Skip if the signal is not found or is occupied
 
         # Find all routes associated with this spawning signal
@@ -264,7 +262,7 @@ class Game:
         self.trains.append(new_train)
 
         # Mark the spawning signal as occupied
-        spawning_signal.train_at_signal = True
+        spawning_signal.train_at_signal = new_train  # Mark the signal as occupied by the new train
 
         # Draw the train on the canvas
         self.drawer.draw_train(new_train.position, new_train.train_id, spawning_signal.position)
@@ -368,8 +366,8 @@ class Game:
         self.canvas.bind("<Button-1>", self.on_signal_click)  # Add this line
 
         # Start periodic train spawning
-        self.periodic_train_spawning("Signal_220", 10000, 1)  # Spawn trains at Signal_1 every 5 seconds with a 1/2 chance
-        # self.periodic_train_spawning("Signal_183", 10000, 1) 
+        # self.periodic_train_spawning("Signal_220", 10000, 1/4)  # Spawn trains at Signal_1 every 5 seconds with a 1/2 chance
+        self.periodic_train_spawning("Signal_183", 10000, 1) 
         # Start the main loop
         self.main_loop()
 
@@ -387,7 +385,7 @@ class SignalDetails:
     next_signals: list  # List of next signals
     conflicting_signals: list = None  # List of conflicting signals (default to None)
     color: str = "green"  # Default color
-    train_at_signal: bool = False  # Default train presence
+    train_at_signal: object = None  # Default train presence
     signal_can_be: list = None  # Default to None for auto signals, list for manual signals
     conflict_timer: float = 0  # Timer to track the red condition for conflicting signals
     last_conflict_state: list = None  # Last state of train_at_signal for conflicting signals
@@ -414,7 +412,7 @@ class SignalDetails:
             current_conflict_state = [conflict.train_at_signal for conflict in conflicting_signals]
 
             # Check if the state is all False
-            if all(not state for state in current_conflict_state):
+            if all(state==None for state in current_conflict_state):
                 # Reset the conflict timer and state if all are False
                 self.conflict_timer = 0
                 self.last_conflict_state = current_conflict_state
@@ -432,7 +430,6 @@ class SignalDetails:
             # Check if the conflict duration has passed
             if self.conflict_timer > 0 and current_time - self.conflict_timer >= conflict_duration:
                 # Reset the conflict timer
-                print("conflict has passed")
                 self.conflict_timer = 0
                 if self.signal_type == "manual":
                     self.signal_can_be = ["red", "yellow", "green"]
@@ -446,8 +443,8 @@ class SignalDetails:
             next_signals = [s for s in next_signals if s is not None]
 
 
-            if any(next_signal.train_at_signal for next_signal in next_signals):
-                if any(not next_signal.train_at_signal for next_signal in next_signals) and (not self.next_signals_in_same_block):
+            if any(next_signal.train_at_signal is not None for next_signal in next_signals):
+                if any(next_signal.train_at_signal is None for next_signal in next_signals) and (not self.next_signals_in_same_block):
                     self.color = "yellow"
                 else:
                     self.color = "red"
@@ -462,13 +459,16 @@ class SignalDetails:
                 for next_signal_name in self.next_signals
             ]
             next_signals = [s for s in next_signals if s is not None]
-            if any(next_signal.train_at_signal for next_signal in next_signals):
-                if any(not next_signal.train_at_signal for next_signal in next_signals) and (not self.next_signals_in_same_block):
+            if any(next_signal.train_at_signal is not None for next_signal in next_signals):
+                if self.train_at_signal is None:
+                    train_route_next_signal_names = []
+                else:
+                    train_route_next_signal_names = self.train_at_signal.route[self.train_at_signal.current_index]
+                print(set([s.signal_name for s in next_signals if s.train_at_signal is None]), set(train_route_next_signal_names),len(set([s.signal_name for s in next_signals if s.train_at_signal is not None]).intersection(set(train_route_next_signal_names))))
+                if len(set([s.signal_name for s in next_signals if s.train_at_signal is None]).intersection(set(train_route_next_signal_names))) > 0 and (not self.next_signals_in_same_block):
                     if self.color == "green":
                         self.color = "yellow"
                     self.signal_can_be = ["red", "yellow"]
-                    # for next_signal in next_signals:
-                        # print(next_signal.signal_name, next_signal.train_at_signal)
                 else:
                     self.color = "red"
                     self.signal_can_be = ["red"]
@@ -477,9 +477,12 @@ class SignalDetails:
                 if self.color == "green" or (self.rollback is True and self.set_by_machine is True):
                     self.color = "yellow"
                 self.signal_can_be = ["red", "yellow"]
-                self.signal_can_be = ["red", "yellow", "green"]
                 if self.rollback is True and self.set_by_machine is True:
                     self.color = self.signal_can_be[-1]  # Default to the last element in signal_can_be
+            else:
+                self.signal_can_be = ["red", "yellow", "green"]
+                if self.rollback is True and self.set_by_machine is True:
+                    self.color = "green"
 
 @dataclass
 class Train:
@@ -498,13 +501,11 @@ class Train:
         """Move the train to the next signal in its route if 1 second has passed and the previous signal is not red."""
         current_time = time.time()
         if type(self.previous_signal_tuple) == tuple:
-            print(self.previous_signal_tuple)
             dwell_time = self.previous_signal_tuple[1]
         else:
             dwell_time = 3
-        if current_time - self.last_move_time >= (dwell_time - 10) and dwell_time != 3:
-            if round(current_time - self.last_move_time) % 2 == 1:
-                print(round(current_time - self.last_move_time))
+        if ((current_time - self.last_move_time) >= (dwell_time - 10)) and dwell_time != 3:
+            if int(str(round(current_time-dwell_time,1))[-1]) >= 5:
                 drawer.draw_TRTS(signal_details, self.previous_signal_name, "white")
             else:
                 drawer.draw_TRTS(signal_details, self.previous_signal_name, "black")
@@ -512,13 +513,10 @@ class Train:
             
             current_signal_something = self.route[self.current_index]
             if type(current_signal_something) == tuple:
-                print("found to be tuple", current_signal_something)
                 current_signal_name = current_signal_something[0]  # Get the signal name from the tuple
-                self.previous_signal_tuple = current_signal_something
                 
             else:
                 current_signal_name = current_signal_something  # Get the signal name directly
-                self.previous_signal_tuple = None  # Reset the previous signal tuple
             if self.current_index >= len(self.route):
                 return  # Stop if the train has reached the end of the route
             # print(self.train_id, self.previous_signal_name, current_signal_name)
@@ -531,7 +529,7 @@ class Train:
                     for signal_name in current_signal_name
                 ]
                 # Filter out None values and signals with train_at_signal == True
-                available_signals = [signal for signal in current_signals if signal and not signal.train_at_signal]
+                available_signals = [signal for signal in current_signals if signal and signal.train_at_signal is None]
                 if not available_signals:
                     return  # Do not move if all platforms are occupied
                 # Randomly select a platform if more than one is available
@@ -552,7 +550,8 @@ class Train:
                         None
                     )
                     if previous_signal:
-                        previous_signal.train_at_signal = False
+                        previous_signal.train_at_signal = None
+                        drawer.draw_TRTS(signal_details, self.previous_signal_name, "black")
                 trains.remove(self)
                 if self.game:  # Use the passed Game instance
                     self.game.spawn_train(self.previous_signal_name,trains)  # Spawn a train at the previous signal
@@ -566,7 +565,8 @@ class Train:
                         None
                     )
                     if previous_signal:
-                        previous_signal.train_at_signal = False
+                        previous_signal.train_at_signal = None
+                        drawer.draw_TRTS(signal_details, self.previous_signal_name, "black")
                 trains.remove(self)  # Remove the train from the list of trains
                 return
 
@@ -577,6 +577,13 @@ class Train:
                     None
                 )
                 if previous_signal and previous_signal.color == "red":
+                    
+                    if dwell_time != 3:
+                        print("RED",self.train_id)
+                        if int(str(round(current_time-dwell_time,1))[-1]) >= 5:
+                            drawer.draw_TRTS(signal_details, self.previous_signal_name, "white")
+                        else:
+                            drawer.draw_TRTS(signal_details, self.previous_signal_name, "black")
                     return  # Do not move if the previous signal is red
 
             # Set the previous signal's train_at_signal to False
@@ -586,15 +593,21 @@ class Train:
                     None
                 )
                 if previous_signal:
-                    previous_signal.train_at_signal = False
+                    drawer.draw_TRTS(signal_details, self.previous_signal_name, "black")
+                    previous_signal.train_at_signal = None
             # Set the next signal's train_at_signal to True
             if current_signal:
-                current_signal.train_at_signal = True
+                current_signal.train_at_signal = self
                 self.position = current_signal.signal_position  # Update train position
                 self.signal_position = current_signal.position  # Update signal position (left or right)
 
             # Update the previous signal name and move to the next signal
-            
+            if type(current_signal_something) == tuple:
+                self.previous_signal_tuple = current_signal_something
+                
+            else:
+                drawer.draw_TRTS(signal_details, self.previous_signal_name, "black")
+                self.previous_signal_tuple = None  # Reset the previous signal tuple
             self.previous_signal_name = current_signal_name
             self.last_move_time = current_time
             self.current_index += 1

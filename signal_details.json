@@ -1616,8 +1616,8 @@
         ],
         "signal_type": "manual",
         "position": "right",
-        "next_signals": ["Signal_83","Signal_84","Signal_85","Signal_86","Signal_87"],
-        "conflicting_signals": ["Signal_83","Signal_84","Signal_85","Signal_86","Signal_87","Signal_106"]
+        "next_signals": ["Signal_82","Signal_83","Signal_84","Signal_85","Signal_86","Signal_87"],
+        "conflicting_signals": ["Signal_82","Signal_83","Signal_84","Signal_85","Signal_86","Signal_87","Signal_106"]
     },
     {
         "signal_name": "Signal_109",
