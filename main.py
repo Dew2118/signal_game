@@ -366,8 +366,8 @@ class Game:
         self.canvas.bind("<Button-1>", self.on_signal_click)  # Add this line
 
         # Start periodic train spawning
-        # self.periodic_train_spawning("Signal_220", 10000, 1/4)  # Spawn trains at Signal_1 every 5 seconds with a 1/2 chance
-        self.periodic_train_spawning("Signal_183", 10000, 1) 
+        self.periodic_train_spawning("Signal_220", 10000, 1/4)  # Spawn trains at Signal_1 every 5 seconds with a 1/2 chance
+        self.periodic_train_spawning("Signal_183", 10000, 1/4) 
         # Start the main loop
         self.main_loop()
 

@@ -135,6 +135,6 @@
         "delete"
       ]
     ],
-    "spawning_signals": []
+    "spawning_signals": ["Signal_82", "Signal_83", "Signal_84", "Signal_85","Signal_86","Signal_87"]
   }
 }
