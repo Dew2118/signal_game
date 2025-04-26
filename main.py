@@ -434,6 +434,7 @@ class SignalDetails:
             ]
             next_signals = [s for s in next_signals if s is not None]
 
+
             if any(next_signal.train_at_signal for next_signal in next_signals):
                 if any(not next_signal.train_at_signal for next_signal in next_signals) and (not self.next_signals_in_same_block):
                     self.color = "yellow"
@@ -443,7 +444,6 @@ class SignalDetails:
                 self.color = "yellow"
             else:
                 self.color = "green"
-
         # Handle manual signals
         elif self.signal_type == "manual" and self.conflict_timer == 0:
             next_signals = [
@@ -466,8 +466,6 @@ class SignalDetails:
                 if self.color == "green" or (self.rollback is True and self.set_by_machine is True):
                     self.color = "yellow"
                 self.signal_can_be = ["red", "yellow"]
-
-            else:
                 self.signal_can_be = ["red", "yellow", "green"]
                 if self.rollback is True and self.set_by_machine is True:
                     self.color = self.signal_can_be[-1]  # Default to the last element in signal_can_be
@@ -487,10 +485,7 @@ class Train:
 
     def move(self, signal_details, trains, drawer):
         """Move the train to the next signal in its route if 1 second has passed and the previous signal is not red."""
-        import random
-        
         current_time = time.time()
-        
         if type(self.previous_signal_tuple) == tuple:
             dwell_time = self.previous_signal_tuple[1]
         else:
@@ -591,6 +586,7 @@ class Train:
             self.previous_signal_name = current_signal_name
             self.last_move_time = current_time
             self.current_index += 1
+
 
 def main():
     # File paths
