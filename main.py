@@ -62,15 +62,17 @@ class Drawer:
                 x, y = signal.lamp_position  # Use the lamp position for drawing
                 x += 3.5  # Adjust position slightly
                 y += 2
-                if signal.position == "l":
-                    x -= 15
-                else:
+                if signal.position == "left":
                     x += 15
+                else:
+                    x -= 15
                 radius = 3.5  # Keep the radius as set
                 # Draw the signal circle (no border)
                 self.canvas.create_oval(
                     x - radius, y - radius, x + radius, y + radius, fill=color, outline="", tags="TRTS"
                 )
+
+    
 
     def draw_train(self, train_position, train_text, signal_position):
         """Draw the train as a red rectangle with bold black text."""
