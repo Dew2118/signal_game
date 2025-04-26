@@ -464,7 +464,7 @@ class SignalDetails:
                     train_route_next_signal_names = []
                 else:
                     train_route_next_signal_names = self.train_at_signal.route[self.train_at_signal.current_index]
-                print(set([s.signal_name for s in next_signals if s.train_at_signal is None]), set(train_route_next_signal_names),len(set([s.signal_name for s in next_signals if s.train_at_signal is not None]).intersection(set(train_route_next_signal_names))))
+                # print(set([s.signal_name for s in next_signals if s.train_at_signal is None]), set(train_route_next_signal_names),len(set([s.signal_name for s in next_signals if s.train_at_signal is not None]).intersection(set(train_route_next_signal_names))))
                 if len(set([s.signal_name for s in next_signals if s.train_at_signal is None]).intersection(set(train_route_next_signal_names))) > 0 and (not self.next_signals_in_same_block):
                     if self.color == "green":
                         self.color = "yellow"
@@ -579,7 +579,7 @@ class Train:
                 if previous_signal and previous_signal.color == "red":
                     
                     if dwell_time != 3:
-                        print("RED",self.train_id)
+                        # print("RED",self.train_id)
                         if int(str(round(current_time-dwell_time,1))[-1]) >= 5:
                             drawer.draw_TRTS(signal_details, self.previous_signal_name, "white")
                         else:
