@@ -1,0 +1,50 @@
+{
+    "2Q": {
+      "routes": [
+        [
+          "Signal_1",
+          "Signal_2",
+          "Signal_4",
+          "Signal_7",
+          "Signal_9",
+          "Signal_11",
+          "Signal_13",
+          ["__tuple__", "Signal_15", 20],
+          "Signal_17",
+          "Signal_19",
+          ["__tuple__", "Signal_22", 20],
+          "Signal_24",
+          "Signal_26",
+          ["__tuple__", "Signal_29", 20],
+          "Signal_33",
+          ["Signal_36", "Signal_37", "Signal_38", "Signal_39"],
+          "delete_and_spawn_train"
+        ]
+      ],
+      "spawning_signals": ["Signal_1"]
+    },
+    "2N": {
+      "routes": [
+        [
+          "Signal_34",
+          "Signal_31",
+          "Signal_30",
+          "Signal_28",
+          "Signal_27",
+          "Signal_25",
+          "Signal_23",
+          "Signal_21",
+          "Signal_18",
+          "Signal_16",
+          "Signal_14",
+          "Signal_12",
+          "Signal_10",
+          "Signal_8",
+          "Signal_5",
+          "Signal_3",
+          "delete"
+        ]
+      ],
+      "spawning_signals": ["Signal_36", "Signal_37", "Signal_38", "Signal_39"]
+  }
+}

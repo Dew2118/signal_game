@@ -28,7 +28,7 @@ def extract_signals_from_bitmap(image_path):
     # Define the mapping of colors to signals
     color_to_signal = {
         (255, 0, 0): {"position": "right", "signal_type": "manual"},  # Red
-        (255, 128, 0): {"position": "left", "signal_type": "manual"},  # Orange
+        (255, 160, 255): {"position": "left", "signal_type": "manual"},  # Pink
         (0, 255, 255): {"position": "left", "signal_type": "auto"},  # Light Blue
         (0, 0, 255): {"position": "right", "signal_type": "auto"},  # Blue
     }
@@ -120,8 +120,8 @@ def draw_signals_and_lamps(image_path, signal_positions, lamp_positions, output_
 
 if __name__ == "__main__":
     # Path to the bitmap image
-    bitmap_path = "zone_G_setup.bmp"
-    output_path = "test3_with_signals_and_lamps.bmp"
+    bitmap_path = "zone_A_setup.bmp"
+    output_path = "zone_A_with_signals_and_lamps.bmp"
     json_output_path = "signal_details.json"
 
     # Extract signals, their positions, and lamp positions

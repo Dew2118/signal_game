@@ -3,7 +3,6 @@ import json
 import tkinter as tk
 from PIL import Image, ImageTk
 import time
-import threading
 import random
 
 class Drawer:
@@ -18,7 +17,8 @@ class Drawer:
             y += 2
             radius = 3.5  # Keep the radius as set
             color = signal.color  # Use the color from the dataclass
-
+            if signal.color == "green":
+                color = "lime"
             # Draw the signal circle (no border)
             self.canvas.create_oval(
                 x - radius, y - radius, x + radius, y + radius, fill=color, outline="", tags="signal"
@@ -27,21 +27,23 @@ class Drawer:
             # Extract and display the appropriate part of the signal name
             if len(signal.signal_name) <= len("Signal_9"):  # If the name is as long as "Signal_9"
                 display_name = signal.signal_name[-1]  # Get the last character
-            else:  # If the name is as long as "Signal_19" or longer
+            elif len(signal.signal_name) == len("Signal_19"):  # If the name is as long as "Signal_19" or longer
                 display_name = signal.signal_name[-2:]  # Get the last two characters
+            else:
+                display_name = signal.signal_name[-3:]  # Get the last three character
 
             # Position the text slightly to the right of the circle
             text_x = x + radius + 10
             text_y = y - radius // 2
-            self.canvas.create_text(
-                text_x,
-                text_y,
-                text=display_name,  # Display the extracted part of the signal name
-                fill="light blue",  # Set text color to light blue
-                font=("Arial", 8, "bold"),  # Use a bold font to make it "fatter"
-                anchor="w",
-                tags="signal"
-            )
+            # self.canvas.create_text(
+            #     text_x,
+            #     text_y,
+            #     text=display_name,  # Display the extracted part of the signal name
+            #     fill="light blue",  # Set text color to light blue
+            #     font=("Arial", 8, "bold"),  # Use a bold font to make it "fatter"
+            #     anchor="w",
+            #     tags="signal"
+            # )
 
             # Draw a small light blue dot at the signal position (with +2 to the y-coordinate) if rollback is True
             if signal.rollback:
@@ -53,17 +55,36 @@ class Drawer:
                     fill="light blue", outline="", tags="signal"
                 )
 
+    def draw_TRTS(self, signal_details,signal_name, color):
+        #get the signal from signal_names by looping through signal_details
+        print(signal_name,color)
+        for signal in signal_details:
+            if signal.signal_name == signal_name:
+                x, y = signal.lamp_position  # Use the lamp position for drawing
+                x += 3.5  # Adjust position slightly
+                y += 2
+                if signal.position == "l":
+                    x -= 15
+                else:
+                    x += 15
+                radius = 3.5  # Keep the radius as set
+                # Draw the signal circle (no border)
+                print(x,y,radius)
+                self.canvas.create_oval(
+                    x - radius, y - radius, x + radius, y + radius, fill=color, outline="", tags="TRTS"
+                )
+
     def draw_train(self, train_position, train_text, signal_position):
         """Draw the train as a red rectangle with bold black text."""
         x, y = train_position
-        width, height = 40, 6  # Dimensions of the train rectangle (height is 6)
+        width, height = 30, 6  # Dimensions of the train rectangle (height is 6)
 
         # Adjust x1 if the signal position is "left"
         if signal_position == "left":
             x = x - width  # Shift the rectangle to the left so the top-right aligns with the signal position
 
         # Draw the train rectangle
-        self.canvas.create_rectangle(x, y, x + width, y + height, fill="red", outline="", tags="train")
+        self.canvas.create_rectangle(x, y-3, x + width, y + height+3, fill="#ff0000", outline="", tags="train")
 
         # Draw the train text with a black background
         text_x = x + width / 2
@@ -176,23 +197,25 @@ class Game:
 
             self.signal_details.append(SignalDetails(**item))
 
+    def convert_tuples(self,obj):
+        if isinstance(obj, list):
+            # Convert ["__tuple__", "Signal_15", 20] -> ("Signal_15", 20)
+            if len(obj) > 0 and obj[0] == "__tuple__":
+                return tuple(obj[1:])
+            else:
+                return [self.convert_tuples(item) for item in obj]
+        elif isinstance(obj, dict):
+            return {key: self.convert_tuples(value) for key, value in obj.items()}
+        else:
+            return obj
+
+    
+
     def spawn_train(self, spawning_signal_name):
         """Spawn a train at the specified signal."""
-        routes_mapping = {
-            "2Q": {
-                "routes": [
-                    ["Signal_1", "Signal_2", "Signal_4", "Signal_7", "Signal_9", "Signal_11", "Signal_13", "Signal_15", "Signal_17", "Signal_19", "Signal_22", "Signal_24", "Signal_26", "Signal_29", "Signal_33", ["Signal_36", "Signal_37", "Signal_38", "Signal_39"], "delete_and_spawn_train"],
-                ],
-                "spawning_signals": ["Signal_1"]
-            },
-            "2N": {
-                "routes": [
-                    ["Signal_34", "Signal_31", "Signal_30", "Signal_28", "Signal_27", "Signal_25", "Signal_23", "Signal_21", "Signal_18", "Signal_16", "Signal_14", "Signal_12", "Signal_10", "Signal_8", "Signal_5", "Signal_3", "delete"]
-                ],
-                "spawning_signals": ["Signal_36", "Signal_37", "Signal_38", "Signal_39"]
-            }
-        }
-
+        with open('routes_mapping.json', 'r') as f:
+            raw_data = json.load(f)
+        routes_mapping = self.convert_tuples(raw_data)
         # Find the spawning signal
         spawning_signal = next(
             (signal for signal in self.signal_details if signal.signal_name == spawning_signal_name),
@@ -214,7 +237,12 @@ class Game:
         headcode_prefix, selected_route = random.choice(valid_routes)
         headcode_suffix = f"{random.randint(0, 99):02d}"  # Random two-digit suffix
         full_headcode = headcode_prefix + headcode_suffix
-
+        first_stop = selected_route[0]
+        if type(first_stop) == tuple:
+            dwell_time = first_stop[1]
+            selected_route[0] = (spawning_signal.signal_name, dwell_time)
+        else:
+            selected_route[0] = spawning_signal.signal_name
         # Create the new train
         new_train = Train(
             train_id=full_headcode,
@@ -222,7 +250,7 @@ class Game:
             original_position=spawning_signal.signal_position,  # Set original_position to the initial position
             signal_position=spawning_signal.position,
             route=selected_route,
-            previous_signal_name=spawning_signal_name,  # Set the previous signal to the spawning signal
+            previous_signal_tuple=spawning_signal_name,  # Set the previous signal to the spawning signal
             game=self  # Pass the Game instance
         )
         self.trains.append(new_train)
@@ -242,7 +270,7 @@ class Game:
     def update_trains(self):
         """Update all trains."""
         for train in self.trains[:]:  # Use a copy of the list to avoid modification during iteration
-            train.move(self.signal_details, self.trains, self.canvas)
+            train.move(self.signal_details, self.trains, self.drawer)
 
     def main_loop(self):
         """Main loop to update all trains and signals."""
@@ -259,9 +287,11 @@ class Game:
         # Schedule the next iteration of the loop
         self.canvas.after(100, self.main_loop)
 
-    def periodic_train_spawning(self, spawning_signal_name, interval=200000, chance=1/8):
+    def periodic_train_spawning(self, spawning_signal_name, interval=1000, chance=1):
         """Periodically check if a train should spawn at the specified signal."""
-        if random.random() < chance:  # Check if a train should spawn
+        r = random.random()
+        # print(r)
+        if r < chance:  # Check if a train should spawn
             self.spawn_train(spawning_signal_name)
 
         # Schedule the next check
@@ -330,8 +360,8 @@ class Game:
         self.canvas.bind("<Button-1>", self.on_signal_click)  # Add this line
 
         # Start periodic train spawning
-        self.periodic_train_spawning("Signal_1", interval=10000, chance=1)
-
+        self.periodic_train_spawning("Signal_220", 10000, 1)  # Spawn trains at Signal_1 every 5 seconds with a 1/2 chance
+        self.periodic_train_spawning("Signal_183", 10000, 1) 
         # Start the main loop
         self.main_loop()
 
@@ -426,6 +456,8 @@ class SignalDetails:
                     if self.color == "green":
                         self.color = "yellow"
                     self.signal_can_be = ["red", "yellow"]
+                    # for next_signal in next_signals:
+                        # print(next_signal.signal_name, next_signal.train_at_signal)
                 else:
                     self.color = "red"
                     self.signal_can_be = ["red"]
@@ -449,20 +481,42 @@ class Train:
     current_index: int = 0  # Current index in the route
     last_move_time: float = time.time()  # Timestamp of the last move
     signal_position: str = "right"  # Default signal position (left or right)
-    previous_signal_name: str = None  # Track the previous signal name
+    previous_signal_tuple: tuple = None  # Track the previous signal name
+    previous_signal_name: str = ""
     game: object = None  # Reference to the Game instance
 
-    def move(self, signal_details, trains, canvas):
+    def move(self, signal_details, trains, drawer):
         """Move the train to the next signal in its route if 1 second has passed and the previous signal is not red."""
         import random
-
+        
         current_time = time.time()
-        if current_time - self.last_move_time >= 5:  # Check if 5 seconds have passed
+        
+        if type(self.previous_signal_tuple) == tuple:
+            dwell_time = self.previous_signal_tuple[1]
+        else:
+            dwell_time = 3
+        if current_time - self.last_move_time >= (dwell_time - 10) and dwell_time != 3:
+            
+
+            if round(current_time - self.last_move_time) % 2 == 0:
+                print(round(current_time - self.last_move_time))
+                drawer.draw_TRTS(signal_details, self.previous_signal_name, "white")
+            else:
+                drawer.draw_TRTS(signal_details, self.previous_signal_name, "black")
+        if current_time - self.last_move_time >= dwell_time:  # Check if 5 seconds have passed
+            
+            current_signal_something = self.route[self.current_index]
+            if type(current_signal_something) == tuple:
+                current_signal_name = current_signal_something[0]  # Get the signal name from the tuple
+                self.previous_signal_tuple = current_signal_something
+                
+            else:
+                current_signal_name = current_signal_something  # Get the signal name directly
             if self.current_index >= len(self.route):
                 return  # Stop if the train has reached the end of the route
-
+            # print(self.train_id, self.previous_signal_name, current_signal_name)
             # Get the current signal details
-            current_signal_name = self.route[self.current_index]
+            # print(f"current_signal_name {current_signal_name}, previous_signal_name = {previous_signal_name}")
             if isinstance(current_signal_name, list):  # Handle multiple platforms
                 # Find all signals in the list
                 current_signals = [
@@ -474,7 +528,8 @@ class Train:
                 if not available_signals:
                     return  # Do not move if all platforms are occupied
                 # Randomly select a platform if more than one is available
-                current_signal = random.choice(available_signals)
+                else:
+                    current_signal = random.choice(available_signals)
                 current_signal_name = current_signal.signal_name  # Update the current signal name
             else:
                 current_signal = next(
@@ -492,9 +547,7 @@ class Train:
                     if previous_signal:
                         previous_signal.train_at_signal = False
                 trains.remove(self)
-                print("called delete and spawn train")
                 if self.game:  # Use the passed Game instance
-                    print("yes game instance found")
                     self.game.spawn_train(self.previous_signal_name)  # Spawn a train at the previous signal
                 return
 
@@ -534,6 +587,7 @@ class Train:
                 self.signal_position = current_signal.position  # Update signal position (left or right)
 
             # Update the previous signal name and move to the next signal
+            
             self.previous_signal_name = current_signal_name
             self.last_move_time = current_time
             self.current_index += 1
@@ -541,7 +595,7 @@ class Train:
 def main():
     # File paths
     json_file = "signal_details.json"
-    backdrop_path = "zone_G_beauty_pass.bmp"  # Use beauty_pass.bmp as the backdrop
+    backdrop_path = "zone_A_beauty_pass.bmp"  # Use beauty_pass.bmp as the backdrop
 
     # Create the Game instance
     game = Game(json_file, backdrop_path)
