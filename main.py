@@ -211,7 +211,7 @@ class Game:
 
     
 
-    def spawn_train(self, spawning_signal_name):
+    def spawn_train(self, spawning_signal_name,trains):
         """Spawn a train at the specified signal."""
         with open('routes_mapping.json', 'r') as f:
             raw_data = json.load(f)
@@ -235,7 +235,15 @@ class Game:
 
         # Randomly select a route and generate a headcode
         headcode_prefix, selected_route = random.choice(valid_routes)
-        headcode_suffix = f"{random.randint(0, 99):02d}"  # Random two-digit suffix
+        existing_suffixes = {train.train_id[-2:] for train in trains}
+
+        # Generate all possible 2-digit strings
+        available_suffixes = [f"{i:02d}" for i in range(100) if f"{i:02d}" not in existing_suffixes]
+
+        if not available_suffixes:
+            raise ValueError("No available headcode suffixes left.")
+
+        headcode_suffix = random.choice(available_suffixes)
         full_headcode = headcode_prefix + headcode_suffix
         first_stop = selected_route[0]
         if type(first_stop) == tuple:
@@ -292,7 +300,7 @@ class Game:
         r = random.random()
         # print(r)
         if r < chance:  # Check if a train should spawn
-            self.spawn_train(spawning_signal_name)
+            self.spawn_train(spawning_signal_name, self.trains)
 
         # Schedule the next check
         self.canvas.after(interval, self.periodic_train_spawning, spawning_signal_name, interval, chance)
@@ -361,7 +369,7 @@ class Game:
 
         # Start periodic train spawning
         self.periodic_train_spawning("Signal_220", 10000, 1)  # Spawn trains at Signal_1 every 5 seconds with a 1/2 chance
-        self.periodic_train_spawning("Signal_183", 10000, 1) 
+        # self.periodic_train_spawning("Signal_183", 10000, 1) 
         # Start the main loop
         self.main_loop()
 
@@ -424,7 +432,10 @@ class SignalDetails:
             # Check if the conflict duration has passed
             if self.conflict_timer > 0 and current_time - self.conflict_timer >= conflict_duration:
                 # Reset the conflict timer
+                print("conflict has passed")
                 self.conflict_timer = 0
+                if self.signal_type == "manual":
+                    self.signal_can_be = ["red", "yellow", "green"]
 
         # Handle auto signals
         if self.signal_type == "auto" and self.conflict_timer == 0:
@@ -487,13 +498,12 @@ class Train:
         """Move the train to the next signal in its route if 1 second has passed and the previous signal is not red."""
         current_time = time.time()
         if type(self.previous_signal_tuple) == tuple:
+            print(self.previous_signal_tuple)
             dwell_time = self.previous_signal_tuple[1]
         else:
             dwell_time = 3
         if current_time - self.last_move_time >= (dwell_time - 10) and dwell_time != 3:
-            
-
-            if round(current_time - self.last_move_time) % 2 == 0:
+            if round(current_time - self.last_move_time) % 2 == 1:
                 print(round(current_time - self.last_move_time))
                 drawer.draw_TRTS(signal_details, self.previous_signal_name, "white")
             else:
@@ -502,11 +512,13 @@ class Train:
             
             current_signal_something = self.route[self.current_index]
             if type(current_signal_something) == tuple:
+                print("found to be tuple", current_signal_something)
                 current_signal_name = current_signal_something[0]  # Get the signal name from the tuple
                 self.previous_signal_tuple = current_signal_something
                 
             else:
                 current_signal_name = current_signal_something  # Get the signal name directly
+                self.previous_signal_tuple = None  # Reset the previous signal tuple
             if self.current_index >= len(self.route):
                 return  # Stop if the train has reached the end of the route
             # print(self.train_id, self.previous_signal_name, current_signal_name)
@@ -543,7 +555,7 @@ class Train:
                         previous_signal.train_at_signal = False
                 trains.remove(self)
                 if self.game:  # Use the passed Game instance
-                    self.game.spawn_train(self.previous_signal_name)  # Spawn a train at the previous signal
+                    self.game.spawn_train(self.previous_signal_name,trains)  # Spawn a train at the previous signal
                 return
 
             # Check if the train has reached the "delete" signal
