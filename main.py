@@ -10,8 +10,158 @@ SIGNAL_DETAILS_FILENAME = "signal_details.json"
 BACKDROP_PATH_FILENAME = "zone_A_beauty_pass.bmp"  # Use beauty_pass.bmp as the backdrop
 CHANCE = 1
 class Drawer:
-    def __init__(self, canvas):
-        self.canvas = canvas
+    def __init__(self, game):
+        self.canvas = None
+        self.game = game
+
+    def set_after(self, delay, func, *args):
+        self.canvas.after(delay, func, *args)
+
+    def set_signal_color(self,signal,popup,color):
+        if signal.signal_type == "manual" and color in signal.signal_can_be:
+            signal.color = color
+            signal.set_by_machine = False  # Set by human
+            self.delete("signal")  # Redraw signals
+            self.draw_signals(self.game.get_signal_details())
+        else:
+            print(signal.signal_name, "queued")
+            signal.queue = "yellow"
+        popup.destroy()  # Close the popup after setting the color
+
+    def set_last_signal_color(self,popup,signal):
+        if signal.signal_type == "manual" and signal.signal_can_be:
+            if signal.signal_can_be == ["red"]:
+                self.set_signal_color(signal,popup,"green")
+            else:
+                self.set_signal_color(signal,popup,signal.signal_can_be[-1])
+
+    def close_popup(self, popup, event=None):
+        if popup.winfo_exists():  # Check if the popup still exists
+            popup.destroy()
+
+    def create_popup_text(self,popup,signal):
+        state_mapping = {"red": "D", "yellow": "C", "green": "P"}
+        all_states = ["red", "yellow", "green"]
+        signal_states_display = ""
+
+        for state in all_states:
+            code = state_mapping[state]
+            if signal.signal_can_be:
+                in_can_be = state in signal.signal_can_be
+            else:
+                in_can_be = False
+            is_queue = state == signal.queue
+
+            if in_can_be and is_queue:
+                code = f"[{code}*]"  # in can_be and is queue
+            elif in_can_be:
+                code = f"[{code}]"   # only in can_be
+            elif is_queue:
+                code = f"{code}*"    # only in queue
+
+            signal_states_display += code + " "
+
+        signal_states_display = signal_states_display.strip()
+
+        rollback_status = "Rollback On" if signal.rollback else "Rollback Off"
+
+        label_text = (
+            f"Signal: {signal.signal_name}\n"
+            f"{signal_states_display}\n"
+            f"{rollback_status}"
+        )
+
+        label = tk.Label(popup, text=label_text)
+        label.pack(pady=10)        
+
+    def on_signal_click(self, event):
+        """Handle clicks on signal lamps."""
+        # Adjust the click coordinates based on the canvas scroll position
+        adjusted_x = self.canvas.canvasx(event.x)
+        adjusted_y = self.canvas.canvasy(event.y)
+
+        # Find the clicked signal based on the adjusted mouse position
+        for signal in self.game.get_signal_details():
+            x, y = signal.lamp_position
+            radius = 10  # Set to 10 for easier clicking
+            if (x - radius <= adjusted_x <= x + radius) and (y - radius <= adjusted_y <= y + radius):
+                # Show a popup menu with the signal name
+                popup = tk.Toplevel()
+                popup.title("Signal Menu")
+                popup.geometry(f"200x100+{event.x_root}+{event.y_root}")
+                self.create_popup_text(popup,signal)
+
+                popup.bind("1", lambda e: self.set_signal_color(signal,popup,"red"))
+                popup.bind("2", lambda e: self.set_signal_color(signal,popup,"yellow"))
+                popup.bind("3", lambda e: self.set_last_signal_color(popup,signal))  # Bind 3 to the last element in signal_can_be
+                popup.bind("r", lambda e: self.game.toggle_rollback(signal,popup))
+
+                # Close the popup on any left-click
+                # Bind a global click event to close the popup
+                self.canvas.bind_all("<Button-1>", lambda event: self.close_popup(popup))
+
+                # Ensure the popup is focused and closes on losing focus
+                popup.focus_force()
+                popup.protocol("WM_DELETE_WINDOW", lambda: self.close_popup(popup))  # Handle the close button
+                return  # Exit after finding the clicked signal
+
+    def config_canvas(self, canvas_width, canvas_height, backdrop_photo, root, frame):
+        self.canvas = tk.Canvas(
+            frame,
+            width=min(canvas_width, root.winfo_screenwidth()),
+            height=min(canvas_height, root.winfo_screenheight()),
+            bg="black"  # Set the background color to black
+        )
+        self.canvas.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
+
+        # Add horizontal and vertical scrollbars
+        h_scrollbar = tk.Scrollbar(frame, orient=tk.HORIZONTAL, command=self.canvas.xview)
+        h_scrollbar.pack(side=tk.BOTTOM, fill=tk.X)
+        v_scrollbar = tk.Scrollbar(frame, orient=tk.VERTICAL, command=self.canvas.yview)
+        v_scrollbar.pack(side=tk.RIGHT, fill=tk.Y)
+
+        # Configure the canvas to work with the scrollbars
+        self.canvas.configure(xscrollcommand=h_scrollbar.set, yscrollcommand=v_scrollbar.set)
+
+        # Set the scrollable region to the size of the image
+        self.canvas.config(scrollregion=(0, 0, canvas_width, canvas_height))
+
+        # Add the backdrop image to the canvas
+        self.canvas.create_image(0, 0, anchor="nw", image=backdrop_photo)
+
+        # Enable scrolling with the mouse wheel (vertical and horizontal)
+        def _on_mousewheel(event):
+            if event.state & 0x0001:  # Shift key is pressed
+                self.canvas.xview_scroll(-1 * int(event.delta / 120), "units")  # Horizontal scrolling
+            else:
+                self.canvas.yview_scroll(-1 * int(event.delta / 120), "units")  # Vertical scrolling
+
+        self.canvas.bind_all("<MouseWheel>", _on_mousewheel)
+
+        # Bind mouse clicks to the canvas
+        self.canvas.bind("<Button-1>", self.on_signal_click)  # Add this line
+
+    def create_signal_number(self,signal,radius,x,y):
+         # Extract and display the appropriate part of the signal name
+            if len(signal.signal_name) <= len("Signal_9"):  # If the name is as long as "Signal_9"
+                display_name = signal.signal_name[-1]  # Get the last character
+            elif len(signal.signal_name) == len("Signal_19"):  # If the name is as long as "Signal_19" or longer
+                display_name = signal.signal_name[-2:]  # Get the last two characters
+            else:
+                display_name = signal.signal_name[-3:]  # Get the last three character
+
+            # Position the text slightly to the right of the circle
+            text_x = x + radius + 10
+            text_y = y - radius // 2
+            self.canvas.create_text(
+                text_x,
+                text_y,
+                text=display_name,  # Display the extracted part of the signal name
+                fill="light blue",  # Set text color to light blue
+                font=("Arial", 8, "bold"),  # Use a bold font to make it "fatter"
+                anchor="w",
+                tags="signal"
+            )
 
     def draw_signals(self, signal_details):
         """Draw signals with their colors and positions on the canvas."""
@@ -27,27 +177,7 @@ class Drawer:
             self.canvas.create_oval(
                 x - radius, y - radius, x + radius, y + radius, fill=color, outline="", tags="signal"
             )
-
-            # Extract and display the appropriate part of the signal name
-            if len(signal.signal_name) <= len("Signal_9"):  # If the name is as long as "Signal_9"
-                display_name = signal.signal_name[-1]  # Get the last character
-            elif len(signal.signal_name) == len("Signal_19"):  # If the name is as long as "Signal_19" or longer
-                display_name = signal.signal_name[-2:]  # Get the last two characters
-            else:
-                display_name = signal.signal_name[-3:]  # Get the last three character
-
-            # Position the text slightly to the right of the circle
-            text_x = x + radius + 10
-            text_y = y - radius // 2
-            # self.canvas.create_text(
-            #     text_x,
-            #     text_y,
-            #     text=display_name,  # Display the extracted part of the signal name
-            #     fill="light blue",  # Set text color to light blue
-            #     font=("Arial", 8, "bold"),  # Use a bold font to make it "fatter"
-            #     anchor="w",
-            #     tags="signal"
-            # )
+            # self.create_signal_number(signal,radius,x,y)
 
             # Draw a small light blue dot at the signal position (with +2 to the y-coordinate) if rollback is True
             if signal.rollback:
@@ -76,8 +206,6 @@ class Drawer:
                     x - radius, y - radius, x + radius, y + radius, fill=color, outline="", tags="TRTS"
                 )
 
-    
-
     def draw_train(self, train_position, train_text, signal_position):
         """Draw the train as a red rectangle with bold black text."""
         x, y = train_position
@@ -103,6 +231,9 @@ class Drawer:
                 tags="train"
             )
 
+    def delete(self,tag):
+        self.canvas.delete(tag)
+
 class Game:
     def __init__(self, json_file, backdrop_path):
         self.json_file = json_file
@@ -115,95 +246,9 @@ class Game:
     def toggle_rollback(self,signal,popup):
         if signal.signal_type == "manual":
             signal.rollback = not signal.rollback
-            self.canvas.delete("signal")  # Redraw signals
+            self.drawer.delete("signal")  # Redraw signals
             self.drawer.draw_signals(self.signal_details)
         popup.destroy()  # Close the popup after toggling rollback
-
-    def set_signal_color(self,signal,popup,color):
-        if signal.signal_type == "manual" and color in signal.signal_can_be:
-            signal.color = color
-            signal.set_by_machine = False  # Set by human
-            self.canvas.delete("signal")  # Redraw signals
-            self.drawer.draw_signals(self.signal_details)
-        else:
-            signal.queue = "yellow"
-        popup.destroy()  # Close the popup after setting the color
-
-    def set_last_signal_color(self,popup,signal):
-        if signal.signal_type == "manual" and signal.signal_can_be:
-            self.set_signal_color(signal,popup,signal.signal_can_be[-1])
-
-    def close_popup(self, popup, event=None):
-        if popup.winfo_exists():  # Check if the popup still exists
-            popup.destroy()
-
-    def on_signal_click(self, event):
-        """Handle clicks on signal lamps."""
-        # Adjust the click coordinates based on the canvas scroll position
-        adjusted_x = self.canvas.canvasx(event.x)
-        adjusted_y = self.canvas.canvasy(event.y)
-
-        # Find the clicked signal based on the adjusted mouse position
-        for signal in self.signal_details:
-            x, y = signal.lamp_position
-            radius = 10  # Set to 10 for easier clicking
-            if (x - radius <= adjusted_x <= x + radius) and (y - radius <= adjusted_y <= y + radius):
-                # Show a popup menu with the signal name
-                popup = tk.Toplevel()
-                popup.title("Signal Menu")
-                popup.geometry(f"200x100+{event.x_root}+{event.y_root}")
-                state_mapping = {"red": "D", "yellow": "C", "green": "P"}
-
-                all_states = ["red", "yellow", "green"]
-                signal_states_display = ""
-
-                for state in all_states:
-                    code = state_mapping[state]
-                    if signal.signal_can_be:
-                        in_can_be = state in signal.signal_can_be
-                    else:
-                        in_can_be = False
-                    is_queue = state == signal.queue
-
-                    if in_can_be and is_queue:
-                        code = f"[{code}*]"  # in can_be and is queue
-                    elif in_can_be:
-                        code = f"[{code}]"   # only in can_be
-                    elif is_queue:
-                        code = f"{code}*"    # only in queue
-
-                    signal_states_display += code + " "
-
-                signal_states_display = signal_states_display.strip()
-
-                rollback_status = "Rollback On" if signal.rollback else "Rollback Off"
-
-                label_text = (
-                    f"Signal: {signal.signal_name}\n"
-                    f"{signal_states_display}\n"
-                    f"{rollback_status}"
-                )
-
-                label = tk.Label(popup, text=label_text)
-                label.pack(pady=10)
-
-                  # Set to the last element in signal_can_be
-
-                popup.bind("1", lambda e: self.set_signal_color(signal,popup,"red"))
-                popup.bind("2", lambda e: self.set_signal_color(signal,popup,"yellow"))
-                popup.bind("3", lambda e: self.set_last_signal_color(popup,signal))  # Bind 3 to the last element in signal_can_be
-                popup.bind("r", lambda e: self.toggle_rollback(signal,popup))
-
-                # Close the popup on any left-click
-
-
-                # Bind a global click event to close the popup
-                self.canvas.bind_all("<Button-1>", lambda event: self.close_popup(popup))
-
-                # Ensure the popup is focused and closes on losing focus
-                popup.focus_force()
-                popup.protocol("WM_DELETE_WINDOW", lambda: self.close_popup(popup))  # Handle the close button
-                return  # Exit after finding the clicked signal
 
     def load_signal_details_from_json(self):
         """Load signal details from a JSON file and return a list of SignalDetails objects."""
@@ -298,14 +343,14 @@ class Game:
         self.update_signals()
 
         # Redraw the signals and trains
-        self.canvas.delete("signal")  # Remove previous signals
+        self.drawer.delete("signal")  # Remove previous signals
         self.drawer.draw_signals(self.signal_details)
-        self.canvas.delete("train")  # Remove previous trains
+        self.drawer.delete("train")  # Remove previous trains
         for train in self.trains:
             self.drawer.draw_train(train.position, train.train_id, train.signal_position)
 
         # Schedule the next iteration of the loop
-        self.canvas.after(100, self.main_loop)
+        self.drawer.set_after(100, self.main_loop)
 
     def periodic_train_spawning(self, spawning_signal_name, interval=1000, chance=1):
         """Periodically check if a train should spawn at the specified signal."""
@@ -315,7 +360,7 @@ class Game:
             self.spawn_train(spawning_signal_name, self.trains)
 
         # Schedule the next check
-        self.canvas.after(interval, self.periodic_train_spawning, spawning_signal_name, interval, chance)
+        self.drawer.set_after(interval, self.periodic_train_spawning, spawning_signal_name, interval, chance)
 
     def run(self):
         """Run the game."""
@@ -333,51 +378,58 @@ class Game:
         # Create a frame to hold the canvas and scrollbars
         frame = tk.Frame(root)
         frame.pack(fill=tk.BOTH, expand=True)
-
-        # Create a canvas for drawing
-        self.canvas = tk.Canvas(
-            frame,
-            width=min(canvas_width, root.winfo_screenwidth()),
-            height=min(canvas_height, root.winfo_screenheight()),
-            bg="black"  # Set the background color to black
-        )
-        self.canvas.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
-
-        # Add horizontal and vertical scrollbars
-        h_scrollbar = tk.Scrollbar(frame, orient=tk.HORIZONTAL, command=self.canvas.xview)
-        h_scrollbar.pack(side=tk.BOTTOM, fill=tk.X)
-        v_scrollbar = tk.Scrollbar(frame, orient=tk.VERTICAL, command=self.canvas.yview)
-        v_scrollbar.pack(side=tk.RIGHT, fill=tk.Y)
-
-        # Configure the canvas to work with the scrollbars
-        self.canvas.configure(xscrollcommand=h_scrollbar.set, yscrollcommand=v_scrollbar.set)
-
-        # Set the scrollable region to the size of the image
-        self.canvas.config(scrollregion=(0, 0, canvas_width, canvas_height))
-
-        # Add the backdrop image to the canvas
-        self.canvas.create_image(0, 0, anchor="nw", image=backdrop_photo)
-
-        # Initialize the Drawer instance
-        self.drawer = Drawer(self.canvas)
-
-        # Load signal details
+                # Load signal details
         self.load_signal_details_from_json()
-
+        self.drawer = Drawer(self)
+        self.drawer.config_canvas(canvas_width, canvas_height,backdrop_photo, root, frame)
         # Draw signals
         self.drawer.draw_signals(self.signal_details)
 
-        # Enable scrolling with the mouse wheel (vertical and horizontal)
-        def _on_mousewheel(event):
-            if event.state & 0x0001:  # Shift key is pressed
-                self.canvas.xview_scroll(-1 * int(event.delta / 120), "units")  # Horizontal scrolling
-            else:
-                self.canvas.yview_scroll(-1 * int(event.delta / 120), "units")  # Vertical scrolling
+        # Create a canvas for drawing
+        # self.canvas = tk.Canvas(
+        #     frame,
+        #     width=min(canvas_width, root.winfo_screenwidth()),
+        #     height=min(canvas_height, root.winfo_screenheight()),
+        #     bg="black"  # Set the background color to black
+        # )
+        # self.canvas.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
 
-        self.canvas.bind_all("<MouseWheel>", _on_mousewheel)
+        # # Add horizontal and vertical scrollbars
+        # h_scrollbar = tk.Scrollbar(frame, orient=tk.HORIZONTAL, command=self.canvas.xview)
+        # h_scrollbar.pack(side=tk.BOTTOM, fill=tk.X)
+        # v_scrollbar = tk.Scrollbar(frame, orient=tk.VERTICAL, command=self.canvas.yview)
+        # v_scrollbar.pack(side=tk.RIGHT, fill=tk.Y)
 
-        # Bind mouse clicks to the canvas
-        self.canvas.bind("<Button-1>", self.on_signal_click)  # Add this line
+        # # Configure the canvas to work with the scrollbars
+        # self.canvas.configure(xscrollcommand=h_scrollbar.set, yscrollcommand=v_scrollbar.set)
+
+        # # Set the scrollable region to the size of the image
+        # self.canvas.config(scrollregion=(0, 0, canvas_width, canvas_height))
+
+        # # Add the backdrop image to the canvas
+        # self.canvas.create_image(0, 0, anchor="nw", image=backdrop_photo)
+
+        # # Initialize the Drawer instance
+        # # self.drawer = Drawer(self.canvas)
+        # self.drawer = Drawer()
+
+        # # Load signal details
+        # self.load_signal_details_from_json()
+
+        # # Draw signals
+        # self.drawer.draw_signals(self.signal_details)
+
+        # # Enable scrolling with the mouse wheel (vertical and horizontal)
+        # def _on_mousewheel(event):
+        #     if event.state & 0x0001:  # Shift key is pressed
+        #         self.canvas.xview_scroll(-1 * int(event.delta / 120), "units")  # Horizontal scrolling
+        #     else:
+        #         self.canvas.yview_scroll(-1 * int(event.delta / 120), "units")  # Vertical scrolling
+
+        # self.canvas.bind_all("<MouseWheel>", _on_mousewheel)
+
+        # # Bind mouse clicks to the canvas
+        # self.canvas.bind("<Button-1>", self.on_signal_click)  # Add this line
 
         # Start periodic train spawning
         self.periodic_train_spawning("Signal_220", 10000, CHANCE)  # Spawn trains at Signal_1 every 5 seconds with a 1/2 chance
@@ -387,6 +439,9 @@ class Game:
 
         # Start the GUI event loop
         root.mainloop()
+
+    def get_signal_details(self):
+        return self.signal_details    
 
 class SignalDetails:
     def __init__(self,signal_name,signal_position,lamp_position,signal_type,position,next_signal_names,conflicting_signals = None,color = "green",signal_can_be = None,train_at_signal = None,conflict_timer = 0,last_conflict_state = None,rollback = False,set_by_machine = False,next_signals_in_same_block = False,queue = None):
