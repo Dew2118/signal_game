@@ -9,6 +9,10 @@ import random
 SIGNAL_DETAILS_FILENAME = "signal_details.json"
 BACKDROP_PATH_FILENAME = "zone_A_beauty_pass.bmp"  # Use beauty_pass.bmp as the backdrop
 CHANCE = 1
+STANDARD_SIGNAL_DWELL_TIME = 3
+TRTS_TIME_BEFORE_DEPARTURE = 10
+CONFLICT_DURATION = 5
+
 class Drawer:
     def __init__(self, game):
         self.canvas = None
@@ -24,7 +28,6 @@ class Drawer:
             self.delete("signal")  # Redraw signals
             self.draw_signals(self.game.get_signal_details())
         else:
-            print(signal.signal_name, "queued")
             signal.queue = "yellow"
         popup.destroy()  # Close the popup after setting the color
 
@@ -324,11 +327,11 @@ class Game:
         # Draw the train on the canvas
         self.drawer.draw_train(new_train.position, new_train.train_id, spawning_signal.position)
 
-    def update_signals(self, conflict_duration=5):
+    def update_signals(self):
         """Update all signals."""
         current_time = time.time()
         for signal in self.signal_details:
-            signal.update(self.signal_details, conflict_duration, current_time)
+            signal.update(self.signal_details, current_time)
             signal.check_queue()
 
     def update_trains(self):
@@ -396,7 +399,7 @@ class Game:
         return self.signal_details    
 
 class SignalDetails:
-    def __init__(self,signal_name,signal_position,lamp_position,signal_type,position,next_signal_names,conflicting_signals = None,color = "green",signal_can_be = None,train_at_signal = None,conflict_timer = 0,last_conflict_state = None,rollback = False,set_by_machine = False,next_signals_in_same_block = False,queue = None):
+    def __init__(self,signal_name,signal_position,lamp_position,signal_type,position,next_signal_names,conflicting_signals = None,color = "green",signal_can_be = None,train_at_signal = None,conflict_timer = 0,last_conflict_state = None,rollback = False,set_by_machine = False,next_signals_in_same_block = False,queue = ""):
         self.signal_name = signal_name
         self.signal_position = signal_position
         self.lamp_position = lamp_position
@@ -435,7 +438,7 @@ class SignalDetails:
         else:
             self.color = color
 
-    def check_conflicting_signals(self, signal_details, current_time, conflict_duration):
+    def check_conflicting_signals(self, signal_details, current_time):
         if self.conflicting_signals:
             # Find all conflicting signals
             # Get the current train_at_signal state of conflicting signals
@@ -454,16 +457,16 @@ class SignalDetails:
     
 
             # Check if the conflict duration has passed
-            elif self.conflict_timer > 0 and current_time - self.conflict_timer >= conflict_duration:
+            elif self.conflict_timer > 0 and current_time - self.conflict_timer >= CONFLICT_DURATION:
                 # Reset the conflict timer
                 self.conflict_timer = 0
 
-    def update(self, signal_details, conflict_duration, current_time):
+    def update(self, signal_details, current_time):
         """Update the signal's state based on its next and conflicting signals."""
         if not self.next_signal_names:  # Skip if next_signals is empty
             return
         # Handle conflicting signals
-        self.check_conflicting_signals(signal_details, current_time, conflict_duration)
+        self.check_conflicting_signals(signal_details, current_time)
         # Handle auto signals
         if self.conflict_timer != 0:
             return
@@ -484,9 +487,9 @@ class SignalDetails:
             self.set_signal_color("green")
 
     def check_queue(self):
-        if self.queue and self.queue in self.signal_can_be:
+        if self.queue != "" and self.queue in self.signal_can_be:
             self.color = self.queue
-            self.queue = None
+            self.queue = ""
 
 class Train:
     def __init__(self, train_id, position, original_position, route, current_index=0, last_move_time = time.time(), signal_position = "right", previous_signal_list = None, previous_signal_name = "", game=None):
@@ -503,14 +506,14 @@ class Train:
 
     def update_TRTS(self, current_time, signal_details, drawer):
         dwell_time = self.get_dwell_time()
-        if ((current_time - self.last_move_time) >= (dwell_time - 10)) and dwell_time != 3:
+        if ((current_time - self.last_move_time) >= (dwell_time - TRTS_TIME_BEFORE_DEPARTURE)) and dwell_time != STANDARD_SIGNAL_DWELL_TIME:
             self.flash_TRTS(signal_details, current_time, drawer)
 
     def get_dwell_time(self):
         if self.previous_signal_list and len(self.previous_signal_list) == 2:
             dwell_time = self.previous_signal_list[1]
         else:
-            dwell_time = 3
+            dwell_time = STANDARD_SIGNAL_DWELL_TIME
         return dwell_time
     
     def get_next_route_element_name(self):
