@@ -240,7 +240,6 @@ class Game:
         self.backdrop_path = backdrop_path
         self.signal_details = []
         self.trains = []
-        self.canvas = None
         self.drawer = None  # Drawer instance for handling drawing
 
     def toggle_rollback(self,signal,popup):
@@ -384,53 +383,6 @@ class Game:
         self.drawer.config_canvas(canvas_width, canvas_height,backdrop_photo, root, frame)
         # Draw signals
         self.drawer.draw_signals(self.signal_details)
-
-        # Create a canvas for drawing
-        # self.canvas = tk.Canvas(
-        #     frame,
-        #     width=min(canvas_width, root.winfo_screenwidth()),
-        #     height=min(canvas_height, root.winfo_screenheight()),
-        #     bg="black"  # Set the background color to black
-        # )
-        # self.canvas.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
-
-        # # Add horizontal and vertical scrollbars
-        # h_scrollbar = tk.Scrollbar(frame, orient=tk.HORIZONTAL, command=self.canvas.xview)
-        # h_scrollbar.pack(side=tk.BOTTOM, fill=tk.X)
-        # v_scrollbar = tk.Scrollbar(frame, orient=tk.VERTICAL, command=self.canvas.yview)
-        # v_scrollbar.pack(side=tk.RIGHT, fill=tk.Y)
-
-        # # Configure the canvas to work with the scrollbars
-        # self.canvas.configure(xscrollcommand=h_scrollbar.set, yscrollcommand=v_scrollbar.set)
-
-        # # Set the scrollable region to the size of the image
-        # self.canvas.config(scrollregion=(0, 0, canvas_width, canvas_height))
-
-        # # Add the backdrop image to the canvas
-        # self.canvas.create_image(0, 0, anchor="nw", image=backdrop_photo)
-
-        # # Initialize the Drawer instance
-        # # self.drawer = Drawer(self.canvas)
-        # self.drawer = Drawer()
-
-        # # Load signal details
-        # self.load_signal_details_from_json()
-
-        # # Draw signals
-        # self.drawer.draw_signals(self.signal_details)
-
-        # # Enable scrolling with the mouse wheel (vertical and horizontal)
-        # def _on_mousewheel(event):
-        #     if event.state & 0x0001:  # Shift key is pressed
-        #         self.canvas.xview_scroll(-1 * int(event.delta / 120), "units")  # Horizontal scrolling
-        #     else:
-        #         self.canvas.yview_scroll(-1 * int(event.delta / 120), "units")  # Vertical scrolling
-
-        # self.canvas.bind_all("<MouseWheel>", _on_mousewheel)
-
-        # # Bind mouse clicks to the canvas
-        # self.canvas.bind("<Button-1>", self.on_signal_click)  # Add this line
-
         # Start periodic train spawning
         self.periodic_train_spawning("Signal_220", 10000, CHANCE)  # Spawn trains at Signal_1 every 5 seconds with a 1/2 chance
         self.periodic_train_spawning("Signal_183", 10000, CHANCE) 
