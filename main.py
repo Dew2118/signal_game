@@ -112,6 +112,31 @@ class Game:
         self.canvas = None
         self.drawer = None  # Drawer instance for handling drawing
 
+    def toggle_rollback(self,signal,popup):
+        if signal.signal_type == "manual":
+            signal.rollback = not signal.rollback
+            self.canvas.delete("signal")  # Redraw signals
+            self.drawer.draw_signals(self.signal_details)
+        popup.destroy()  # Close the popup after toggling rollback
+
+    def set_signal_color(self,signal,popup,color):
+        if signal.signal_type == "manual" and color in signal.signal_can_be:
+            signal.color = color
+            signal.set_by_machine = False  # Set by human
+            self.canvas.delete("signal")  # Redraw signals
+            self.drawer.draw_signals(self.signal_details)
+        else:
+            signal.queue = "yellow"
+        popup.destroy()  # Close the popup after setting the color
+
+    def set_last_signal_color(self,popup,signal):
+        if signal.signal_type == "manual" and signal.signal_can_be:
+            self.set_signal_color(signal,popup,signal.signal_can_be[-1])
+
+    def close_popup(self, popup, event=None):
+        if popup.winfo_exists():  # Check if the popup still exists
+            popup.destroy()
+
     def on_signal_click(self, event):
         """Handle clicks on signal lamps."""
         # Adjust the click coordinates based on the canvas scroll position
@@ -127,57 +152,57 @@ class Game:
                 popup = tk.Toplevel()
                 popup.title("Signal Menu")
                 popup.geometry(f"200x100+{event.x_root}+{event.y_root}")
-
-                # Map signal states to their corresponding letters
                 state_mapping = {"red": "D", "yellow": "C", "green": "P"}
-                signal_states = " ".join(state_mapping[state] for state in signal.signal_can_be) if signal.signal_can_be else "N/A"
 
-                # Determine rollback status
+                all_states = ["red", "yellow", "green"]
+                signal_states_display = ""
+
+                for state in all_states:
+                    code = state_mapping[state]
+                    if signal.signal_can_be:
+                        in_can_be = state in signal.signal_can_be
+                    else:
+                        in_can_be = False
+                    is_queue = state == signal.queue
+
+                    if in_can_be and is_queue:
+                        code = f"[{code}*]"  # in can_be and is queue
+                    elif in_can_be:
+                        code = f"[{code}]"   # only in can_be
+                    elif is_queue:
+                        code = f"{code}*"    # only in queue
+
+                    signal_states_display += code + " "
+
+                signal_states_display = signal_states_display.strip()
+
                 rollback_status = "Rollback On" if signal.rollback else "Rollback Off"
 
-                # Display the signal name, signal_can_be, and rollback status
-                label = tk.Label(
-                    popup,
-                    text=f"Signal: {signal.signal_name}\nAllowed States: {signal_states}\n{rollback_status}"
+                label_text = (
+                    f"Signal: {signal.signal_name}\n"
+                    f"{signal_states_display}\n"
+                    f"{rollback_status}"
                 )
+
+                label = tk.Label(popup, text=label_text)
                 label.pack(pady=10)
 
-                # Add key bindings for 1 (red), 2 (yellow), 3 (last element in signal_can_be), and r (toggle rollback)
-                def set_signal_color(color):
-                    if signal.signal_type == "manual" and color in signal.signal_can_be:
-                        signal.color = color
-                        signal.set_by_machine = False  # Set by human
-                        self.canvas.delete("signal")  # Redraw signals
-                        self.drawer.draw_signals(self.signal_details)
-                    popup.destroy()  # Close the popup after setting the color
+                  # Set to the last element in signal_can_be
 
-                def set_last_signal_color():
-                    if signal.signal_type == "manual" and signal.signal_can_be:
-                        set_signal_color(signal.signal_can_be[-1])  # Set to the last element in signal_can_be
-
-                def toggle_rollback():
-                    if signal.signal_type == "manual":
-                        signal.rollback = not signal.rollback
-                        self.canvas.delete("signal")  # Redraw signals
-                        self.drawer.draw_signals(self.signal_details)
-                    popup.destroy()  # Close the popup after toggling rollback
-
-                popup.bind("1", lambda e: set_signal_color("red"))
-                popup.bind("2", lambda e: set_signal_color("yellow"))
-                popup.bind("3", lambda e: set_last_signal_color())  # Bind 3 to the last element in signal_can_be
-                popup.bind("r", lambda e: toggle_rollback())
+                popup.bind("1", lambda e: self.set_signal_color(signal,popup,"red"))
+                popup.bind("2", lambda e: self.set_signal_color(signal,popup,"yellow"))
+                popup.bind("3", lambda e: self.set_last_signal_color(popup,signal))  # Bind 3 to the last element in signal_can_be
+                popup.bind("r", lambda e: self.toggle_rollback(signal,popup))
 
                 # Close the popup on any left-click
-                def close_popup(event=None):
-                    if popup.winfo_exists():  # Check if the popup still exists
-                        popup.destroy()
+
 
                 # Bind a global click event to close the popup
-                self.canvas.bind_all("<Button-1>", close_popup)
+                self.canvas.bind_all("<Button-1>", lambda event: self.close_popup(popup))
 
                 # Ensure the popup is focused and closes on losing focus
                 popup.focus_force()
-                popup.protocol("WM_DELETE_WINDOW", lambda: close_popup())  # Handle the close button
+                popup.protocol("WM_DELETE_WINDOW", lambda: self.close_popup(popup))  # Handle the close button
                 return  # Exit after finding the clicked signal
 
     def load_signal_details_from_json(self):
@@ -260,6 +285,7 @@ class Game:
         current_time = time.time()
         for signal in self.signal_details:
             signal.update(self.signal_details, conflict_duration, current_time)
+            signal.check_queue()
 
     def update_trains(self):
         """Update all trains."""
@@ -363,7 +389,7 @@ class Game:
         root.mainloop()
 
 class SignalDetails:
-    def __init__(self,signal_name,signal_position,lamp_position,signal_type,position,next_signal_names,conflicting_signals = None,color = "green",signal_can_be = None,train_at_signal = None,conflict_timer = 0,last_conflict_state = None,rollback = False,set_by_machine = False,next_signals_in_same_block = False):
+    def __init__(self,signal_name,signal_position,lamp_position,signal_type,position,next_signal_names,conflicting_signals = None,color = "green",signal_can_be = None,train_at_signal = None,conflict_timer = 0,last_conflict_state = None,rollback = False,set_by_machine = False,next_signals_in_same_block = False,queue = None):
         self.signal_name = signal_name
         self.signal_position = signal_position
         self.lamp_position = lamp_position
@@ -379,6 +405,7 @@ class SignalDetails:
         self.rollback = rollback
         self.set_by_machine = set_by_machine
         self.next_signals_in_same_block = next_signals_in_same_block
+        self.queue = queue
 
     def get_signal_object_from_named_list(self, signal_details, signal_name_list):
         result = []
@@ -448,6 +475,11 @@ class SignalDetails:
             self.set_signal_color("yellow")
         else:
             self.set_signal_color("green")
+
+    def check_queue(self):
+        if self.queue and self.queue in self.signal_can_be:
+            self.color = self.queue
+            self.queue = None
 
 class Train:
     def __init__(self, train_id, position, original_position, route, current_index=0, last_move_time = time.time(), signal_position = "right", previous_signal_list = None, previous_signal_name = "", game=None):
