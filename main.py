@@ -266,10 +266,8 @@ class Game:
             game=self  # Pass the Game instance
         )
         self.trains.append(new_train)
-
         # Mark the spawning signal as occupied
         spawning_signal.train_at_signal = new_train  # Mark the signal as occupied by the new train
-
         # Draw the train on the canvas
         self.drawer.draw_train(new_train.position, new_train.train_id, spawning_signal.position)
 
