@@ -27,6 +27,7 @@ class Drawer:
             signal.set_by_machine = False  # Set by human
             self.delete("signal")  # Redraw signals
             self.draw_signals(self.game.get_signal_details())
+            signal.queue = ""
         else:
             signal.queue = "yellow"
         popup.destroy()  # Close the popup after setting the color
