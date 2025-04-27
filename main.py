@@ -192,69 +192,53 @@ class Game:
                 item["signal_can_be"] = ["red", "yellow", "green"]  # Default for manual signals
             else:
                 item["signal_can_be"] = None  # Default for auto signals
-
-            # Set original_lamp_position to the same value as lamp_position
-            item["original_lamp_position"] = item["lamp_position"]
-
             # Ensure next_signals_in_same_block is loaded or defaults to False
             item["next_signals_in_same_block"] = item.get("next_signals_in_same_block", False)
-
             self.signal_details.append(SignalDetails(**item))
 
-    def convert_tuples(self,obj):
+    def convert_values(self,obj):
         if isinstance(obj, list):
-            # Convert ["__tuple__", "Signal_15", 20] -> ("Signal_15", 20)
-            if len(obj) > 0 and obj[0] == "__tuple__":
-                return tuple(obj[1:])
-            else:
-                return [self.convert_tuples(item) for item in obj]
+            return [self.convert_values(item) for item in obj]
         elif isinstance(obj, dict):
-            return {key: self.convert_tuples(value) for key, value in obj.items()}
+            return {key: self.convert_values(value) for key, value in obj.items()}
         else:
             return obj
 
-    
+    def get_spawning_signal(self, spawning_signal_name):
+        for signal in self.signal_details:
+            if signal.signal_name == spawning_signal_name:
+                return signal
 
-    def spawn_train(self, spawning_signal_name,trains):
-        """Spawn a train at the specified signal."""
+    def select_route_and_headcode(self, spawning_signal_name, trains):
         with open('routes_mapping.json', 'r') as f:
             raw_data = json.load(f)
-        routes_mapping = self.convert_tuples(raw_data)
-        # Find the spawning signal
-        spawning_signal = next(
-            (signal for signal in self.signal_details if signal.signal_name == spawning_signal_name),
-            None
-        )
-        if spawning_signal is None or spawning_signal.train_at_signal is not None:
-            return  # Skip if the signal is not found or is occupied
-
-        # Find all routes associated with this spawning signal
+        routes_mapping = self.convert_values(raw_data)
         valid_routes = []
         for headcode_prefix, data in routes_mapping.items():
             if spawning_signal_name in data["spawning_signals"]:
                 valid_routes.extend([(headcode_prefix, route) for route in data["routes"]])
-
-        if not valid_routes:
-            return  # Skip if no valid routes are found
-
-        # Randomly select a route and generate a headcode
+        if len(valid_routes) == 0:
+            raise ValueError("No valid routes found for the spawning signal.")
         headcode_prefix, selected_route = random.choice(valid_routes)
         existing_suffixes = {train.train_id[-2:] for train in trains}
-
         # Generate all possible 2-digit strings
         available_suffixes = [f"{i:02d}" for i in range(100) if f"{i:02d}" not in existing_suffixes]
-
         if not available_suffixes:
             raise ValueError("No available headcode suffixes left.")
-
         headcode_suffix = random.choice(available_suffixes)
         full_headcode = headcode_prefix + headcode_suffix
-        first_stop = selected_route[0]
-        if len(first_stop) == 2:
-            dwell_time = first_stop[1]
-            selected_route[0] = [spawning_signal.signal_name, dwell_time]
+        return selected_route, full_headcode
+
+    def spawn_train(self, spawning_signal_name,trains):
+        """Spawn a train at the specified signal."""
+        spawning_signal = self.get_spawning_signal(spawning_signal_name)
+        if spawning_signal is None or spawning_signal.train_at_signal is not None:
+            return  # Skip if the signal is not found or is occupied
+        selected_route, full_headcode = self.select_route_and_headcode(spawning_signal_name, trains)
+        if len(selected_route[0]) == 2:
+            selected_route[0][0] = spawning_signal_name
         else:
-            selected_route[0] = [spawning_signal.signal_name]
+            selected_route[0] = [spawning_signal_name]
         # Create the new train
         new_train = Train(
             train_id=full_headcode,
@@ -378,24 +362,23 @@ class Game:
         # Start the GUI event loop
         root.mainloop()
 
-@dataclass
 class SignalDetails:
-    signal_name: str
-    signal_position: tuple
-    lamp_position: tuple
-    original_lamp_position: tuple  # Store the original lamp position
-    signal_type: str
-    position: str
-    next_signal_names: list  # List of next signals
-    conflicting_signals: list = None  # List of conflicting signals (default to None)
-    color: str = "green"  # Default color
-    train_at_signal: object = None  # Default train presence
-    signal_can_be: list = None  # Default to None for auto signals, list for manual signals
-    conflict_timer: float = 0  # Timer to track the red condition for conflicting signals
-    last_conflict_state: list = None  # Last state of train_at_signal for conflicting signals
-    rollback: bool = False  # Default to False, only for manual signals
-    set_by_machine: bool = False  # Default to False, indicates if the signal was set by the system
-    next_signals_in_same_block: bool = False  # If both next signals are in the same block which would change signal logic
+    def __init__(self,signal_name,signal_position,lamp_position,signal_type,position,next_signal_names,conflicting_signals = None,color = "green",signal_can_be = None,train_at_signal = None,conflict_timer = 0,last_conflict_state = None,rollback = False,set_by_machine = False,next_signals_in_same_block = False):
+        self.signal_name = signal_name
+        self.signal_position = signal_position
+        self.lamp_position = lamp_position
+        self.signal_type = signal_type
+        self.position = position
+        self.next_signal_names = next_signal_names
+        self.conflicting_signals = conflicting_signals
+        self.color = color
+        self.signal_can_be = signal_can_be
+        self.train_at_signal = train_at_signal
+        self.conflict_timer = conflict_timer
+        self.last_conflict_state = last_conflict_state
+        self.rollback = rollback
+        self.set_by_machine = set_by_machine
+        self.next_signals_in_same_block = next_signals_in_same_block
 
     def get_signal_object_from_named_list(self, signal_details, signal_name_list):
         result = []
@@ -466,18 +449,18 @@ class SignalDetails:
         else:
             self.set_signal_color("green")
 
-@dataclass
 class Train:
-    train_id: str
-    position: tuple  # Current position of the train
-    original_position: tuple  # Store the original position
-    route: list  # List of signal names the train will follow
-    current_index: int = 0  # Current index in the route
-    last_move_time: float = time.time()  # Timestamp of the last move
-    signal_position: str = "right"  # Default signal position (left or right)
-    previous_signal_list: list = None  # Track the previous signal name
-    previous_signal_name: str = ""
-    game: object = None  # Reference to the Game instance
+    def __init__(self, train_id, position, original_position, route, current_index=0, last_move_time = time.time(), signal_position = "right", previous_signal_list = None, previous_signal_name = "", game=None):
+        self.train_id = train_id
+        self.position = position
+        self.original_position = original_position
+        self.route = route
+        self.current_index = current_index
+        self.last_move_time = last_move_time
+        self.signal_position = signal_position
+        self.previous_signal_list = previous_signal_list
+        self.previous_signal_name = previous_signal_name
+        self.game = game
 
     def update_TRTS(self, current_time, signal_details, drawer):
         dwell_time = self.get_dwell_time()
