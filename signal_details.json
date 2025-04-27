@@ -11,7 +11,7 @@
         ],
         "signal_type": "manual",
         "position": "left",
-        "next_signals": ["Signal_6"],
+        "next_signal_names": ["Signal_6"],
         "conflicting_signals": ["Signal_2","Signal_3"]
     },
     {
@@ -26,7 +26,7 @@
         ],
         "signal_type": "manual",
         "position": "left",
-        "next_signals": ["Signal_6"],
+        "next_signal_names": ["Signal_6"],
         "conflicting_signals": ["Signal_1","Signal_3"]
     },
     {
@@ -41,7 +41,7 @@
         ],
         "signal_type": "manual",
         "position": "left",
-        "next_signals": ["Signal_6"],
+        "next_signal_names": ["Signal_6"],
         "conflicting_signals": ["Signal_1","Signal_2"]
     },
     {
@@ -56,7 +56,7 @@
         ],
         "signal_type": "manual",
         "position": "right",
-        "next_signals": ["Signal_1","Signal_2","Signal_3"],
+        "next_signal_names": ["Signal_1","Signal_2","Signal_3"],
         "conflicting_signals": ["Signal_1","Signal_2","Signal_3","Signal_5"]
     },
     {
@@ -71,7 +71,7 @@
         ],
         "signal_type": "manual",
         "position": "right",
-        "next_signals": ["Signal_1","Signal_2","Signal_3"],
+        "next_signal_names": ["Signal_1","Signal_2","Signal_3"],
         "conflicting_signals": ["Signal_1","Signal_2","Signal_3"]
     },
     {
@@ -86,7 +86,7 @@
         ],
         "signal_type": "auto",
         "position": "left",
-        "next_signals": ["Signal_8"],
+        "next_signal_names": ["Signal_8"],
         "conflicting_signals": null
     },
     {
@@ -101,7 +101,7 @@
         ],
         "signal_type": "auto",
         "position": "right",
-        "next_signals": ["Signal_5"],
+        "next_signal_names": ["Signal_5"],
         "conflicting_signals": null
     },
     {
@@ -116,7 +116,7 @@
         ],
         "signal_type": "manual",
         "position": "left",
-        "next_signals": ["Signal_11"],
+        "next_signal_names": ["Signal_11"],
         "conflicting_signals": null
     },
     {
@@ -131,7 +131,7 @@
         ],
         "signal_type": "manual",
         "position": "left",
-        "next_signals": ["Signal_11"],
+        "next_signal_names": ["Signal_11"],
         "conflicting_signals": null
     },
     {
@@ -146,7 +146,7 @@
         ],
         "signal_type": "auto",
         "position": "right",
-        "next_signals": ["Signal_7"],
+        "next_signal_names": ["Signal_7"],
         "conflicting_signals": null
     },
     {
@@ -161,7 +161,7 @@
         ],
         "signal_type": "auto",
         "position": "left",
-        "next_signals": ["Signal_13"],
+        "next_signal_names": ["Signal_13"],
         "conflicting_signals": null
     },
     {
@@ -176,7 +176,7 @@
         ],
         "signal_type": "auto",
         "position": "right",
-        "next_signals": ["Signal_10"],
+        "next_signal_names": ["Signal_10"],
         "conflicting_signals": null
     },
     {
@@ -191,7 +191,7 @@
         ],
         "signal_type": "auto",
         "position": "left",
-        "next_signals": ["Signal_15"],
+        "next_signal_names": ["Signal_15"],
         "conflicting_signals": null
     },
     {
@@ -206,7 +206,7 @@
         ],
         "signal_type": "auto",
         "position": "right",
-        "next_signals": ["Signal_12"],
+        "next_signal_names": ["Signal_12"],
         "conflicting_signals": null
     },
     {
@@ -221,7 +221,7 @@
         ],
         "signal_type": "auto",
         "position": "left",
-        "next_signals": ["Signal_17"],
+        "next_signal_names": ["Signal_17"],
         "conflicting_signals": null
     },
     {
@@ -236,7 +236,7 @@
         ],
         "signal_type": "auto",
         "position": "right",
-        "next_signals": ["Signal_14"],
+        "next_signal_names": ["Signal_14"],
         "conflicting_signals": null
     },
     {
@@ -251,7 +251,7 @@
         ],
         "signal_type": "auto",
         "position": "left",
-        "next_signals": ["Signal_19"],
+        "next_signal_names": ["Signal_19"],
         "conflicting_signals": null
     },
     {
@@ -266,7 +266,7 @@
         ],
         "signal_type": "auto",
         "position": "right",
-        "next_signals": ["Signal_16"],
+        "next_signal_names": ["Signal_16"],
         "conflicting_signals": null
     },
     {
@@ -281,7 +281,7 @@
         ],
         "signal_type": "auto",
         "position": "left",
-        "next_signals": ["Signal_21"],
+        "next_signal_names": ["Signal_21"],
         "conflicting_signals": null
     },
     {
@@ -296,7 +296,7 @@
         ],
         "signal_type": "auto",
         "position": "right",
-        "next_signals": ["Signal_18"],
+        "next_signal_names": ["Signal_18"],
         "conflicting_signals": null
     },
     {
@@ -311,7 +311,7 @@
         ],
         "signal_type": "auto",
         "position": "left",
-        "next_signals": ["Signal_23"],
+        "next_signal_names": ["Signal_23"],
         "conflicting_signals": null
     },
     {
@@ -326,7 +326,7 @@
         ],
         "signal_type": "auto",
         "position": "right",
-        "next_signals": ["Signal_20"],
+        "next_signal_names": ["Signal_20"],
         "conflicting_signals": null
     },
     {
@@ -341,7 +341,7 @@
         ],
         "signal_type": "auto",
         "position": "left",
-        "next_signals": ["Signal_25"],
+        "next_signal_names": ["Signal_25"],
         "conflicting_signals": null
     },
     {
@@ -356,7 +356,7 @@
         ],
         "signal_type": "auto",
         "position": "right",
-        "next_signals": ["Signal_22"],
+        "next_signal_names": ["Signal_22"],
         "conflicting_signals": null
     },
     {
@@ -371,7 +371,7 @@
         ],
         "signal_type": "auto",
         "position": "left",
-        "next_signals": ["Signal_27"],
+        "next_signal_names": ["Signal_27"],
         "conflicting_signals": null
     },
     {
@@ -386,7 +386,7 @@
         ],
         "signal_type": "auto",
         "position": "right",
-        "next_signals": ["Signal_24"],
+        "next_signal_names": ["Signal_24"],
         "conflicting_signals": null
     },
     {
@@ -401,7 +401,7 @@
         ],
         "signal_type": "auto",
         "position": "left",
-        "next_signals": ["Signal_29"],
+        "next_signal_names": ["Signal_29"],
         "conflicting_signals": null
     },
     {
@@ -416,7 +416,7 @@
         ],
         "signal_type": "auto",
         "position": "right",
-        "next_signals": ["Signal_26"],
+        "next_signal_names": ["Signal_26"],
         "conflicting_signals": null
     },
     {
@@ -431,7 +431,7 @@
         ],
         "signal_type": "auto",
         "position": "left",
-        "next_signals": ["Signal_31"],
+        "next_signal_names": ["Signal_31"],
         "conflicting_signals": null
     },
     {
@@ -446,7 +446,7 @@
         ],
         "signal_type": "auto",
         "position": "right",
-        "next_signals": ["Signal_28"],
+        "next_signal_names": ["Signal_28"],
         "conflicting_signals": null
     },
     {
@@ -461,7 +461,7 @@
         ],
         "signal_type": "auto",
         "position": "left",
-        "next_signals": ["Signal_38"],
+        "next_signal_names": ["Signal_38"],
         "conflicting_signals": null
     },
     {
@@ -476,7 +476,7 @@
         ],
         "signal_type": "auto",
         "position": "right",
-        "next_signals": ["Signal_30"],
+        "next_signal_names": ["Signal_30"],
         "conflicting_signals": null
     },
     {
@@ -491,7 +491,7 @@
         ],
         "signal_type": "manual",
         "position": "left",
-        "next_signals": ["Signal_47"],
+        "next_signal_names": ["Signal_47"],
         "conflicting_signals": ["Signal_32","Signal_34"]
     },
     {
@@ -506,7 +506,7 @@
         ],
         "signal_type": "manual",
         "position": "left",
-        "next_signals": ["Signal_47"],
+        "next_signal_names": ["Signal_47"],
         "conflicting_signals": ["Signal_32","Signal_33"]
     },
     {
@@ -521,7 +521,7 @@
         ],
         "signal_type": "manual",
         "position": "left",
-        "next_signals": ["Signal_43"],
+        "next_signal_names": ["Signal_43"],
         "conflicting_signals": ["Signal_36","Signal_37"]
     },
     {
@@ -536,7 +536,7 @@
         ],
         "signal_type": "manual",
         "position": "left",
-        "next_signals": ["Signal_43"],
+        "next_signal_names": ["Signal_43"],
         "conflicting_signals": ["Signal_35","Signal_37"]
     },
     {
@@ -551,7 +551,7 @@
         ],
         "signal_type": "manual",
         "position": "left",
-        "next_signals": ["Signal_43"],
+        "next_signal_names": ["Signal_43"],
         "conflicting_signals": ["Signal_35","Signal_36"]
     },
     {
@@ -566,7 +566,7 @@
         ],
         "signal_type": "auto",
         "position": "left",
-        "next_signals": ["Signal_39"],
+        "next_signal_names": ["Signal_39"],
         "conflicting_signals": null
     },
     {
@@ -581,7 +581,7 @@
         ],
         "signal_type": "manual",
         "position": "left",
-        "next_signals": ["Signal_47"],
+        "next_signal_names": ["Signal_47"],
         "conflicting_signals": null
     },
     {
@@ -596,7 +596,7 @@
         ],
         "signal_type": "manual",
         "position": "right",
-        "next_signals": ["Signal_33","Signal_34"],
+        "next_signal_names": ["Signal_33","Signal_34"],
         "conflicting_signals": ["Signal_47"]
     },
     {
@@ -611,7 +611,7 @@
         ],
         "signal_type": "manual",
         "position": "right",
-        "next_signals": ["Signal_32","Signal_33","Signal_34"],
+        "next_signal_names": ["Signal_32","Signal_33","Signal_34"],
         "conflicting_signals": ["Signal_47"]
     },
     {
@@ -626,7 +626,7 @@
         ],
         "signal_type": "manual",
         "position": "left",
-        "next_signals": ["Signal_58","Signal_60"],
+        "next_signal_names": ["Signal_58","Signal_60"],
         "conflicting_signals": ["Signal_48"]
     },
     {
@@ -641,7 +641,7 @@
         ],
         "signal_type": "manual",
         "position": "left",
-        "next_signals": ["Signal_50"],
+        "next_signal_names": ["Signal_50"],
         "conflicting_signals": null
     },
     {
@@ -656,7 +656,7 @@
         ],
         "signal_type": "manual",
         "position": "right",
-        "next_signals": ["Signal_35","Signal_36","Signal_37"],
+        "next_signal_names": ["Signal_35","Signal_36","Signal_37"],
         "conflicting_signals": ["Signal_43"]
     },
     {
@@ -671,7 +671,7 @@
         ],
         "signal_type": "manual",
         "position": "left",
-        "next_signals": ["Signal_58","Signal_60"],
+        "next_signal_names": ["Signal_58","Signal_60"],
         "conflicting_signals": ["Signal_48"]
     },
     {
@@ -686,7 +686,7 @@
         ],
         "signal_type": "manual",
         "position": "left",
-        "next_signals": ["Signal_50"],
+        "next_signal_names": ["Signal_50"],
         "conflicting_signals": null
     },
     {
@@ -701,7 +701,7 @@
         ],
         "signal_type": "manual",
         "position": "left",
-        "next_signals": ["Signal_58","Signal_60"],
+        "next_signal_names": ["Signal_58","Signal_60"],
         "conflicting_signals": ["Signal_48"]
     },
     {
@@ -716,7 +716,7 @@
         ],
         "signal_type": "auto",
         "position": "right",
-        "next_signals": ["Signal_40","Signal_41"],
+        "next_signal_names": ["Signal_40","Signal_41"],
         "conflicting_signals": null
     },
     {
@@ -731,7 +731,7 @@
         ],
         "signal_type": "auto",
         "position": "right",
-        "next_signals": ["Signal_44"],
+        "next_signal_names": ["Signal_44"],
         "conflicting_signals": null
     },
     {
@@ -746,7 +746,7 @@
         ],
         "signal_type": "auto",
         "position": "left",
-        "next_signals": ["Signal_54"],
+        "next_signal_names": ["Signal_54"],
         "conflicting_signals": null
     },
     {
@@ -761,7 +761,7 @@
         ],
         "signal_type": "auto",
         "position": "right",
-        "next_signals": ["Signal_49"],
+        "next_signal_names": ["Signal_49"],
         "conflicting_signals": null
     },
     {
@@ -776,7 +776,7 @@
         ],
         "signal_type": "manual",
         "position": "right",
-        "next_signals": ["Signal_48"],
+        "next_signal_names": ["Signal_48"],
         "conflicting_signals": ["Signal_60"]
     },
     {
@@ -791,7 +791,7 @@
         ],
         "signal_type": "manual",
         "position": "right",
-        "next_signals": ["Signal_48"],
+        "next_signal_names": ["Signal_48"],
         "conflicting_signals": ["Signal_50"]
     },
     {
@@ -806,7 +806,7 @@
         ],
         "signal_type": "auto",
         "position": "left",
-        "next_signals": ["Signal_56"],
+        "next_signal_names": ["Signal_56"],
         "conflicting_signals": null
     },
     {
@@ -821,7 +821,7 @@
         ],
         "signal_type": "auto",
         "position": "right",
-        "next_signals": ["Signal_51"],
+        "next_signal_names": ["Signal_51"],
         "conflicting_signals": null
     },
     {
@@ -836,7 +836,7 @@
         ],
         "signal_type": "auto",
         "position": "left",
-        "next_signals": ["Signal_59"],
+        "next_signal_names": ["Signal_59"],
         "conflicting_signals": null
     },
     {
@@ -851,7 +851,7 @@
         ],
         "signal_type": "auto",
         "position": "right",
-        "next_signals": ["Signal_55"],
+        "next_signal_names": ["Signal_55"],
         "conflicting_signals": null
     },
     {
@@ -866,7 +866,7 @@
         ],
         "signal_type": "manual",
         "position": "left",
-        "next_signals": ["Signal_66"],
+        "next_signal_names": ["Signal_66"],
         "conflicting_signals": null
     },
     {
@@ -881,7 +881,7 @@
         ],
         "signal_type": "auto",
         "position": "left",
-        "next_signals": ["Signal_63"],
+        "next_signal_names": ["Signal_63"],
         "conflicting_signals": null
     },
     {
@@ -896,7 +896,7 @@
         ],
         "signal_type": "manual",
         "position": "left",
-        "next_signals": ["Signal_93"],
+        "next_signal_names": ["Signal_93"],
         "conflicting_signals": ["Signal_62"]
     },
     {
@@ -911,7 +911,7 @@
         ],
         "signal_type": "auto",
         "position": "right",
-        "next_signals": ["Signal_57"],
+        "next_signal_names": ["Signal_57"],
         "conflicting_signals": null
     },
     {
@@ -926,7 +926,7 @@
         ],
         "signal_type": "manual",
         "position": "right",
-        "next_signals": ["Signal_66"],
+        "next_signal_names": ["Signal_66"],
         "conflicting_signals": ["Signal_52"]
     },
     {
@@ -941,7 +941,7 @@
         ],
         "signal_type": "auto",
         "position": "left",
-        "next_signals": ["Signal_69"],
+        "next_signal_names": ["Signal_69"],
         "conflicting_signals": null
     },
     {
@@ -956,7 +956,7 @@
         ],
         "signal_type": "manual",
         "position": "right",
-        "next_signals": ["Signal_52","Signal_67"],
+        "next_signal_names": ["Signal_52","Signal_67"],
         "conflicting_signals": ["Signal_62"]
     },
     {
@@ -971,7 +971,7 @@
         ],
         "signal_type": "auto",
         "position": "right",
-        "next_signals": ["Signal_61"],
+        "next_signal_names": ["Signal_61"],
         "conflicting_signals": null
     },
     {
@@ -986,7 +986,7 @@
         ],
         "signal_type": "auto",
         "position": "left",
-        "next_signals": ["Signal_73"],
+        "next_signal_names": ["Signal_73"],
         "conflicting_signals": null
     },
     {
@@ -1001,7 +1001,7 @@
         ],
         "signal_type": "manual",
         "position": "left",
-        "next_signals": ["Signal_93"],
+        "next_signal_names": ["Signal_93"],
         "conflicting_signals": null
     },
     {
@@ -1016,7 +1016,7 @@
         ],
         "signal_type": "auto",
         "position": "right",
-        "next_signals": ["Signal_64"],
+        "next_signal_names": ["Signal_64"],
         "conflicting_signals": null
     },
     {
@@ -1031,7 +1031,7 @@
         ],
         "signal_type": "auto",
         "position": "left",
-        "next_signals": ["Signal_74"],
+        "next_signal_names": ["Signal_74"],
         "conflicting_signals": null
     },
     {
@@ -1046,7 +1046,7 @@
         ],
         "signal_type": "auto",
         "position": "right",
-        "next_signals": ["Signal_65"],
+        "next_signal_names": ["Signal_65"],
         "conflicting_signals": null
     },
     {
@@ -1061,7 +1061,7 @@
         ],
         "signal_type": "auto",
         "position": "right",
-        "next_signals": ["Signal_68"],
+        "next_signal_names": ["Signal_68"],
         "conflicting_signals": null
     },
     {
@@ -1076,7 +1076,7 @@
         ],
         "signal_type": "manual",
         "position": "right",
-        "next_signals": ["Signal_53","Signal_62"],
+        "next_signal_names": ["Signal_53","Signal_62"],
         "conflicting_signals": ["Signal_93"]
     },
     {
@@ -1091,7 +1091,7 @@
         ],
         "signal_type": "auto",
         "position": "left",
-        "next_signals": ["Signal_88"],
+        "next_signal_names": ["Signal_88"],
         "conflicting_signals": null
     },
     {
@@ -1106,7 +1106,7 @@
         ],
         "signal_type": "auto",
         "position": "left",
-        "next_signals": ["Signal_77"],
+        "next_signal_names": ["Signal_77"],
         "conflicting_signals": null
     },
     {
@@ -1121,7 +1121,7 @@
         ],
         "signal_type": "auto",
         "position": "right",
-        "next_signals": ["Signal_71"],
+        "next_signal_names": ["Signal_71"],
         "conflicting_signals": null
     },
     {
@@ -1136,7 +1136,7 @@
         ],
         "signal_type": "auto",
         "position": "right",
-        "next_signals": ["Signal_70"],
+        "next_signal_names": ["Signal_70"],
         "conflicting_signals": null
     },
     {
@@ -1151,7 +1151,7 @@
         ],
         "signal_type": "auto",
         "position": "left",
-        "next_signals": ["Signal_97"],
+        "next_signal_names": ["Signal_97"],
         "conflicting_signals": null
     },
     {
@@ -1166,7 +1166,7 @@
         ],
         "signal_type": "manual",
         "position": "left",
-        "next_signals": ["Signal_105"],
+        "next_signal_names": ["Signal_105"],
         "conflicting_signals": ["Signal_79","Signal_80","Signal_81"]
     },
     {
@@ -1181,7 +1181,7 @@
         ],
         "signal_type": "manual",
         "position": "left",
-        "next_signals": ["Signal_105"],
+        "next_signal_names": ["Signal_105"],
         "conflicting_signals": ["Signal_78","Signal_80","Signal_81"]
     },
     {
@@ -1196,7 +1196,7 @@
         ],
         "signal_type": "manual",
         "position": "left",
-        "next_signals": ["Signal_105"],
+        "next_signal_names": ["Signal_105"],
         "conflicting_signals": ["Signal_78","Signal_79","Signal_81"]
     },
     {
@@ -1211,7 +1211,7 @@
         ],
         "signal_type": "manual",
         "position": "left",
-        "next_signals": ["Signal_105"],
+        "next_signal_names": ["Signal_105"],
         "conflicting_signals": ["Signal_78","Signal_79","Signal_80"]
     },
     {
@@ -1226,7 +1226,7 @@
         ],
         "signal_type": "manual",
         "position": "left",
-        "next_signals": ["Signal_106"],
+        "next_signal_names": ["Signal_106"],
         "conflicting_signals": ["Signal_83","Signal_84","Signal_85","Signal_86","Signal_87"]
     },
     {
@@ -1241,7 +1241,7 @@
         ],
         "signal_type": "manual",
         "position": "left",
-        "next_signals": ["Signal_106"],
+        "next_signal_names": ["Signal_106"],
         "conflicting_signals": ["Signal_82","Signal_84","Signal_85","Signal_86","Signal_87"]
     },
     {
@@ -1256,7 +1256,7 @@
         ],
         "signal_type": "manual",
         "position": "left",
-        "next_signals": ["Signal_106"],
+        "next_signal_names": ["Signal_106"],
         "conflicting_signals": ["Signal_82","Signal_83","Signal_85","Signal_86","Signal_87"]
     },
     {
@@ -1271,7 +1271,7 @@
         ],
         "signal_type": "manual",
         "position": "left",
-        "next_signals": ["Signal_106"],
+        "next_signal_names": ["Signal_106"],
         "conflicting_signals": ["Signal_82","Signal_83","Signal_84","Signal_86","Signal_87"]
     },
     {
@@ -1286,7 +1286,7 @@
         ],
         "signal_type": "manual",
         "position": "left",
-        "next_signals": ["Signal_106"],
+        "next_signal_names": ["Signal_106"],
         "conflicting_signals": ["Signal_82","Signal_83","Signal_84","Signal_85","Signal_87"]
     },
     {
@@ -1301,7 +1301,7 @@
         ],
         "signal_type": "manual",
         "position": "left",
-        "next_signals": ["Signal_106"],
+        "next_signal_names": ["Signal_106"],
         "conflicting_signals": ["Signal_82","Signal_83","Signal_84","Signal_85","Signal_86"]
     },
     {
@@ -1316,7 +1316,7 @@
         ],
         "signal_type": "auto",
         "position": "left",
-        "next_signals": ["Signal_102"],
+        "next_signal_names": ["Signal_102"],
         "conflicting_signals": null
     },
     {
@@ -1331,7 +1331,7 @@
         ],
         "signal_type": "manual",
         "position": "left",
-        "next_signals": ["Signal_111"],
+        "next_signal_names": ["Signal_111"],
         "conflicting_signals": ["Signal_90","Signal_91","Signal_92"]
     },
     {
@@ -1346,7 +1346,7 @@
         ],
         "signal_type": "manual",
         "position": "left",
-        "next_signals": ["Signal_111"],
+        "next_signal_names": ["Signal_111"],
         "conflicting_signals": ["Signal_89","Signal_91","Signal_92"]
     },
     {
@@ -1361,7 +1361,7 @@
         ],
         "signal_type": "manual",
         "position": "left",
-        "next_signals": ["Signal_111"],
+        "next_signal_names": ["Signal_111"],
         "conflicting_signals": ["Signal_89","Signal_90","Signal_92"]
     },
     {
@@ -1376,7 +1376,7 @@
         ],
         "signal_type": "manual",
         "position": "left",
-        "next_signals": ["Signal_111"],
+        "next_signal_names": ["Signal_111"],
         "conflicting_signals": ["Signal_89","Signal_90","Signal_91"]
     },
     {
@@ -1391,7 +1391,7 @@
         ],
         "signal_type": "auto",
         "position": "left",
-        "next_signals": ["Signal_99"],
+        "next_signal_names": ["Signal_99"],
         "conflicting_signals": null
     },
     {
@@ -1406,7 +1406,7 @@
         ],
         "signal_type": "auto",
         "position": "right",
-        "next_signals": ["Signal_76"],
+        "next_signal_names": ["Signal_76"],
         "conflicting_signals": null
     },
     {
@@ -1421,7 +1421,7 @@
         ],
         "signal_type": "auto",
         "position": "right",
-        "next_signals": ["Signal_75"],
+        "next_signal_names": ["Signal_75"],
         "conflicting_signals": null
     },
     {
@@ -1436,7 +1436,7 @@
         ],
         "signal_type": "auto",
         "position": "right",
-        "next_signals": ["Signal_72"],
+        "next_signal_names": ["Signal_72"],
         "conflicting_signals": null
     },
     {
@@ -1451,7 +1451,7 @@
         ],
         "signal_type": "auto",
         "position": "left",
-        "next_signals": ["Signal_101"],
+        "next_signal_names": ["Signal_101"],
         "conflicting_signals": null
     },
     {
@@ -1466,7 +1466,7 @@
         ],
         "signal_type": "auto",
         "position": "right",
-        "next_signals": ["Signal_94"],
+        "next_signal_names": ["Signal_94"],
         "conflicting_signals": null
     },
     {
@@ -1481,7 +1481,7 @@
         ],
         "signal_type": "auto",
         "position": "left",
-        "next_signals": ["Signal_107"],
+        "next_signal_names": ["Signal_107"],
         "conflicting_signals": null
     },
     {
@@ -1496,7 +1496,7 @@
         ],
         "signal_type": "auto",
         "position": "right",
-        "next_signals": ["Signal_96"],
+        "next_signal_names": ["Signal_96"],
         "conflicting_signals": null
     },
     {
@@ -1511,7 +1511,7 @@
         ],
         "signal_type": "auto",
         "position": "left",
-        "next_signals": ["Signal_112"],
+        "next_signal_names": ["Signal_112"],
         "conflicting_signals": null
     },
     {
@@ -1526,7 +1526,7 @@
         ],
         "signal_type": "auto",
         "position": "left",
-        "next_signals": ["Signal_115"],
+        "next_signal_names": ["Signal_115"],
         "conflicting_signals": null
     },
     {
@@ -1541,7 +1541,7 @@
         ],
         "signal_type": "manual",
         "position": "right",
-        "next_signals": ["Signal_78","Signal_79","Signal_80","Signal_81"],
+        "next_signal_names": ["Signal_78","Signal_79","Signal_80","Signal_81"],
         "conflicting_signals":  ["Signal_78","Signal_79","Signal_80","Signal_81","Signal_105"]
     },
     {
@@ -1556,7 +1556,7 @@
         ],
         "signal_type": "auto",
         "position": "right",
-        "next_signals": ["Signal_95"],
+        "next_signal_names": ["Signal_95"],
         "conflicting_signals": null
     },
     {
@@ -1571,7 +1571,7 @@
         ],
         "signal_type": "auto",
         "position": "left",
-        "next_signals": ["Signal_119"],
+        "next_signal_names": ["Signal_119"],
         "conflicting_signals": null
     },
     {
@@ -1586,7 +1586,7 @@
         ],
         "signal_type": "auto",
         "position": "left",
-        "next_signals": ["Signal_120"],
+        "next_signal_names": ["Signal_120"],
         "conflicting_signals": null
     },
     {
@@ -1601,7 +1601,7 @@
         ],
         "signal_type": "auto",
         "position": "left",
-        "next_signals": ["Signal_122"],
+        "next_signal_names": ["Signal_122"],
         "conflicting_signals": null
     },
     {
@@ -1616,7 +1616,7 @@
         ],
         "signal_type": "manual",
         "position": "right",
-        "next_signals": ["Signal_82","Signal_83","Signal_84","Signal_85","Signal_86","Signal_87"],
+        "next_signal_names": ["Signal_82","Signal_83","Signal_84","Signal_85","Signal_86","Signal_87"],
         "conflicting_signals": ["Signal_82","Signal_83","Signal_84","Signal_85","Signal_86","Signal_87","Signal_106"]
     },
     {
@@ -1631,7 +1631,7 @@
         ],
         "signal_type": "manual",
         "position": "right",
-        "next_signals": ["Signal_98"],
+        "next_signal_names": ["Signal_98"],
         "conflicting_signals": null
     },
     {
@@ -1646,7 +1646,7 @@
         ],
         "signal_type": "manual",
         "position": "right",
-        "next_signals": ["Signal_98"],
+        "next_signal_names": ["Signal_98"],
         "conflicting_signals": null
     },
     {
@@ -1661,7 +1661,7 @@
         ],
         "signal_type": "auto",
         "position": "left",
-        "next_signals": ["Signal_125"],
+        "next_signal_names": ["Signal_125"],
         "conflicting_signals": null
     },
     {
@@ -1676,7 +1676,7 @@
         ],
         "signal_type": "manual",
         "position": "left",
-        "next_signals": ["Signal_134"],
+        "next_signal_names": ["Signal_134"],
         "conflicting_signals": null
     },
     {
@@ -1691,7 +1691,7 @@
         ],
         "signal_type": "auto",
         "position": "right",
-        "next_signals": ["Signal_104"],
+        "next_signal_names": ["Signal_104"],
         "conflicting_signals": null
     },
     {
@@ -1706,7 +1706,7 @@
         ],
         "signal_type": "manual",
         "position": "left",
-        "next_signals": ["Signal_134"],
+        "next_signal_names": ["Signal_134"],
         "conflicting_signals": null
     },
     {
@@ -1721,7 +1721,7 @@
         ],
         "signal_type": "auto",
         "position": "left",
-        "next_signals": ["Signal_128"],
+        "next_signal_names": ["Signal_128"],
         "conflicting_signals": null
     },
     {
@@ -1736,7 +1736,7 @@
         ],
         "signal_type": "auto",
         "position": "right",
-        "next_signals": ["Signal_100"],
+        "next_signal_names": ["Signal_100"],
         "conflicting_signals": null
     },
     {
@@ -1751,7 +1751,7 @@
         ],
         "signal_type": "auto",
         "position": "right",
-        "next_signals": ["Signal_103"],
+        "next_signal_names": ["Signal_103"],
         "conflicting_signals": null
     },
     {
@@ -1766,7 +1766,7 @@
         ],
         "signal_type": "auto",
         "position": "right",
-        "next_signals": ["Signal_108"],
+        "next_signal_names": ["Signal_108"],
         "conflicting_signals": null
     },
     {
@@ -1781,7 +1781,7 @@
         ],
         "signal_type": "auto",
         "position": "left",
-        "next_signals": ["Signal_135"],
+        "next_signal_names": ["Signal_135"],
         "conflicting_signals": null
     },
     {
@@ -1796,7 +1796,7 @@
         ],
         "signal_type": "auto",
         "position": "left",
-        "next_signals": ["Signal_136"],
+        "next_signal_names": ["Signal_136"],
         "conflicting_signals": null
     },
     {
@@ -1811,7 +1811,7 @@
         ],
         "signal_type": "manual",
         "position": "right",
-        "next_signals": ["Signal_89","Signal_90","Signal_91","Signal_92"],
+        "next_signal_names": ["Signal_89","Signal_90","Signal_91","Signal_92"],
         "conflicting_signals": ["Signal_89","Signal_90","Signal_91","Signal_92","Signal_111"]
     },
     {
@@ -1826,7 +1826,7 @@
         ],
         "signal_type": "manual",
         "position": "left",
-        "next_signals": ["Signal_154","Signal_155"],
+        "next_signal_names": ["Signal_154","Signal_155"],
         "conflicting_signals": ["Signal_116"]
     },
     {
@@ -1841,7 +1841,7 @@
         ],
         "signal_type": "manual",
         "position": "right",
-        "next_signals": ["Signal_89","Signal_90","Signal_91","Signal_92"],
+        "next_signal_names": ["Signal_89","Signal_90","Signal_91","Signal_92"],
         "conflicting_signals": ["Signal_89","Signal_90","Signal_91","Signal_92","Signal_111"]
     },
     {
@@ -1856,7 +1856,7 @@
         ],
         "signal_type": "manual",
         "position": "right",
-        "next_signals": ["Signal_89","Signal_90","Signal_91","Signal_92"],
+        "next_signal_names": ["Signal_89","Signal_90","Signal_91","Signal_92"],
         "conflicting_signals": ["Signal_89","Signal_90","Signal_91","Signal_92","Signal_111"]
     },
     {
@@ -1871,7 +1871,7 @@
         ],
         "signal_type": "auto",
         "position": "left",
-        "next_signals": ["Signal_137"],
+        "next_signal_names": ["Signal_137"],
         "conflicting_signals": null
     },
     {
@@ -1886,7 +1886,7 @@
         ],
         "signal_type": "auto",
         "position": "right",
-        "next_signals": ["Signal_110"],
+        "next_signal_names": ["Signal_110"],
         "conflicting_signals": null
     },
     {
@@ -1901,7 +1901,7 @@
         ],
         "signal_type": "auto",
         "position": "right",
-        "next_signals": ["Signal_113"],
+        "next_signal_names": ["Signal_113"],
         "conflicting_signals": null
     },
     {
@@ -1916,7 +1916,7 @@
         ],
         "signal_type": "auto",
         "position": "left",
-        "next_signals": ["Signal_148"],
+        "next_signal_names": ["Signal_148"],
         "conflicting_signals": null
     },
     {
@@ -1931,7 +1931,7 @@
         ],
         "signal_type": "auto",
         "position": "right",
-        "next_signals": ["Signal_117"],
+        "next_signal_names": ["Signal_117"],
         "conflicting_signals": null
     },
     {
@@ -1946,7 +1946,7 @@
         ],
         "signal_type": "auto",
         "position": "right",
-        "next_signals": ["Signal_123"],
+        "next_signal_names": ["Signal_123"],
         "conflicting_signals": null
     },
     {
@@ -1961,7 +1961,7 @@
         ],
         "signal_type": "auto",
         "position": "right",
-        "next_signals": ["Signal_124"],
+        "next_signal_names": ["Signal_124"],
         "conflicting_signals": null
     },
     {
@@ -1976,7 +1976,7 @@
         ],
         "signal_type": "auto",
         "position": "right",
-        "next_signals": ["Signal_121"],
+        "next_signal_names": ["Signal_121"],
         "conflicting_signals": null
     },
     {
@@ -1991,7 +1991,7 @@
         ],
         "signal_type": "auto",
         "position": "right",
-        "next_signals": ["Signal_118"],
+        "next_signal_names": ["Signal_118"],
         "conflicting_signals": null
     },
     {
@@ -2006,7 +2006,7 @@
         ],
         "signal_type": "auto",
         "position": "left",
-        "next_signals": ["Signal_144"],
+        "next_signal_names": ["Signal_144"],
         "conflicting_signals": null
     },
     {
@@ -2021,7 +2021,7 @@
         ],
         "signal_type": "auto",
         "position": "left",
-        "next_signals": ["Signal_152"],
+        "next_signal_names": ["Signal_152"],
         "conflicting_signals": null
     },
     {
@@ -2036,7 +2036,7 @@
         ],
         "signal_type": "auto",
         "position": "left",
-        "next_signals": ["Signal_153"],
+        "next_signal_names": ["Signal_153"],
         "conflicting_signals": null
     },
     {
@@ -2051,7 +2051,7 @@
         ],
         "signal_type": "auto",
         "position": "left",
-        "next_signals": ["Signal_150"],
+        "next_signal_names": ["Signal_150"],
         "conflicting_signals": null
     },
     {
@@ -2066,7 +2066,7 @@
         ],
         "signal_type": "auto",
         "position": "right",
-        "next_signals": ["Signal_126"],
+        "next_signal_names": ["Signal_126"],
         "conflicting_signals": null
     },
     {
@@ -2081,7 +2081,7 @@
         ],
         "signal_type": "auto",
         "position": "right",
-        "next_signals": ["Signal_127"],
+        "next_signal_names": ["Signal_127"],
         "conflicting_signals": null
     },
     {
@@ -2096,7 +2096,7 @@
         ],
         "signal_type": "auto",
         "position": "right",
-        "next_signals": ["Signal_130"],
+        "next_signal_names": ["Signal_130"],
         "conflicting_signals": null
     },
     {
@@ -2111,7 +2111,7 @@
         ],
         "signal_type": "auto",
         "position": "right",
-        "next_signals": ["Signal_131"],
+        "next_signal_names": ["Signal_131"],
         "conflicting_signals": null
     },
     {
@@ -2126,7 +2126,7 @@
         ],
         "signal_type": "auto",
         "position": "right",
-        "next_signals": ["Signal_132"],
+        "next_signal_names": ["Signal_132"],
         "conflicting_signals": null
     },
     {
@@ -2141,7 +2141,7 @@
         ],
         "signal_type": "manual",
         "position": "right",
-        "next_signals": ["Signal_116"],
+        "next_signal_names": ["Signal_116"],
         "conflicting_signals": null
     },
     {
@@ -2156,7 +2156,7 @@
         ],
         "signal_type": "manual",
         "position": "left",
-        "next_signals": ["Signal_173"],
+        "next_signal_names": ["Signal_173"],
         "conflicting_signals": null
     },
     {
@@ -2171,7 +2171,7 @@
         ],
         "signal_type": "manual",
         "position": "left",
-        "next_signals": ["Signal_173"],
+        "next_signal_names": ["Signal_173"],
         "conflicting_signals": ["Signal_138"]
     },
     {
@@ -2186,7 +2186,7 @@
         ],
         "signal_type": "manual",
         "position": "left",
-        "next_signals": ["Signal_173"],
+        "next_signal_names": ["Signal_173"],
         "conflicting_signals": ["Signal_138"]
     },
     {
@@ -2201,7 +2201,7 @@
         ],
         "signal_type": "manual",
         "position": "right",
-        "next_signals": ["Signal_116"],
+        "next_signal_names": ["Signal_116"],
         "conflicting_signals": ["Signal_155"]
     },
     {
@@ -2216,7 +2216,7 @@
         ],
         "signal_type": "manual",
         "position": "left",
-        "next_signals": ["Signal_189"],
+        "next_signal_names": ["Signal_189"],
         "conflicting_signals": null
     },
     {
@@ -2231,7 +2231,7 @@
         ],
         "signal_type": "auto",
         "position": "right",
-        "next_signals": ["Signal_129"],
+        "next_signal_names": ["Signal_129"],
         "conflicting_signals": null
     },
     {
@@ -2246,7 +2246,7 @@
         ],
         "signal_type": "auto",
         "position": "left",
-        "next_signals": ["Signal_165"],
+        "next_signal_names": ["Signal_165"],
         "conflicting_signals": null
     },
     {
@@ -2261,7 +2261,7 @@
         ],
         "signal_type": "auto",
         "position": "right",
-        "next_signals": ["Signal_133"],
+        "next_signal_names": ["Signal_133"],
         "conflicting_signals": null
     },
     {
@@ -2276,7 +2276,7 @@
         ],
         "signal_type": "auto",
         "position": "left",
-        "next_signals": ["Signal_186"],
+        "next_signal_names": ["Signal_186"],
         "conflicting_signals": null
     },
     {
@@ -2291,7 +2291,7 @@
         ],
         "signal_type": "manual",
         "position": "left",
-        "next_signals": ["Signal_188","Signal_189"],
+        "next_signal_names": ["Signal_188","Signal_189"],
         "conflicting_signals": ["Signal_188"]
     },
     {
@@ -2306,7 +2306,7 @@
         ],
         "signal_type": "manual",
         "position": "left",
-        "next_signals": ["Signal_167","Signal_168","Signal_169"],
+        "next_signal_names": ["Signal_167","Signal_168","Signal_169"],
         "conflicting_signals": ["Signal_167","Signal_168","Signal_169","Signal_147"]
     },
     {
@@ -2321,7 +2321,7 @@
         ],
         "signal_type": "manual",
         "position": "left",
-        "next_signals": ["Signal_170","Signal_171","Signal_172"],
+        "next_signal_names": ["Signal_170","Signal_171","Signal_172"],
         "conflicting_signals": ["Signal_170","Signal_171","Signal_172","Signal_143"]
     },
     {
@@ -2336,7 +2336,7 @@
         ],
         "signal_type": "auto",
         "position": "right",
-        "next_signals": ["Signal_142"],
+        "next_signal_names": ["Signal_142"],
         "conflicting_signals": null
     },
     {
@@ -2351,7 +2351,7 @@
         ],
         "signal_type": "auto",
         "position": "right",
-        "next_signals": ["Signal_139"],
+        "next_signal_names": ["Signal_139"],
         "conflicting_signals": null
     },
     {
@@ -2366,7 +2366,7 @@
         ],
         "signal_type": "auto",
         "position": "right",
-        "next_signals": ["Signal_140"],
+        "next_signal_names": ["Signal_140"],
         "conflicting_signals": null
     },
     {
@@ -2381,7 +2381,7 @@
         ],
         "signal_type": "auto",
         "position": "right",
-        "next_signals": ["Signal_141"],
+        "next_signal_names": ["Signal_141"],
         "conflicting_signals": null
     },
     {
@@ -2396,7 +2396,7 @@
         ],
         "signal_type": "manual",
         "position": "right",
-        "next_signals": ["Signal_149"],
+        "next_signal_names": ["Signal_149"],
         "conflicting_signals": null
     },
     {
@@ -2411,7 +2411,7 @@
         ],
         "signal_type": "manual",
         "position": "right",
-        "next_signals": ["Signal_149"],
+        "next_signal_names": ["Signal_149"],
         "conflicting_signals": null
     },
     {
@@ -2426,7 +2426,7 @@
         ],
         "signal_type": "manual",
         "position": "right",
-        "next_signals": ["Signal_157"],
+        "next_signal_names": ["Signal_157"],
         "conflicting_signals": null
     },
     {
@@ -2441,7 +2441,7 @@
         ],
         "signal_type": "manual",
         "position": "right",
-        "next_signals": ["Signal_151"],
+        "next_signal_names": ["Signal_151"],
         "conflicting_signals": null
     },
     {
@@ -2456,7 +2456,7 @@
         ],
         "signal_type": "manual",
         "position": "right",
-        "next_signals": ["Signal_157"],
+        "next_signal_names": ["Signal_157"],
         "conflicting_signals": null
     },
     {
@@ -2471,7 +2471,7 @@
         ],
         "signal_type": "auto",
         "position": "left",
-        "next_signals": ["Signal_190","Signal_191"],
+        "next_signal_names": ["Signal_190","Signal_191"],
         "conflicting_signals": null
     },
     {
@@ -2486,7 +2486,7 @@
         ],
         "signal_type": "manual",
         "position": "right",
-        "next_signals": ["Signal_138","Signal_145","Signal_146"],
+        "next_signal_names": ["Signal_138","Signal_145","Signal_146"],
         "conflicting_signals": ["Signal_138","Signal_145","Signal_146","Signal_173"]
     },
     {
@@ -2501,7 +2501,7 @@
         ],
         "signal_type": "manual",
         "position": "right",
-        "next_signals": ["Signal_147"],
+        "next_signal_names": ["Signal_147"],
         "conflicting_signals": ["Signal_168","Signal_169"]
     },
     {
@@ -2516,7 +2516,7 @@
         ],
         "signal_type": "manual",
         "position": "right",
-        "next_signals": ["Signal_147"],
+        "next_signal_names": ["Signal_147"],
         "conflicting_signals": ["Signal_167","Signal_169"]
     },
     {
@@ -2531,7 +2531,7 @@
         ],
         "signal_type": "manual",
         "position": "right",
-        "next_signals": ["Signal_147"],
+        "next_signal_names": ["Signal_147"],
         "conflicting_signals": ["Signal_167","Signal_168"]
     },
     {
@@ -2546,7 +2546,7 @@
         ],
         "signal_type": "manual",
         "position": "right",
-        "next_signals": ["Signal_143"],
+        "next_signal_names": ["Signal_143"],
         "conflicting_signals": ["Signal_171","Signal_172"]
     },
     {
@@ -2561,7 +2561,7 @@
         ],
         "signal_type": "manual",
         "position": "right",
-        "next_signals": ["Signal_143"],
+        "next_signal_names": ["Signal_143"],
         "conflicting_signals": ["Signal_170","Signal_172"]
     },
     {
@@ -2576,7 +2576,7 @@
         ],
         "signal_type": "manual",
         "position": "right",
-        "next_signals": ["Signal_143"],
+        "next_signal_names": ["Signal_143"],
         "conflicting_signals": ["Signal_170","Signal_171"]
     },
     {
@@ -2591,7 +2591,7 @@
         ],
         "signal_type": "auto",
         "position": "left",
-        "next_signals": ["Signal_193"],
+        "next_signal_names": ["Signal_193"],
         "conflicting_signals": null
     },
     {
@@ -2606,7 +2606,7 @@
         ],
         "signal_type": "auto",
         "position": "right",
-        "next_signals": ["Signal_162"],
+        "next_signal_names": ["Signal_162"],
         "conflicting_signals": null
     },
     {
@@ -2621,7 +2621,7 @@
         ],
         "signal_type": "auto",
         "position": "right",
-        "next_signals": ["Signal_160"],
+        "next_signal_names": ["Signal_160"],
         "conflicting_signals": null
     },
     {
@@ -2636,7 +2636,7 @@
         ],
         "signal_type": "auto",
         "position": "right",
-        "next_signals": ["Signal_159"],
+        "next_signal_names": ["Signal_159"],
         "conflicting_signals": null
     },
     {
@@ -2651,7 +2651,7 @@
         ],
         "signal_type": "auto",
         "position": "right",
-        "next_signals": ["Signal_166"],
+        "next_signal_names": ["Signal_166"],
         "conflicting_signals": null
     },
     {
@@ -2666,7 +2666,7 @@
         ],
         "signal_type": "auto",
         "position": "right",
-        "next_signals": ["Signal_158"],
+        "next_signal_names": ["Signal_158"],
         "conflicting_signals": null
     },
     {
@@ -2681,7 +2681,7 @@
         ],
         "signal_type": "auto",
         "position": "right",
-        "next_signals": ["Signal_164"],
+        "next_signal_names": ["Signal_164"],
         "conflicting_signals": null
     },
     {
@@ -2696,7 +2696,7 @@
         ],
         "signal_type": "manual",
         "position": "right",
-        "next_signals": ["Signal_151"],
+        "next_signal_names": ["Signal_151"],
         "conflicting_signals": null
     },
     {
@@ -2711,7 +2711,7 @@
         ],
         "signal_type": "auto",
         "position": "right",
-        "next_signals": ["Signal_156"],
+        "next_signal_names": ["Signal_156"],
         "conflicting_signals": null
     },
     {
@@ -2726,7 +2726,7 @@
         ],
         "signal_type": "auto",
         "position": "right",
-        "next_signals": ["Signal_175"],
+        "next_signal_names": ["Signal_175"],
         "conflicting_signals": null
     },
     {
@@ -2741,7 +2741,7 @@
         ],
         "signal_type": "auto",
         "position": "right",
-        "next_signals": ["Signal_163"],
+        "next_signal_names": ["Signal_163"],
         "conflicting_signals": null
     },
     {
@@ -2756,7 +2756,7 @@
         ],
         "signal_type": "auto",
         "position": "right",
-        "next_signals": ["Signal_174"],
+        "next_signal_names": ["Signal_174"],
         "conflicting_signals": null
     },
     {
@@ -2771,7 +2771,7 @@
         ],
         "signal_type": "auto",
         "position": "right",
-        "next_signals": ["Signal_176"],
+        "next_signal_names": ["Signal_176"],
         "conflicting_signals": null
     },
     {
@@ -2786,7 +2786,7 @@
         ],
         "signal_type": "auto",
         "position": "left",
-        "next_signals": ["Signal_196"],
+        "next_signal_names": ["Signal_196"],
         "conflicting_signals": null
     },
     {
@@ -2801,7 +2801,7 @@
         ],
         "signal_type": "auto",
         "position": "right",
-        "next_signals": ["Signal_161"],
+        "next_signal_names": ["Signal_161"],
         "conflicting_signals": null
     },
     {
@@ -2816,7 +2816,7 @@
         ],
         "signal_type": "manual",
         "position": "left",
-        "next_signals": ["Signal_198","Signal_218"],
+        "next_signal_names": ["Signal_198","Signal_218"],
         "conflicting_signals": null
     },
     {
@@ -2831,7 +2831,7 @@
         ],
         "signal_type": "manual",
         "position": "left",
-        "next_signals": ["Signal_199","Signal_218"],
+        "next_signal_names": ["Signal_199","Signal_218"],
         "conflicting_signals": null
     },
     {
@@ -2846,7 +2846,7 @@
         ],
         "signal_type": "manual",
         "position": "left",
-        "next_signals": ["Signal_201"],
+        "next_signal_names": ["Signal_201"],
         "conflicting_signals": null
     },
     {
@@ -2861,7 +2861,7 @@
         ],
         "signal_type": "manual",
         "position": "left",
-        "next_signals": ["Signal_201"],
+        "next_signal_names": ["Signal_201"],
         "conflicting_signals": null
     },
     {
@@ -2876,7 +2876,7 @@
         ],
         "signal_type": "auto",
         "position": "right",
-        "next_signals": ["Signal_177"],
+        "next_signal_names": ["Signal_177"],
         "conflicting_signals": null
     },
     {
@@ -2891,7 +2891,7 @@
         ],
         "signal_type": "auto",
         "position": "left",
-        "next_signals": ["Signal_195"],
+        "next_signal_names": ["Signal_195"],
         "conflicting_signals": null
     },
     {
@@ -2906,7 +2906,7 @@
         ],
         "signal_type": "auto",
         "position": "right",
-        "next_signals": ["Signal_192"],
+        "next_signal_names": ["Signal_192"],
         "conflicting_signals": null
     },
     {
@@ -2921,7 +2921,7 @@
         ],
         "signal_type": "auto",
         "position": "left",
-        "next_signals": ["Signal_205"],
+        "next_signal_names": ["Signal_205"],
         "conflicting_signals": null
     },
     {
@@ -2936,7 +2936,7 @@
         ],
         "signal_type": "auto",
         "position": "left",
-        "next_signals": ["Signal_209"],
+        "next_signal_names": ["Signal_209"],
         "conflicting_signals": null
     },
     {
@@ -2951,7 +2951,7 @@
         ],
         "signal_type": "auto",
         "position": "right",
-        "next_signals": ["Signal_187"],
+        "next_signal_names": ["Signal_187"],
         "conflicting_signals": null
     },
     {
@@ -2966,7 +2966,7 @@
         ],
         "signal_type": "manual",
         "position": "left",
-        "next_signals": ["Signal_212"],
+        "next_signal_names": ["Signal_212"],
         "conflicting_signals": null
     },
     {
@@ -2981,7 +2981,7 @@
         ],
         "signal_type": "manual",
         "position": "left",
-        "next_signals": ["Signal_212"],
+        "next_signal_names": ["Signal_212"],
         "conflicting_signals": null
     },
     {
@@ -2996,7 +2996,7 @@
         ],
         "signal_type": "auto",
         "position": "right",
-        "next_signals": ["Signal_194"],
+        "next_signal_names": ["Signal_194"],
         "conflicting_signals": null
     },
     {
@@ -3011,7 +3011,7 @@
         ],
         "signal_type": "auto",
         "position": "left",
-        "next_signals": ["Signal_213"],
+        "next_signal_names": ["Signal_213"],
         "conflicting_signals": null
     },
     {
@@ -3026,7 +3026,7 @@
         ],
         "signal_type": "auto",
         "position": "right",
-        "next_signals": ["Signal_181","Signal_178"],
+        "next_signal_names": ["Signal_181","Signal_178"],
         "conflicting_signals": null
     },
     {
@@ -3041,7 +3041,7 @@
         ],
         "signal_type": "manual",
         "position": "right",
-        "next_signals": ["Signal_180"],
+        "next_signal_names": ["Signal_180"],
         "conflicting_signals": null
     },
     {
@@ -3056,7 +3056,7 @@
         ],
         "signal_type": "manual",
         "position": "right",
-        "next_signals": ["Signal_179"],
+        "next_signal_names": ["Signal_179"],
         "conflicting_signals": null
     },
     {
@@ -3071,7 +3071,7 @@
         ],
         "signal_type": "auto",
         "position": "left",
-        "next_signals": ["Signal_211"],
+        "next_signal_names": ["Signal_211"],
         "conflicting_signals": null
     },
     {
@@ -3086,7 +3086,7 @@
         ],
         "signal_type": "manual",
         "position": "right",
-        "next_signals": ["Signal_180"],
+        "next_signal_names": ["Signal_180"],
         "conflicting_signals": null
     },
     {
@@ -3101,7 +3101,7 @@
         ],
         "signal_type": "manual",
         "position": "right",
-        "next_signals": ["Signal_179"],
+        "next_signal_names": ["Signal_179"],
         "conflicting_signals": null
     },
     {
@@ -3116,7 +3116,7 @@
         ],
         "signal_type": "auto",
         "position": "right",
-        "next_signals": ["Signal_200"],
+        "next_signal_names": ["Signal_200"],
         "conflicting_signals": null
     },
     {
@@ -3131,7 +3131,7 @@
         ],
         "signal_type": "auto",
         "position": "left",
-        "next_signals": ["Signal_217"],
+        "next_signal_names": ["Signal_217"],
         "conflicting_signals": null
     },
     {
@@ -3146,7 +3146,7 @@
         ],
         "signal_type": "auto",
         "position": "right",
-        "next_signals": ["Signal_197"],
+        "next_signal_names": ["Signal_197"],
         "conflicting_signals": null
     },
     {
@@ -3161,7 +3161,7 @@
         ],
         "signal_type": "auto",
         "position": "left",
-        "next_signals": ["Signal_203","Signal_204"],
+        "next_signal_names": ["Signal_203","Signal_204"],
         "conflicting_signals": null
     },
     {
@@ -3176,7 +3176,7 @@
         ],
         "signal_type": "auto",
         "position": "right",
-        "next_signals": ["Signal_208"],
+        "next_signal_names": ["Signal_208"],
         "conflicting_signals": null
     },
     {
@@ -3191,7 +3191,7 @@
         ],
         "signal_type": "auto",
         "position": "left",
-        "next_signals": ["Signal_215"],
+        "next_signal_names": ["Signal_215"],
         "conflicting_signals": null
     },
     {
@@ -3206,7 +3206,7 @@
         ],
         "signal_type": "auto",
         "position": "right",
-        "next_signals": ["Signal_202"],
+        "next_signal_names": ["Signal_202"],
         "conflicting_signals": null
     },
     {
@@ -3221,7 +3221,7 @@
         ],
         "signal_type": "auto",
         "position": "left",
-        "next_signals": [""],
+        "next_signal_names": [""],
         "conflicting_signals": null
     },
     {
@@ -3236,7 +3236,7 @@
         ],
         "signal_type": "auto",
         "position": "right",
-        "next_signals": ["Signal_206","Signal_207"],
+        "next_signal_names": ["Signal_206","Signal_207"],
         "conflicting_signals": null
     },
     {
@@ -3251,7 +3251,7 @@
         ],
         "signal_type": "auto",
         "position": "left",
-        "next_signals": [""],
+        "next_signal_names": [""],
         "conflicting_signals": null
     },
     {
@@ -3266,7 +3266,7 @@
         ],
         "signal_type": "auto",
         "position": "left",
-        "next_signals": ["Signal_221"],
+        "next_signal_names": ["Signal_221"],
         "conflicting_signals": null
     },
     {
@@ -3281,7 +3281,7 @@
         ],
         "signal_type": "auto",
         "position": "right",
-        "next_signals": ["Signal_216"],
+        "next_signal_names": ["Signal_216"],
         "conflicting_signals": null
     },
     {
@@ -3296,7 +3296,7 @@
         ],
         "signal_type": "auto",
         "position": "right",
-        "next_signals": ["Signal_210"],
+        "next_signal_names": ["Signal_210"],
         "conflicting_signals": null
     },
     {
@@ -3311,7 +3311,7 @@
         ],
         "signal_type": "auto",
         "position": "left",
-        "next_signals": [""],
+        "next_signal_names": [""],
         "conflicting_signals": null
     },
     {
@@ -3326,7 +3326,7 @@
         ],
         "signal_type": "auto",
         "position": "right",
-        "next_signals": ["Signal_219"],
+        "next_signal_names": ["Signal_219"],
         "conflicting_signals": null
     }
 ]
