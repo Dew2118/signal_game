@@ -1,0 +1,192 @@
+[
+  {
+    "headcode_prefix": "9S",
+    "routes": [
+      [
+        ["Signal_220"],
+        ["Signal_210"],
+        ["Signal_197"],
+        ["Signal_187"],
+        ["Signal_161"],
+        ["Signal_149"],
+        ["Signal_129"],
+        ["Signal_117"],
+        ["Signal_103"],
+        [["Signal_78", "Signal_79", "Signal_80", "Signal_81"]],
+        ["delete_and_spawn_train"]
+      ]
+    ],
+    "spawning_signals": ["Signal_220"]
+  },
+  {
+    "headcode_prefix": "9L",
+    "routes": [
+      [
+        [["Signal_78", "Signal_79", "Signal_80", "Signal_81"], 20],
+        ["Signal_105"],
+        ["Signal_119"],
+        ["Signal_135"],
+        ["Signal_152"],
+        ["Signal_186"],
+        ["Signal_196"],
+        ["Signal_209"],
+        ["Signal_217"],
+        ["delete"]
+      ]
+    ],
+    "spawning_signals": ["Signal_78", "Signal_79", "Signal_80", "Signal_81"]
+  },
+  {
+    "headcode_prefix": "3S",
+    "routes": [
+      [
+        ["Signal_183"],
+        ["Signal_163"],
+        ["Signal_151"],
+        ["Signal_133"],
+        ["Signal_118"],
+        ["Signal_108"],
+        [["Signal_82", "Signal_83", "Signal_84", "Signal_85", "Signal_86", "Signal_87"]],
+        ["delete_and_spawn_train"]
+      ]
+    ],
+    "spawning_signals": ["Signal_183"]
+  },
+  {
+    "headcode_prefix": "2F",
+    "routes": [
+      [
+        [["Signal_82", "Signal_83", "Signal_84", "Signal_85", "Signal_86", "Signal_87"], 20],
+        ["Signal_106"],
+        ["Signal_120"],
+        ["Signal_136"],
+        ["Signal_153"],
+        ["Signal_188", 20],
+        ["Signal_198"],
+        ["Signal_212"],
+        ["Signal_208"],
+        ["Signal_200", 20],
+        ["Signal_194"],
+        ["Signal_192", 20],
+        ["Signal_177"],
+        ["Signal_166"],
+        ["Signal_138", 20],
+        ["Signal_126"],
+        ["Signal_110"],
+        ["Signal_98"],
+        ["Signal_94"],
+        ["Signal_76"],
+        ["Signal_70", 20],
+        ["Signal_65"],
+        ["Signal_61"],
+        ["Signal_57"],
+        ["Signal_55", 20],
+        ["Signal_51"],
+        ["Signal_49"],
+        ["Signal_44"],
+        [["Signal_36", "Signal_37", "Signal_38"]],
+        ["delete_and_spawn_train"]
+      ]
+    ],
+    "spawning_signals": ["Signal_82", "Signal_83", "Signal_84", "Signal_85", "Signal_86", "Signal_87"]
+  },
+  {
+    "headcode_prefix": "2U",
+    "routes": [
+      [
+        [["Signal_82", "Signal_83", "Signal_84", "Signal_85", "Signal_86", "Signal_87"], 20],
+        ["Signal_106"],
+        ["Signal_120"],
+        ["Signal_136"],
+        ["Signal_153"],
+        ["Signal_188", 20],
+        ["Signal_198"],
+        ["Signal_212"],
+        ["Signal_208"],
+        ["Signal_200", 20],
+        ["Signal_194"],
+        ["Signal_192", 20],
+        ["Signal_177"],
+        ["Signal_166"],
+        [["Signal_145", "Signal_146"]],
+        ["delete_and_spawn_train"]
+      ]
+    ],
+    "spawning_signals": ["Signal_82", "Signal_83", "Signal_84", "Signal_85", "Signal_86", "Signal_87"]
+  },
+  {
+    "headcode_prefix": "2S",
+    "routes": [
+      [
+        [["Signal_36", "Signal_37", "Signal_38"], 20],
+        ["Signal_43"],
+        ["Signal_50"],
+        ["Signal_54"],
+        ["Signal_56", 20],
+        ["Signal_59"],
+        ["Signal_63"],
+        ["Signal_69"],
+        ["Signal_74", 20],
+        ["Signal_77"],
+        ["Signal_97"],
+        ["Signal_101"],
+        ["Signal_112"],
+        ["Signal_134"],
+        ["Signal_144", 20],
+        ["Signal_173"],
+        ["Signal_193", 20],
+        ["Signal_195"],
+        ["Signal_205", 20],
+        ["Signal_211"],
+        ["Signal_203"],
+        ["Signal_180", 20],
+        ["Signal_151"],
+        ["Signal_133"],
+        ["Signal_118"],
+        ["Signal_108"],
+        [["Signal_82", "Signal_83", "Signal_84", "Signal_85", "Signal_86", "Signal_87"]],
+        ["delete_and_spawn_train"]
+      ]
+    ],
+    "spawning_signals": ["Signal_36", "Signal_37", "Signal_38"]
+  },
+  {
+    "headcode_prefix": "2S",
+    "routes": [
+      [
+        [["Signal_145", "Signal_146"], 20],
+        ["Signal_173"],
+        ["Signal_193", 20],
+        ["Signal_195"],
+        ["Signal_205", 20],
+        ["Signal_211"],
+        ["Signal_203"],
+        ["Signal_180", 20],
+        ["Signal_151"],
+        ["Signal_133"],
+        ["Signal_118"],
+        ["Signal_108"],
+        [["Signal_82", "Signal_83", "Signal_84", "Signal_85", "Signal_86", "Signal_87"]],
+        ["delete_and_spawn_train"]
+      ]
+    ],
+    "spawning_signals": ["Signal_145", "Signal_146"]
+  },
+  {
+    "headcode_prefix": "2L",
+    "routes": [
+      [
+        [["Signal_82", "Signal_83", "Signal_84", "Signal_85", "Signal_86", "Signal_87"], 20],
+        ["Signal_106"],
+        ["Signal_120"],
+        ["Signal_136"],
+        ["Signal_153"],
+        ["Signal_188", 20],
+        ["Signal_218"],
+        ["Signal_221"],
+        ["delete"]
+      ]
+    ],
+    "spawning_signals": ["Signal_82", "Signal_83", "Signal_84", "Signal_85", "Signal_86", "Signal_87"]
+  }
+]

@@ -7,9 +7,10 @@ import random
 
 
 # constant
-SIGNAL_DETAILS_FILENAME = "signal_details.json"
+SIGNAL_DETAILS_FILENAME = "signal_details_zone_A.json"
+ROUTES_MAPPING_FILENAME = "routes_mapping_zone_A.json"
 BACKDROP_PATH_FILENAME = "zone_A_beauty_pass.bmp"  # Use beauty_pass.bmp as the backdrop
-CHANCE = 1
+CHANCE = 1/4
 STANDARD_SIGNAL_DWELL_TIME = 5
 TRTS_TIME_BEFORE_DEPARTURE = 5
 CONFLICT_DURATION = 3
@@ -135,9 +136,9 @@ class Drawer:
         # Enable scrolling with the mouse wheel (vertical and horizontal)
         def _on_mousewheel(event):
             if event.state & 0x0001:  # Shift key is pressed
-                self.canvas.xview_scroll(-1 * int(event.delta / 120), "units")  # Horizontal scrolling
-            else:
                 self.canvas.yview_scroll(-1 * int(event.delta / 120), "units")  # Vertical scrolling
+            else:
+                self.canvas.xview_scroll(-1 * int(event.delta / 120), "units")  # Horizontal scrolling
 
         self.canvas.bind_all("<MouseWheel>", _on_mousewheel)
 
@@ -275,15 +276,17 @@ class Game:
                 return signal
 
     def select_route_and_headcode(self, spawning_signal_name, trains):
-        with open('routes_mapping.json', 'r') as f:
+        with open(ROUTES_MAPPING_FILENAME, 'r') as f:
             raw_data = json.load(f)
         routes_mapping = self.convert_values(raw_data)
         valid_routes = []
-        for headcode_prefix, data in routes_mapping.items():
+        for i,data in enumerate(routes_mapping):
+            # print(data)
             if spawning_signal_name in data["spawning_signals"]:
+                headcode_prefix = data["headcode_prefix"]
                 valid_routes.extend([(headcode_prefix, route) for route in data["routes"]])
         if len(valid_routes) == 0:
-            raise ValueError("No valid routes found for the spawning signal.")
+            raise ValueError(f"No valid routes found for the spawning signal {spawning_signal_name}.")
         headcode_prefix, selected_route = random.choice(valid_routes)
         existing_suffixes = {train.train_id[-2:] for train in trains}
         # Generate all possible 2-digit strings
@@ -355,7 +358,6 @@ class Game:
         #stop spawning trains after 20
         if len(self.trains) < MAX_TRAIN_NUMBER:
             r = random.random()
-            # print(r)
             if r < chance:  # Check if a train should spawn
                 self.spawn_train(spawning_signal_name, self.trains)
 
