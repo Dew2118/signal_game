@@ -5,13 +5,15 @@ from PIL import Image, ImageTk
 import time
 import random
 
+
 # constant
 SIGNAL_DETAILS_FILENAME = "signal_details.json"
 BACKDROP_PATH_FILENAME = "zone_A_beauty_pass.bmp"  # Use beauty_pass.bmp as the backdrop
 CHANCE = 1
-STANDARD_SIGNAL_DWELL_TIME = 3
-TRTS_TIME_BEFORE_DEPARTURE = 10
-CONFLICT_DURATION = 5
+STANDARD_SIGNAL_DWELL_TIME = 5
+TRTS_TIME_BEFORE_DEPARTURE = 5
+CONFLICT_DURATION = 3
+MAX_TRAIN_NUMBER = 15
 
 class Drawer:
     def __init__(self, game):
@@ -83,7 +85,6 @@ class Drawer:
         # Adjust the click coordinates based on the canvas scroll position
         adjusted_x = self.canvas.canvasx(event.x)
         adjusted_y = self.canvas.canvasy(event.y)
-
         # Find the clicked signal based on the adjusted mouse position
         for signal in self.game.get_signal_details():
             x, y = signal.lamp_position
@@ -94,12 +95,10 @@ class Drawer:
                 popup.title("Signal Menu")
                 popup.geometry(f"200x100+{event.x_root}+{event.y_root}")
                 self.create_popup_text(popup,signal)
-
                 popup.bind("1", lambda e: self.set_signal_color(signal,popup,"red"))
                 popup.bind("2", lambda e: self.set_signal_color(signal,popup,"yellow"))
                 popup.bind("3", lambda e: self.set_last_signal_color(popup,signal))  # Bind 3 to the last element in signal_can_be
                 popup.bind("r", lambda e: self.game.toggle_rollback(signal,popup))
-
                 # Close the popup on any left-click
                 # Bind a global click event to close the popup
                 self.canvas.bind_all("<Button-1>", lambda event: self.close_popup(popup))
@@ -200,7 +199,7 @@ class Drawer:
                 x, y = signal.lamp_position  # Use the lamp position for drawing
                 x += 3.5  # Adjust position slightly
                 y += 2
-                if signal.position == "left":
+                if signal.signal_orientation == "left":
                     x += 15
                 else:
                     x -= 15
@@ -210,13 +209,13 @@ class Drawer:
                     x - radius, y - radius, x + radius, y + radius, fill=color, outline="", tags="TRTS"
                 )
 
-    def draw_train(self, train_position, train_text, signal_position):
+    def draw_train(self, train_position, train_text, signal_orientation):
         """Draw the train as a red rectangle with bold black text."""
         x, y = train_position
         width, height = 30, 6  # Dimensions of the train rectangle (height is 6)
 
         # Adjust x1 if the signal position is "left"
-        if signal_position == "left":
+        if signal_orientation == "left":
             x = x - width  # Shift the rectangle to the left so the top-right aligns with the signal position
 
         # Draw the train rectangle
@@ -249,8 +248,8 @@ class Game:
     def toggle_rollback(self,signal,popup):
         if signal.signal_type == "manual":
             signal.rollback = not signal.rollback
-            self.drawer.delete("signal")  # Redraw signals
-            self.drawer.draw_signals(self.signal_details)
+            # self.drawer.delete("signal")  # Redraw signals
+            # self.drawer.draw_signals(self.signal_details)
         popup.destroy()  # Close the popup after toggling rollback
 
     def load_signal_details_from_json(self):
@@ -259,13 +258,6 @@ class Game:
             data = json.load(file)
         self.signal_details = []
         for item in data:
-            # Set default color to "red" for manual signals
-            if item["signal_type"] == "manual":
-                item["color"] = "red"
-                item["signal_can_be"] = ["red", "yellow", "green"]  # Default for manual signals
-            else:
-                item["signal_can_be"] = None  # Default for auto signals
-            # Ensure next_signals_in_same_block is loaded or defaults to False
             item["next_signals_in_same_block"] = item.get("next_signals_in_same_block", False)
             self.signal_details.append(SignalDetails(**item))
 
@@ -308,6 +300,7 @@ class Game:
         if spawning_signal is None or spawning_signal.train_at_signal is not None:
             return  # Skip if the signal is not found or is occupied
         selected_route, full_headcode = self.select_route_and_headcode(spawning_signal_name, trains)
+        #Update the first signal of the train's route in case there are multiple choices
         if len(selected_route[0]) == 2:
             selected_route[0][0] = spawning_signal_name
         else:
@@ -316,17 +309,19 @@ class Game:
         new_train = Train(
             train_id=full_headcode,
             position=spawning_signal.signal_position,
-            original_position=spawning_signal.signal_position,  # Set original_position to the initial position
-            signal_position=spawning_signal.position,
+            signal_orientation=spawning_signal.signal_orientation,
             route=selected_route,
-            previous_signal_list=spawning_signal_name,  # Set the previous signal to the spawning signal
+            previous_signal_list=selected_route[0],  # Set the previous signal to the spawning signal
             game=self  # Pass the Game instance
         )
         self.trains.append(new_train)
         # Mark the spawning signal as occupied
         spawning_signal.train_at_signal = new_train  # Mark the signal as occupied by the new train
         # Draw the train on the canvas
-        self.drawer.draw_train(new_train.position, new_train.train_id, spawning_signal.position)
+        # self.drawer.draw_train(new_train.position, new_train.train_id, spawning_signal.signal_orientation)
+
+    def remove_train(self,train):
+        self.trains.remove(train)
 
     def update_signals(self):
         """Update all signals."""
@@ -350,17 +345,19 @@ class Game:
         self.drawer.draw_signals(self.signal_details)
         self.drawer.delete("train")  # Remove previous trains
         for train in self.trains:
-            self.drawer.draw_train(train.position, train.train_id, train.signal_position)
+            self.drawer.draw_train(train.position, train.train_id, train.signal_orientation)
 
         # Schedule the next iteration of the loop
-        self.drawer.set_after(100, self.main_loop)
+        self.drawer.set_after(500, self.main_loop)
 
     def periodic_train_spawning(self, spawning_signal_name, interval=1000, chance=1):
         """Periodically check if a train should spawn at the specified signal."""
-        r = random.random()
-        # print(r)
-        if r < chance:  # Check if a train should spawn
-            self.spawn_train(spawning_signal_name, self.trains)
+        #stop spawning trains after 20
+        if len(self.trains) < MAX_TRAIN_NUMBER:
+            r = random.random()
+            # print(r)
+            if r < chance:  # Check if a train should spawn
+                self.spawn_train(spawning_signal_name, self.trains)
 
         # Schedule the next check
         self.drawer.set_after(interval, self.periodic_train_spawning, spawning_signal_name, interval, chance)
@@ -400,23 +397,23 @@ class Game:
         return self.signal_details    
 
 class SignalDetails:
-    def __init__(self,signal_name,signal_position,lamp_position,signal_type,position,next_signal_names,conflicting_signals = None,color = "green",signal_can_be = None,train_at_signal = None,conflict_timer = 0,last_conflict_state = None,rollback = False,set_by_machine = False,next_signals_in_same_block = False,queue = ""):
+    def __init__(self,signal_name,signal_position,lamp_position,signal_type,signal_orientation,next_signal_names,conflicting_signals = None,next_signals_in_same_block = False):
         self.signal_name = signal_name
         self.signal_position = signal_position
         self.lamp_position = lamp_position
         self.signal_type = signal_type
-        self.position = position
+        self.signal_orientation = signal_orientation
         self.next_signal_names = next_signal_names
         self.conflicting_signals = conflicting_signals
-        self.color = color
-        self.signal_can_be = signal_can_be
-        self.train_at_signal = train_at_signal
-        self.conflict_timer = conflict_timer
-        self.last_conflict_state = last_conflict_state
-        self.rollback = rollback
-        self.set_by_machine = set_by_machine
+        self.color = "green"
+        self.signal_can_be = None
+        self.train_at_signal = None
+        self.conflict_timer = 0
+        self.last_conflict_state = None
+        self.rollback = False
+        self.set_by_machine = False
         self.next_signals_in_same_block = next_signals_in_same_block
-        self.queue = queue
+        self.queue = ""
 
     def get_signal_object_from_named_list(self, signal_details, signal_name_list):
         result = []
@@ -493,16 +490,15 @@ class SignalDetails:
             self.queue = ""
 
 class Train:
-    def __init__(self, train_id, position, original_position, route, current_index=0, last_move_time = time.time(), signal_position = "right", previous_signal_list = None, previous_signal_name = "", game=None):
+    def __init__(self, train_id, position, route, signal_orientation = "right", previous_signal_list = None, game=None):
         self.train_id = train_id
         self.position = position
-        self.original_position = original_position
         self.route = route
-        self.current_index = current_index
-        self.last_move_time = last_move_time
-        self.signal_position = signal_position
+        self.current_index = 0
+        self.last_move_time = time.time()
+        self.signal_orientation = signal_orientation
         self.previous_signal_list = previous_signal_list
-        self.previous_signal_name = previous_signal_name
+        self.previous_signal_name = ""
         self.game = game
 
     def update_TRTS(self, current_time, signal_details, drawer):
@@ -528,13 +524,13 @@ class Train:
         if self.game:  # Use the passed Game instance
             self.game.spawn_train(self.previous_signal_name,trains)  # Spawn a train at the previous signal
 
-    def delete_train(self, signal_details, trains, drawer):
+    def delete_train(self, signal_details, drawer):
         if self.previous_signal_name:
             previous_signal = self.get_signal_object_by_name(signal_details, self.previous_signal_name)  # Ensure there is a previous signal
             if previous_signal:
                 previous_signal.train_at_signal = None
                 drawer.draw_TRTS(signal_details, self.previous_signal_name, "black")
-        trains.remove(self)  # Remove the train from the list of trains
+        self.game.remove_train(self)  # Remove the train from the list of trains
 
     def get_signal_object_by_name(self, signal_list, signal_name):
         for signal in signal_list:
@@ -575,20 +571,20 @@ class Train:
 
         # Check if the train has reached the "delete_and_spawn_train" signal
         if self.get_next_route_element_name() == "delete_and_spawn_train":
-            self.delete_train(signal_details, trains, drawer)
+            self.delete_train(signal_details, drawer)
             self.spawn_train(trains)
             return
 
         # Check if the train has reached the "delete" signal
         if self.get_next_route_element_name() == "delete":
-            self.delete_train(signal_details, trains, drawer)
+            self.delete_train(signal_details, drawer)
             return
 
         # Check the previous signal's color
         if self.previous_signal_name:  # Ensure there is a previous signal
             previous_signal = self.get_signal_object_by_name(signal_details, self.previous_signal_name)
             if previous_signal and previous_signal.color == "red":
-                if self.get_dwell_time() != 3:
+                if self.get_dwell_time() != STANDARD_SIGNAL_DWELL_TIME:
                     self.flash_TRTS(signal_details, current_time, drawer)
                 return  # Do not move if the previous signal is red
 
@@ -602,7 +598,7 @@ class Train:
         if selected_signal:
             selected_signal.train_at_signal = self
             self.position = selected_signal.signal_position  # Update train position
-            self.signal_position = selected_signal.position  # Update signal position (left or right)
+            self.signal_orientation = selected_signal.signal_orientation  # Update signal position (left or right)
 
         # Update the previous signal name and move to the next signal
         next_route_signal_list = self.route[self.current_index]

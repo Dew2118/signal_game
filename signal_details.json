@@ -10,7 +10,7 @@
             870
         ],
         "signal_type": "manual",
-        "position": "left",
+        "signal_orientation": "left",
         "next_signal_names": ["Signal_6"],
         "conflicting_signals": ["Signal_2","Signal_3"]
     },
@@ -25,7 +25,7 @@
             918
         ],
         "signal_type": "manual",
-        "position": "left",
+        "signal_orientation": "left",
         "next_signal_names": ["Signal_6"],
         "conflicting_signals": ["Signal_1","Signal_3"]
     },
@@ -40,7 +40,7 @@
             998
         ],
         "signal_type": "manual",
-        "position": "left",
+        "signal_orientation": "left",
         "next_signal_names": ["Signal_6"],
         "conflicting_signals": ["Signal_1","Signal_2"]
     },
@@ -55,7 +55,7 @@
             868
         ],
         "signal_type": "manual",
-        "position": "right",
+        "signal_orientation": "right",
         "next_signal_names": ["Signal_1","Signal_2","Signal_3"],
         "conflicting_signals": ["Signal_1","Signal_2","Signal_3","Signal_5"]
     },
@@ -70,7 +70,7 @@
             998
         ],
         "signal_type": "manual",
-        "position": "right",
+        "signal_orientation": "right",
         "next_signal_names": ["Signal_1","Signal_2","Signal_3"],
         "conflicting_signals": ["Signal_1","Signal_2","Signal_3"]
     },
@@ -85,7 +85,7 @@
             918
         ],
         "signal_type": "auto",
-        "position": "left",
+        "signal_orientation": "left",
         "next_signal_names": ["Signal_8"],
         "conflicting_signals": null
     },
@@ -100,7 +100,7 @@
             998
         ],
         "signal_type": "auto",
-        "position": "right",
+        "signal_orientation": "right",
         "next_signal_names": ["Signal_5"],
         "conflicting_signals": null
     },
@@ -115,7 +115,7 @@
             918
         ],
         "signal_type": "manual",
-        "position": "left",
+        "signal_orientation": "left",
         "next_signal_names": ["Signal_11"],
         "conflicting_signals": null
     },
@@ -130,7 +130,7 @@
             836
         ],
         "signal_type": "manual",
-        "position": "left",
+        "signal_orientation": "left",
         "next_signal_names": ["Signal_11"],
         "conflicting_signals": null
     },
@@ -145,7 +145,7 @@
             998
         ],
         "signal_type": "auto",
-        "position": "right",
+        "signal_orientation": "right",
         "next_signal_names": ["Signal_7"],
         "conflicting_signals": null
     },
@@ -160,7 +160,7 @@
             918
         ],
         "signal_type": "auto",
-        "position": "left",
+        "signal_orientation": "left",
         "next_signal_names": ["Signal_13"],
         "conflicting_signals": null
     },
@@ -175,7 +175,7 @@
             998
         ],
         "signal_type": "auto",
-        "position": "right",
+        "signal_orientation": "right",
         "next_signal_names": ["Signal_10"],
         "conflicting_signals": null
     },
@@ -190,7 +190,7 @@
             918
         ],
         "signal_type": "auto",
-        "position": "left",
+        "signal_orientation": "left",
         "next_signal_names": ["Signal_15"],
         "conflicting_signals": null
     },
@@ -205,7 +205,7 @@
             998
         ],
         "signal_type": "auto",
-        "position": "right",
+        "signal_orientation": "right",
         "next_signal_names": ["Signal_12"],
         "conflicting_signals": null
     },
@@ -220,7 +220,7 @@
             918
         ],
         "signal_type": "auto",
-        "position": "left",
+        "signal_orientation": "left",
         "next_signal_names": ["Signal_17"],
         "conflicting_signals": null
     },
@@ -235,7 +235,7 @@
             998
         ],
         "signal_type": "auto",
-        "position": "right",
+        "signal_orientation": "right",
         "next_signal_names": ["Signal_14"],
         "conflicting_signals": null
     },
@@ -250,7 +250,7 @@
             918
         ],
         "signal_type": "auto",
-        "position": "left",
+        "signal_orientation": "left",
         "next_signal_names": ["Signal_19"],
         "conflicting_signals": null
     },
@@ -265,7 +265,7 @@
             998
         ],
         "signal_type": "auto",
-        "position": "right",
+        "signal_orientation": "right",
         "next_signal_names": ["Signal_16"],
         "conflicting_signals": null
     },
@@ -280,7 +280,7 @@
             918
         ],
         "signal_type": "auto",
-        "position": "left",
+        "signal_orientation": "left",
         "next_signal_names": ["Signal_21"],
         "conflicting_signals": null
     },
@@ -295,7 +295,7 @@
             998
         ],
         "signal_type": "auto",
-        "position": "right",
+        "signal_orientation": "right",
         "next_signal_names": ["Signal_18"],
         "conflicting_signals": null
     },
@@ -310,7 +310,7 @@
             918
         ],
         "signal_type": "auto",
-        "position": "left",
+        "signal_orientation": "left",
         "next_signal_names": ["Signal_23"],
         "conflicting_signals": null
     },
@@ -325,7 +325,7 @@
             998
         ],
         "signal_type": "auto",
-        "position": "right",
+        "signal_orientation": "right",
         "next_signal_names": ["Signal_20"],
         "conflicting_signals": null
     },
@@ -340,7 +340,7 @@
             918
         ],
         "signal_type": "auto",
-        "position": "left",
+        "signal_orientation": "left",
         "next_signal_names": ["Signal_25"],
         "conflicting_signals": null
     },
@@ -355,7 +355,7 @@
             998
         ],
         "signal_type": "auto",
-        "position": "right",
+        "signal_orientation": "right",
         "next_signal_names": ["Signal_22"],
         "conflicting_signals": null
     },
@@ -370,7 +370,7 @@
             918
         ],
         "signal_type": "auto",
-        "position": "left",
+        "signal_orientation": "left",
         "next_signal_names": ["Signal_27"],
         "conflicting_signals": null
     },
@@ -385,7 +385,7 @@
             998
         ],
         "signal_type": "auto",
-        "position": "right",
+        "signal_orientation": "right",
         "next_signal_names": ["Signal_24"],
         "conflicting_signals": null
     },
@@ -400,7 +400,7 @@
             918
         ],
         "signal_type": "auto",
-        "position": "left",
+        "signal_orientation": "left",
         "next_signal_names": ["Signal_29"],
         "conflicting_signals": null
     },
@@ -415,7 +415,7 @@
             998
         ],
         "signal_type": "auto",
-        "position": "right",
+        "signal_orientation": "right",
         "next_signal_names": ["Signal_26"],
         "conflicting_signals": null
     },
@@ -430,7 +430,7 @@
             918
         ],
         "signal_type": "auto",
-        "position": "left",
+        "signal_orientation": "left",
         "next_signal_names": ["Signal_31"],
         "conflicting_signals": null
     },
@@ -445,7 +445,7 @@
             998
         ],
         "signal_type": "auto",
-        "position": "right",
+        "signal_orientation": "right",
         "next_signal_names": ["Signal_28"],
         "conflicting_signals": null
     },
@@ -460,7 +460,7 @@
             918
         ],
         "signal_type": "auto",
-        "position": "left",
+        "signal_orientation": "left",
         "next_signal_names": ["Signal_38"],
         "conflicting_signals": null
     },
@@ -475,7 +475,7 @@
             998
         ],
         "signal_type": "auto",
-        "position": "right",
+        "signal_orientation": "right",
         "next_signal_names": ["Signal_30"],
         "conflicting_signals": null
     },
@@ -490,7 +490,7 @@
             998
         ],
         "signal_type": "manual",
-        "position": "left",
+        "signal_orientation": "left",
         "next_signal_names": ["Signal_47"],
         "conflicting_signals": ["Signal_32","Signal_34"]
     },
@@ -505,7 +505,7 @@
             1078
         ],
         "signal_type": "manual",
-        "position": "left",
+        "signal_orientation": "left",
         "next_signal_names": ["Signal_47"],
         "conflicting_signals": ["Signal_32","Signal_33"]
     },
@@ -520,7 +520,7 @@
             38
         ],
         "signal_type": "manual",
-        "position": "left",
+        "signal_orientation": "left",
         "next_signal_names": ["Signal_43"],
         "conflicting_signals": ["Signal_36","Signal_37"]
     },
@@ -535,7 +535,7 @@
             70
         ],
         "signal_type": "manual",
-        "position": "left",
+        "signal_orientation": "left",
         "next_signal_names": ["Signal_43"],
         "conflicting_signals": ["Signal_35","Signal_37"]
     },
@@ -550,7 +550,7 @@
             134
         ],
         "signal_type": "manual",
-        "position": "left",
+        "signal_orientation": "left",
         "next_signal_names": ["Signal_43"],
         "conflicting_signals": ["Signal_35","Signal_36"]
     },
@@ -565,7 +565,7 @@
             918
         ],
         "signal_type": "auto",
-        "position": "left",
+        "signal_orientation": "left",
         "next_signal_names": ["Signal_39"],
         "conflicting_signals": null
     },
@@ -580,7 +580,7 @@
             918
         ],
         "signal_type": "manual",
-        "position": "left",
+        "signal_orientation": "left",
         "next_signal_names": ["Signal_47"],
         "conflicting_signals": null
     },
@@ -595,7 +595,7 @@
             1078
         ],
         "signal_type": "manual",
-        "position": "right",
+        "signal_orientation": "right",
         "next_signal_names": ["Signal_33","Signal_34"],
         "conflicting_signals": ["Signal_47"]
     },
@@ -610,7 +610,7 @@
             998
         ],
         "signal_type": "manual",
-        "position": "right",
+        "signal_orientation": "right",
         "next_signal_names": ["Signal_32","Signal_33","Signal_34"],
         "conflicting_signals": ["Signal_47"]
     },
@@ -625,7 +625,7 @@
             852
         ],
         "signal_type": "manual",
-        "position": "left",
+        "signal_orientation": "left",
         "next_signal_names": ["Signal_58","Signal_60"],
         "conflicting_signals": ["Signal_48"]
     },
@@ -640,7 +640,7 @@
             70
         ],
         "signal_type": "manual",
-        "position": "left",
+        "signal_orientation": "left",
         "next_signal_names": ["Signal_50"],
         "conflicting_signals": null
     },
@@ -655,7 +655,7 @@
             134
         ],
         "signal_type": "manual",
-        "position": "right",
+        "signal_orientation": "right",
         "next_signal_names": ["Signal_35","Signal_36","Signal_37"],
         "conflicting_signals": ["Signal_43"]
     },
@@ -670,7 +670,7 @@
             884
         ],
         "signal_type": "manual",
-        "position": "left",
+        "signal_orientation": "left",
         "next_signal_names": ["Signal_58","Signal_60"],
         "conflicting_signals": ["Signal_48"]
     },
@@ -685,7 +685,7 @@
             36
         ],
         "signal_type": "manual",
-        "position": "left",
+        "signal_orientation": "left",
         "next_signal_names": ["Signal_50"],
         "conflicting_signals": null
     },
@@ -700,7 +700,7 @@
             918
         ],
         "signal_type": "manual",
-        "position": "left",
+        "signal_orientation": "left",
         "next_signal_names": ["Signal_58","Signal_60"],
         "conflicting_signals": ["Signal_48"]
     },
@@ -715,7 +715,7 @@
             998
         ],
         "signal_type": "auto",
-        "position": "right",
+        "signal_orientation": "right",
         "next_signal_names": ["Signal_40","Signal_41"],
         "conflicting_signals": null
     },
@@ -730,7 +730,7 @@
             134
         ],
         "signal_type": "auto",
-        "position": "right",
+        "signal_orientation": "right",
         "next_signal_names": ["Signal_44"],
         "conflicting_signals": null
     },
@@ -745,7 +745,7 @@
             70
         ],
         "signal_type": "auto",
-        "position": "left",
+        "signal_orientation": "left",
         "next_signal_names": ["Signal_54"],
         "conflicting_signals": null
     },
@@ -760,7 +760,7 @@
             134
         ],
         "signal_type": "auto",
-        "position": "right",
+        "signal_orientation": "right",
         "next_signal_names": ["Signal_49"],
         "conflicting_signals": null
     },
@@ -775,7 +775,7 @@
             918
         ],
         "signal_type": "manual",
-        "position": "right",
+        "signal_orientation": "right",
         "next_signal_names": ["Signal_48"],
         "conflicting_signals": ["Signal_60"]
     },
@@ -790,7 +790,7 @@
             998
         ],
         "signal_type": "manual",
-        "position": "right",
+        "signal_orientation": "right",
         "next_signal_names": ["Signal_48"],
         "conflicting_signals": ["Signal_50"]
     },
@@ -805,7 +805,7 @@
             70
         ],
         "signal_type": "auto",
-        "position": "left",
+        "signal_orientation": "left",
         "next_signal_names": ["Signal_56"],
         "conflicting_signals": null
     },
@@ -820,7 +820,7 @@
             134
         ],
         "signal_type": "auto",
-        "position": "right",
+        "signal_orientation": "right",
         "next_signal_names": ["Signal_51"],
         "conflicting_signals": null
     },
@@ -835,7 +835,7 @@
             70
         ],
         "signal_type": "auto",
-        "position": "left",
+        "signal_orientation": "left",
         "next_signal_names": ["Signal_59"],
         "conflicting_signals": null
     },
@@ -850,7 +850,7 @@
             134
         ],
         "signal_type": "auto",
-        "position": "right",
+        "signal_orientation": "right",
         "next_signal_names": ["Signal_55"],
         "conflicting_signals": null
     },
@@ -865,7 +865,7 @@
             646
         ],
         "signal_type": "manual",
-        "position": "left",
+        "signal_orientation": "left",
         "next_signal_names": ["Signal_66"],
         "conflicting_signals": null
     },
@@ -880,7 +880,7 @@
             70
         ],
         "signal_type": "auto",
-        "position": "left",
+        "signal_orientation": "left",
         "next_signal_names": ["Signal_63"],
         "conflicting_signals": null
     },
@@ -895,7 +895,7 @@
             918
         ],
         "signal_type": "manual",
-        "position": "left",
+        "signal_orientation": "left",
         "next_signal_names": ["Signal_93"],
         "conflicting_signals": ["Signal_62"]
     },
@@ -910,7 +910,7 @@
             134
         ],
         "signal_type": "auto",
-        "position": "right",
+        "signal_orientation": "right",
         "next_signal_names": ["Signal_57"],
         "conflicting_signals": null
     },
@@ -925,7 +925,7 @@
             918
         ],
         "signal_type": "manual",
-        "position": "right",
+        "signal_orientation": "right",
         "next_signal_names": ["Signal_66"],
         "conflicting_signals": ["Signal_52"]
     },
@@ -940,7 +940,7 @@
             70
         ],
         "signal_type": "auto",
-        "position": "left",
+        "signal_orientation": "left",
         "next_signal_names": ["Signal_69"],
         "conflicting_signals": null
     },
@@ -955,7 +955,7 @@
             710
         ],
         "signal_type": "manual",
-        "position": "right",
+        "signal_orientation": "right",
         "next_signal_names": ["Signal_52","Signal_67"],
         "conflicting_signals": ["Signal_62"]
     },
@@ -970,7 +970,7 @@
             134
         ],
         "signal_type": "auto",
-        "position": "right",
+        "signal_orientation": "right",
         "next_signal_names": ["Signal_61"],
         "conflicting_signals": null
     },
@@ -985,7 +985,7 @@
             646
         ],
         "signal_type": "auto",
-        "position": "left",
+        "signal_orientation": "left",
         "next_signal_names": ["Signal_73"],
         "conflicting_signals": null
     },
@@ -1000,7 +1000,7 @@
             854
         ],
         "signal_type": "manual",
-        "position": "left",
+        "signal_orientation": "left",
         "next_signal_names": ["Signal_93"],
         "conflicting_signals": null
     },
@@ -1015,7 +1015,7 @@
             710
         ],
         "signal_type": "auto",
-        "position": "right",
+        "signal_orientation": "right",
         "next_signal_names": ["Signal_64"],
         "conflicting_signals": null
     },
@@ -1030,7 +1030,7 @@
             70
         ],
         "signal_type": "auto",
-        "position": "left",
+        "signal_orientation": "left",
         "next_signal_names": ["Signal_74"],
         "conflicting_signals": null
     },
@@ -1045,7 +1045,7 @@
             134
         ],
         "signal_type": "auto",
-        "position": "right",
+        "signal_orientation": "right",
         "next_signal_names": ["Signal_65"],
         "conflicting_signals": null
     },
@@ -1060,7 +1060,7 @@
             710
         ],
         "signal_type": "auto",
-        "position": "right",
+        "signal_orientation": "right",
         "next_signal_names": ["Signal_68"],
         "conflicting_signals": null
     },
@@ -1075,7 +1075,7 @@
             998
         ],
         "signal_type": "manual",
-        "position": "right",
+        "signal_orientation": "right",
         "next_signal_names": ["Signal_53","Signal_62"],
         "conflicting_signals": ["Signal_93"]
     },
@@ -1090,7 +1090,7 @@
             646
         ],
         "signal_type": "auto",
-        "position": "left",
+        "signal_orientation": "left",
         "next_signal_names": ["Signal_88"],
         "conflicting_signals": null
     },
@@ -1105,7 +1105,7 @@
             70
         ],
         "signal_type": "auto",
-        "position": "left",
+        "signal_orientation": "left",
         "next_signal_names": ["Signal_77"],
         "conflicting_signals": null
     },
@@ -1120,7 +1120,7 @@
             710
         ],
         "signal_type": "auto",
-        "position": "right",
+        "signal_orientation": "right",
         "next_signal_names": ["Signal_71"],
         "conflicting_signals": null
     },
@@ -1135,7 +1135,7 @@
             134
         ],
         "signal_type": "auto",
-        "position": "right",
+        "signal_orientation": "right",
         "next_signal_names": ["Signal_70"],
         "conflicting_signals": null
     },
@@ -1150,7 +1150,7 @@
             70
         ],
         "signal_type": "auto",
-        "position": "left",
+        "signal_orientation": "left",
         "next_signal_names": ["Signal_97"],
         "conflicting_signals": null
     },
@@ -1165,7 +1165,7 @@
             246
         ],
         "signal_type": "manual",
-        "position": "left",
+        "signal_orientation": "left",
         "next_signal_names": ["Signal_105"],
         "conflicting_signals": ["Signal_79","Signal_80","Signal_81"]
     },
@@ -1180,7 +1180,7 @@
             310
         ],
         "signal_type": "manual",
-        "position": "left",
+        "signal_orientation": "left",
         "next_signal_names": ["Signal_105"],
         "conflicting_signals": ["Signal_78","Signal_80","Signal_81"]
     },
@@ -1195,7 +1195,7 @@
             326
         ],
         "signal_type": "manual",
-        "position": "left",
+        "signal_orientation": "left",
         "next_signal_names": ["Signal_105"],
         "conflicting_signals": ["Signal_78","Signal_79","Signal_81"]
     },
@@ -1210,7 +1210,7 @@
             390
         ],
         "signal_type": "manual",
-        "position": "left",
+        "signal_orientation": "left",
         "next_signal_names": ["Signal_105"],
         "conflicting_signals": ["Signal_78","Signal_79","Signal_80"]
     },
@@ -1225,7 +1225,7 @@
             406
         ],
         "signal_type": "manual",
-        "position": "left",
+        "signal_orientation": "left",
         "next_signal_names": ["Signal_106"],
         "conflicting_signals": ["Signal_83","Signal_84","Signal_85","Signal_86","Signal_87"]
     },
@@ -1240,7 +1240,7 @@
             470
         ],
         "signal_type": "manual",
-        "position": "left",
+        "signal_orientation": "left",
         "next_signal_names": ["Signal_106"],
         "conflicting_signals": ["Signal_82","Signal_84","Signal_85","Signal_86","Signal_87"]
     },
@@ -1255,7 +1255,7 @@
             486
         ],
         "signal_type": "manual",
-        "position": "left",
+        "signal_orientation": "left",
         "next_signal_names": ["Signal_106"],
         "conflicting_signals": ["Signal_82","Signal_83","Signal_85","Signal_86","Signal_87"]
     },
@@ -1270,7 +1270,7 @@
             550
         ],
         "signal_type": "manual",
-        "position": "left",
+        "signal_orientation": "left",
         "next_signal_names": ["Signal_106"],
         "conflicting_signals": ["Signal_82","Signal_83","Signal_84","Signal_86","Signal_87"]
     },
@@ -1285,7 +1285,7 @@
             566
         ],
         "signal_type": "manual",
-        "position": "left",
+        "signal_orientation": "left",
         "next_signal_names": ["Signal_106"],
         "conflicting_signals": ["Signal_82","Signal_83","Signal_84","Signal_85","Signal_87"]
     },
@@ -1300,7 +1300,7 @@
             630
         ],
         "signal_type": "manual",
-        "position": "left",
+        "signal_orientation": "left",
         "next_signal_names": ["Signal_106"],
         "conflicting_signals": ["Signal_82","Signal_83","Signal_84","Signal_85","Signal_86"]
     },
@@ -1315,7 +1315,7 @@
             646
         ],
         "signal_type": "auto",
-        "position": "left",
+        "signal_orientation": "left",
         "next_signal_names": ["Signal_102"],
         "conflicting_signals": null
     },
@@ -1330,7 +1330,7 @@
             726
         ],
         "signal_type": "manual",
-        "position": "left",
+        "signal_orientation": "left",
         "next_signal_names": ["Signal_111"],
         "conflicting_signals": ["Signal_90","Signal_91","Signal_92"]
     },
@@ -1345,7 +1345,7 @@
             774
         ],
         "signal_type": "manual",
-        "position": "left",
+        "signal_orientation": "left",
         "next_signal_names": ["Signal_111"],
         "conflicting_signals": ["Signal_89","Signal_91","Signal_92"]
     },
@@ -1360,7 +1360,7 @@
             838
         ],
         "signal_type": "manual",
-        "position": "left",
+        "signal_orientation": "left",
         "next_signal_names": ["Signal_111"],
         "conflicting_signals": ["Signal_89","Signal_90","Signal_92"]
     },
@@ -1375,7 +1375,7 @@
             854
         ],
         "signal_type": "manual",
-        "position": "left",
+        "signal_orientation": "left",
         "next_signal_names": ["Signal_111"],
         "conflicting_signals": ["Signal_89","Signal_90","Signal_91"]
     },
@@ -1390,7 +1390,7 @@
             918
         ],
         "signal_type": "auto",
-        "position": "left",
+        "signal_orientation": "left",
         "next_signal_names": ["Signal_99"],
         "conflicting_signals": null
     },
@@ -1405,7 +1405,7 @@
             134
         ],
         "signal_type": "auto",
-        "position": "right",
+        "signal_orientation": "right",
         "next_signal_names": ["Signal_76"],
         "conflicting_signals": null
     },
@@ -1420,7 +1420,7 @@
             678
         ],
         "signal_type": "auto",
-        "position": "right",
+        "signal_orientation": "right",
         "next_signal_names": ["Signal_75"],
         "conflicting_signals": null
     },
@@ -1435,7 +1435,7 @@
             998
         ],
         "signal_type": "auto",
-        "position": "right",
+        "signal_orientation": "right",
         "next_signal_names": ["Signal_72"],
         "conflicting_signals": null
     },
@@ -1450,7 +1450,7 @@
             70
         ],
         "signal_type": "auto",
-        "position": "left",
+        "signal_orientation": "left",
         "next_signal_names": ["Signal_101"],
         "conflicting_signals": null
     },
@@ -1465,7 +1465,7 @@
             134
         ],
         "signal_type": "auto",
-        "position": "right",
+        "signal_orientation": "right",
         "next_signal_names": ["Signal_94"],
         "conflicting_signals": null
     },
@@ -1480,7 +1480,7 @@
             918
         ],
         "signal_type": "auto",
-        "position": "left",
+        "signal_orientation": "left",
         "next_signal_names": ["Signal_107"],
         "conflicting_signals": null
     },
@@ -1495,7 +1495,7 @@
             998
         ],
         "signal_type": "auto",
-        "position": "right",
+        "signal_orientation": "right",
         "next_signal_names": ["Signal_96"],
         "conflicting_signals": null
     },
@@ -1510,7 +1510,7 @@
             70
         ],
         "signal_type": "auto",
-        "position": "left",
+        "signal_orientation": "left",
         "next_signal_names": ["Signal_112"],
         "conflicting_signals": null
     },
@@ -1525,7 +1525,7 @@
             566
         ],
         "signal_type": "auto",
-        "position": "left",
+        "signal_orientation": "left",
         "next_signal_names": ["Signal_115"],
         "conflicting_signals": null
     },
@@ -1540,7 +1540,7 @@
             390
         ],
         "signal_type": "manual",
-        "position": "right",
+        "signal_orientation": "right",
         "next_signal_names": ["Signal_78","Signal_79","Signal_80","Signal_81"],
         "conflicting_signals":  ["Signal_78","Signal_79","Signal_80","Signal_81","Signal_105"]
     },
@@ -1555,7 +1555,7 @@
             662
         ],
         "signal_type": "auto",
-        "position": "right",
+        "signal_orientation": "right",
         "next_signal_names": ["Signal_95"],
         "conflicting_signals": null
     },
@@ -1570,7 +1570,7 @@
             326
         ],
         "signal_type": "auto",
-        "position": "left",
+        "signal_orientation": "left",
         "next_signal_names": ["Signal_119"],
         "conflicting_signals": null
     },
@@ -1585,7 +1585,7 @@
             486
         ],
         "signal_type": "auto",
-        "position": "left",
+        "signal_orientation": "left",
         "next_signal_names": ["Signal_120"],
         "conflicting_signals": null
     },
@@ -1600,7 +1600,7 @@
             918
         ],
         "signal_type": "auto",
-        "position": "left",
+        "signal_orientation": "left",
         "next_signal_names": ["Signal_122"],
         "conflicting_signals": null
     },
@@ -1615,7 +1615,7 @@
             550
         ],
         "signal_type": "manual",
-        "position": "right",
+        "signal_orientation": "right",
         "next_signal_names": ["Signal_82","Signal_83","Signal_84","Signal_85","Signal_86","Signal_87"],
         "conflicting_signals": ["Signal_82","Signal_83","Signal_84","Signal_85","Signal_86","Signal_87","Signal_106"]
     },
@@ -1630,7 +1630,7 @@
             180
         ],
         "signal_type": "manual",
-        "position": "right",
+        "signal_orientation": "right",
         "next_signal_names": ["Signal_98"],
         "conflicting_signals": null
     },
@@ -1645,7 +1645,7 @@
             134
         ],
         "signal_type": "manual",
-        "position": "right",
+        "signal_orientation": "right",
         "next_signal_names": ["Signal_98"],
         "conflicting_signals": null
     },
@@ -1660,7 +1660,7 @@
             694
         ],
         "signal_type": "auto",
-        "position": "left",
+        "signal_orientation": "left",
         "next_signal_names": ["Signal_125"],
         "conflicting_signals": null
     },
@@ -1675,7 +1675,7 @@
             70
         ],
         "signal_type": "manual",
-        "position": "left",
+        "signal_orientation": "left",
         "next_signal_names": ["Signal_134"],
         "conflicting_signals": null
     },
@@ -1690,7 +1690,7 @@
             662
         ],
         "signal_type": "auto",
-        "position": "right",
+        "signal_orientation": "right",
         "next_signal_names": ["Signal_104"],
         "conflicting_signals": null
     },
@@ -1705,7 +1705,7 @@
             36
         ],
         "signal_type": "manual",
-        "position": "left",
+        "signal_orientation": "left",
         "next_signal_names": ["Signal_134"],
         "conflicting_signals": null
     },
@@ -1720,7 +1720,7 @@
             566
         ],
         "signal_type": "auto",
-        "position": "left",
+        "signal_orientation": "left",
         "next_signal_names": ["Signal_128"],
         "conflicting_signals": null
     },
@@ -1735,7 +1735,7 @@
             998
         ],
         "signal_type": "auto",
-        "position": "right",
+        "signal_orientation": "right",
         "next_signal_names": ["Signal_100"],
         "conflicting_signals": null
     },
@@ -1750,7 +1750,7 @@
             390
         ],
         "signal_type": "auto",
-        "position": "right",
+        "signal_orientation": "right",
         "next_signal_names": ["Signal_103"],
         "conflicting_signals": null
     },
@@ -1765,7 +1765,7 @@
             550
         ],
         "signal_type": "auto",
-        "position": "right",
+        "signal_orientation": "right",
         "next_signal_names": ["Signal_108"],
         "conflicting_signals": null
     },
@@ -1780,7 +1780,7 @@
             326
         ],
         "signal_type": "auto",
-        "position": "left",
+        "signal_orientation": "left",
         "next_signal_names": ["Signal_135"],
         "conflicting_signals": null
     },
@@ -1795,7 +1795,7 @@
             486
         ],
         "signal_type": "auto",
-        "position": "left",
+        "signal_orientation": "left",
         "next_signal_names": ["Signal_136"],
         "conflicting_signals": null
     },
@@ -1810,7 +1810,7 @@
             838
         ],
         "signal_type": "manual",
-        "position": "right",
+        "signal_orientation": "right",
         "next_signal_names": ["Signal_89","Signal_90","Signal_91","Signal_92"],
         "conflicting_signals": ["Signal_89","Signal_90","Signal_91","Signal_92","Signal_111"]
     },
@@ -1825,7 +1825,7 @@
             918
         ],
         "signal_type": "manual",
-        "position": "left",
+        "signal_orientation": "left",
         "next_signal_names": ["Signal_154","Signal_155"],
         "conflicting_signals": ["Signal_116"]
     },
@@ -1840,7 +1840,7 @@
             758
         ],
         "signal_type": "manual",
-        "position": "right",
+        "signal_orientation": "right",
         "next_signal_names": ["Signal_89","Signal_90","Signal_91","Signal_92"],
         "conflicting_signals": ["Signal_89","Signal_90","Signal_91","Signal_92","Signal_111"]
     },
@@ -1855,7 +1855,7 @@
             806
         ],
         "signal_type": "manual",
-        "position": "right",
+        "signal_orientation": "right",
         "next_signal_names": ["Signal_89","Signal_90","Signal_91","Signal_92"],
         "conflicting_signals": ["Signal_89","Signal_90","Signal_91","Signal_92","Signal_111"]
     },
@@ -1870,7 +1870,7 @@
             694
         ],
         "signal_type": "auto",
-        "position": "left",
+        "signal_orientation": "left",
         "next_signal_names": ["Signal_137"],
         "conflicting_signals": null
     },
@@ -1885,7 +1885,7 @@
             134
         ],
         "signal_type": "auto",
-        "position": "right",
+        "signal_orientation": "right",
         "next_signal_names": ["Signal_110"],
         "conflicting_signals": null
     },
@@ -1900,7 +1900,7 @@
             662
         ],
         "signal_type": "auto",
-        "position": "right",
+        "signal_orientation": "right",
         "next_signal_names": ["Signal_113"],
         "conflicting_signals": null
     },
@@ -1915,7 +1915,7 @@
             566
         ],
         "signal_type": "auto",
-        "position": "left",
+        "signal_orientation": "left",
         "next_signal_names": ["Signal_148"],
         "conflicting_signals": null
     },
@@ -1930,7 +1930,7 @@
             390
         ],
         "signal_type": "auto",
-        "position": "right",
+        "signal_orientation": "right",
         "next_signal_names": ["Signal_117"],
         "conflicting_signals": null
     },
@@ -1945,7 +1945,7 @@
             758
         ],
         "signal_type": "auto",
-        "position": "right",
+        "signal_orientation": "right",
         "next_signal_names": ["Signal_123"],
         "conflicting_signals": null
     },
@@ -1960,7 +1960,7 @@
             806
         ],
         "signal_type": "auto",
-        "position": "right",
+        "signal_orientation": "right",
         "next_signal_names": ["Signal_124"],
         "conflicting_signals": null
     },
@@ -1975,7 +1975,7 @@
             838
         ],
         "signal_type": "auto",
-        "position": "right",
+        "signal_orientation": "right",
         "next_signal_names": ["Signal_121"],
         "conflicting_signals": null
     },
@@ -1990,7 +1990,7 @@
             550
         ],
         "signal_type": "auto",
-        "position": "right",
+        "signal_orientation": "right",
         "next_signal_names": ["Signal_118"],
         "conflicting_signals": null
     },
@@ -2005,7 +2005,7 @@
             70
         ],
         "signal_type": "auto",
-        "position": "left",
+        "signal_orientation": "left",
         "next_signal_names": ["Signal_144"],
         "conflicting_signals": null
     },
@@ -2020,7 +2020,7 @@
             326
         ],
         "signal_type": "auto",
-        "position": "left",
+        "signal_orientation": "left",
         "next_signal_names": ["Signal_152"],
         "conflicting_signals": null
     },
@@ -2035,7 +2035,7 @@
             486
         ],
         "signal_type": "auto",
-        "position": "left",
+        "signal_orientation": "left",
         "next_signal_names": ["Signal_153"],
         "conflicting_signals": null
     },
@@ -2050,7 +2050,7 @@
             694
         ],
         "signal_type": "auto",
-        "position": "left",
+        "signal_orientation": "left",
         "next_signal_names": ["Signal_150"],
         "conflicting_signals": null
     },
@@ -2065,7 +2065,7 @@
             134
         ],
         "signal_type": "auto",
-        "position": "right",
+        "signal_orientation": "right",
         "next_signal_names": ["Signal_126"],
         "conflicting_signals": null
     },
@@ -2080,7 +2080,7 @@
             662
         ],
         "signal_type": "auto",
-        "position": "right",
+        "signal_orientation": "right",
         "next_signal_names": ["Signal_127"],
         "conflicting_signals": null
     },
@@ -2095,7 +2095,7 @@
             758
         ],
         "signal_type": "auto",
-        "position": "right",
+        "signal_orientation": "right",
         "next_signal_names": ["Signal_130"],
         "conflicting_signals": null
     },
@@ -2110,7 +2110,7 @@
             806
         ],
         "signal_type": "auto",
-        "position": "right",
+        "signal_orientation": "right",
         "next_signal_names": ["Signal_131"],
         "conflicting_signals": null
     },
@@ -2125,7 +2125,7 @@
             838
         ],
         "signal_type": "auto",
-        "position": "right",
+        "signal_orientation": "right",
         "next_signal_names": ["Signal_132"],
         "conflicting_signals": null
     },
@@ -2140,7 +2140,7 @@
             1094
         ],
         "signal_type": "manual",
-        "position": "right",
+        "signal_orientation": "right",
         "next_signal_names": ["Signal_116"],
         "conflicting_signals": null
     },
@@ -2155,7 +2155,7 @@
             70
         ],
         "signal_type": "manual",
-        "position": "left",
+        "signal_orientation": "left",
         "next_signal_names": ["Signal_173"],
         "conflicting_signals": null
     },
@@ -2170,7 +2170,7 @@
             150
         ],
         "signal_type": "manual",
-        "position": "left",
+        "signal_orientation": "left",
         "next_signal_names": ["Signal_173"],
         "conflicting_signals": ["Signal_138"]
     },
@@ -2185,7 +2185,7 @@
             230
         ],
         "signal_type": "manual",
-        "position": "left",
+        "signal_orientation": "left",
         "next_signal_names": ["Signal_173"],
         "conflicting_signals": ["Signal_138"]
     },
@@ -2200,7 +2200,7 @@
             998
         ],
         "signal_type": "manual",
-        "position": "right",
+        "signal_orientation": "right",
         "next_signal_names": ["Signal_116"],
         "conflicting_signals": ["Signal_155"]
     },
@@ -2215,7 +2215,7 @@
             566
         ],
         "signal_type": "manual",
-        "position": "left",
+        "signal_orientation": "left",
         "next_signal_names": ["Signal_189"],
         "conflicting_signals": null
     },
@@ -2230,7 +2230,7 @@
             390
         ],
         "signal_type": "auto",
-        "position": "right",
+        "signal_orientation": "right",
         "next_signal_names": ["Signal_129"],
         "conflicting_signals": null
     },
@@ -2245,7 +2245,7 @@
             694
         ],
         "signal_type": "auto",
-        "position": "left",
+        "signal_orientation": "left",
         "next_signal_names": ["Signal_165"],
         "conflicting_signals": null
     },
@@ -2260,7 +2260,7 @@
             550
         ],
         "signal_type": "auto",
-        "position": "right",
+        "signal_orientation": "right",
         "next_signal_names": ["Signal_133"],
         "conflicting_signals": null
     },
@@ -2275,7 +2275,7 @@
             326
         ],
         "signal_type": "auto",
-        "position": "left",
+        "signal_orientation": "left",
         "next_signal_names": ["Signal_186"],
         "conflicting_signals": null
     },
@@ -2290,7 +2290,7 @@
             486
         ],
         "signal_type": "manual",
-        "position": "left",
+        "signal_orientation": "left",
         "next_signal_names": ["Signal_188","Signal_189"],
         "conflicting_signals": ["Signal_188"]
     },
@@ -2305,7 +2305,7 @@
             918
         ],
         "signal_type": "manual",
-        "position": "left",
+        "signal_orientation": "left",
         "next_signal_names": ["Signal_167","Signal_168","Signal_169"],
         "conflicting_signals": ["Signal_167","Signal_168","Signal_169","Signal_147"]
     },
@@ -2320,7 +2320,7 @@
             1014
         ],
         "signal_type": "manual",
-        "position": "left",
+        "signal_orientation": "left",
         "next_signal_names": ["Signal_170","Signal_171","Signal_172"],
         "conflicting_signals": ["Signal_170","Signal_171","Signal_172","Signal_143"]
     },
@@ -2335,7 +2335,7 @@
             838
         ],
         "signal_type": "auto",
-        "position": "right",
+        "signal_orientation": "right",
         "next_signal_names": ["Signal_142"],
         "conflicting_signals": null
     },
@@ -2350,7 +2350,7 @@
             662
         ],
         "signal_type": "auto",
-        "position": "right",
+        "signal_orientation": "right",
         "next_signal_names": ["Signal_139"],
         "conflicting_signals": null
     },
@@ -2365,7 +2365,7 @@
             758
         ],
         "signal_type": "auto",
-        "position": "right",
+        "signal_orientation": "right",
         "next_signal_names": ["Signal_140"],
         "conflicting_signals": null
     },
@@ -2380,7 +2380,7 @@
             806
         ],
         "signal_type": "auto",
-        "position": "right",
+        "signal_orientation": "right",
         "next_signal_names": ["Signal_141"],
         "conflicting_signals": null
     },
@@ -2395,7 +2395,7 @@
             422
         ],
         "signal_type": "manual",
-        "position": "right",
+        "signal_orientation": "right",
         "next_signal_names": ["Signal_149"],
         "conflicting_signals": null
     },
@@ -2410,7 +2410,7 @@
             390
         ],
         "signal_type": "manual",
-        "position": "right",
+        "signal_orientation": "right",
         "next_signal_names": ["Signal_149"],
         "conflicting_signals": null
     },
@@ -2425,7 +2425,7 @@
             630
         ],
         "signal_type": "manual",
-        "position": "right",
+        "signal_orientation": "right",
         "next_signal_names": ["Signal_157"],
         "conflicting_signals": null
     },
@@ -2440,7 +2440,7 @@
             566
         ],
         "signal_type": "manual",
-        "position": "right",
+        "signal_orientation": "right",
         "next_signal_names": ["Signal_151"],
         "conflicting_signals": null
     },
@@ -2455,7 +2455,7 @@
             662
         ],
         "signal_type": "manual",
-        "position": "right",
+        "signal_orientation": "right",
         "next_signal_names": ["Signal_157"],
         "conflicting_signals": null
     },
@@ -2470,7 +2470,7 @@
             694
         ],
         "signal_type": "auto",
-        "position": "left",
+        "signal_orientation": "left",
         "next_signal_names": ["Signal_190","Signal_191"],
         "conflicting_signals": null
     },
@@ -2485,7 +2485,7 @@
             134
         ],
         "signal_type": "manual",
-        "position": "right",
+        "signal_orientation": "right",
         "next_signal_names": ["Signal_138","Signal_145","Signal_146"],
         "conflicting_signals": ["Signal_138","Signal_145","Signal_146","Signal_173"]
     },
@@ -2500,7 +2500,7 @@
             870
         ],
         "signal_type": "manual",
-        "position": "right",
+        "signal_orientation": "right",
         "next_signal_names": ["Signal_147"],
         "conflicting_signals": ["Signal_168","Signal_169"]
     },
@@ -2515,7 +2515,7 @@
             918
         ],
         "signal_type": "manual",
-        "position": "right",
+        "signal_orientation": "right",
         "next_signal_names": ["Signal_147"],
         "conflicting_signals": ["Signal_167","Signal_169"]
     },
@@ -2530,7 +2530,7 @@
             998
         ],
         "signal_type": "manual",
-        "position": "right",
+        "signal_orientation": "right",
         "next_signal_names": ["Signal_147"],
         "conflicting_signals": ["Signal_167","Signal_168"]
     },
@@ -2545,7 +2545,7 @@
             1014
         ],
         "signal_type": "manual",
-        "position": "right",
+        "signal_orientation": "right",
         "next_signal_names": ["Signal_143"],
         "conflicting_signals": ["Signal_171","Signal_172"]
     },
@@ -2560,7 +2560,7 @@
             1094
         ],
         "signal_type": "manual",
-        "position": "right",
+        "signal_orientation": "right",
         "next_signal_names": ["Signal_143"],
         "conflicting_signals": ["Signal_170","Signal_172"]
     },
@@ -2575,7 +2575,7 @@
             1142
         ],
         "signal_type": "manual",
-        "position": "right",
+        "signal_orientation": "right",
         "next_signal_names": ["Signal_143"],
         "conflicting_signals": ["Signal_170","Signal_171"]
     },
@@ -2590,7 +2590,7 @@
             70
         ],
         "signal_type": "auto",
-        "position": "left",
+        "signal_orientation": "left",
         "next_signal_names": ["Signal_193"],
         "conflicting_signals": null
     },
@@ -2605,7 +2605,7 @@
             262
         ],
         "signal_type": "auto",
-        "position": "right",
+        "signal_orientation": "right",
         "next_signal_names": ["Signal_162"],
         "conflicting_signals": null
     },
@@ -2620,7 +2620,7 @@
             198
         ],
         "signal_type": "auto",
-        "position": "right",
+        "signal_orientation": "right",
         "next_signal_names": ["Signal_160"],
         "conflicting_signals": null
     },
@@ -2635,7 +2635,7 @@
             294
         ],
         "signal_type": "auto",
-        "position": "right",
+        "signal_orientation": "right",
         "next_signal_names": ["Signal_159"],
         "conflicting_signals": null
     },
@@ -2650,7 +2650,7 @@
             134
         ],
         "signal_type": "auto",
-        "position": "right",
+        "signal_orientation": "right",
         "next_signal_names": ["Signal_166"],
         "conflicting_signals": null
     },
@@ -2665,7 +2665,7 @@
             822
         ],
         "signal_type": "auto",
-        "position": "right",
+        "signal_orientation": "right",
         "next_signal_names": ["Signal_158"],
         "conflicting_signals": null
     },
@@ -2680,7 +2680,7 @@
             678
         ],
         "signal_type": "auto",
-        "position": "right",
+        "signal_orientation": "right",
         "next_signal_names": ["Signal_164"],
         "conflicting_signals": null
     },
@@ -2695,7 +2695,7 @@
             630
         ],
         "signal_type": "manual",
-        "position": "right",
+        "signal_orientation": "right",
         "next_signal_names": ["Signal_151"],
         "conflicting_signals": null
     },
@@ -2710,7 +2710,7 @@
             870
         ],
         "signal_type": "auto",
-        "position": "right",
+        "signal_orientation": "right",
         "next_signal_names": ["Signal_156"],
         "conflicting_signals": null
     },
@@ -2725,7 +2725,7 @@
             196
         ],
         "signal_type": "auto",
-        "position": "right",
+        "signal_orientation": "right",
         "next_signal_names": ["Signal_175"],
         "conflicting_signals": null
     },
@@ -2740,7 +2740,7 @@
             228
         ],
         "signal_type": "auto",
-        "position": "right",
+        "signal_orientation": "right",
         "next_signal_names": ["Signal_163"],
         "conflicting_signals": null
     },
@@ -2755,7 +2755,7 @@
             260
         ],
         "signal_type": "auto",
-        "position": "right",
+        "signal_orientation": "right",
         "next_signal_names": ["Signal_174"],
         "conflicting_signals": null
     },
@@ -2770,7 +2770,7 @@
             292
         ],
         "signal_type": "auto",
-        "position": "right",
+        "signal_orientation": "right",
         "next_signal_names": ["Signal_176"],
         "conflicting_signals": null
     },
@@ -2785,7 +2785,7 @@
             326
         ],
         "signal_type": "auto",
-        "position": "left",
+        "signal_orientation": "left",
         "next_signal_names": ["Signal_196"],
         "conflicting_signals": null
     },
@@ -2800,7 +2800,7 @@
             390
         ],
         "signal_type": "auto",
-        "position": "right",
+        "signal_orientation": "right",
         "next_signal_names": ["Signal_161"],
         "conflicting_signals": null
     },
@@ -2815,7 +2815,7 @@
             438
         ],
         "signal_type": "manual",
-        "position": "left",
+        "signal_orientation": "left",
         "next_signal_names": ["Signal_198","Signal_218"],
         "conflicting_signals": null
     },
@@ -2830,7 +2830,7 @@
             486
         ],
         "signal_type": "manual",
-        "position": "left",
+        "signal_orientation": "left",
         "next_signal_names": ["Signal_199","Signal_218"],
         "conflicting_signals": null
     },
@@ -2845,7 +2845,7 @@
             694
         ],
         "signal_type": "manual",
-        "position": "left",
+        "signal_orientation": "left",
         "next_signal_names": ["Signal_201"],
         "conflicting_signals": null
     },
@@ -2860,7 +2860,7 @@
             742
         ],
         "signal_type": "manual",
-        "position": "left",
+        "signal_orientation": "left",
         "next_signal_names": ["Signal_201"],
         "conflicting_signals": null
     },
@@ -2875,7 +2875,7 @@
             134
         ],
         "signal_type": "auto",
-        "position": "right",
+        "signal_orientation": "right",
         "next_signal_names": ["Signal_177"],
         "conflicting_signals": null
     },
@@ -2890,7 +2890,7 @@
             70
         ],
         "signal_type": "auto",
-        "position": "left",
+        "signal_orientation": "left",
         "next_signal_names": ["Signal_195"],
         "conflicting_signals": null
     },
@@ -2905,7 +2905,7 @@
             134
         ],
         "signal_type": "auto",
-        "position": "right",
+        "signal_orientation": "right",
         "next_signal_names": ["Signal_192"],
         "conflicting_signals": null
     },
@@ -2920,7 +2920,7 @@
             70
         ],
         "signal_type": "auto",
-        "position": "left",
+        "signal_orientation": "left",
         "next_signal_names": ["Signal_205"],
         "conflicting_signals": null
     },
@@ -2935,7 +2935,7 @@
             326
         ],
         "signal_type": "auto",
-        "position": "left",
+        "signal_orientation": "left",
         "next_signal_names": ["Signal_209"],
         "conflicting_signals": null
     },
@@ -2950,7 +2950,7 @@
             390
         ],
         "signal_type": "auto",
-        "position": "right",
+        "signal_orientation": "right",
         "next_signal_names": ["Signal_187"],
         "conflicting_signals": null
     },
@@ -2965,7 +2965,7 @@
             438
         ],
         "signal_type": "manual",
-        "position": "left",
+        "signal_orientation": "left",
         "next_signal_names": ["Signal_212"],
         "conflicting_signals": null
     },
@@ -2980,7 +2980,7 @@
             486
         ],
         "signal_type": "manual",
-        "position": "left",
+        "signal_orientation": "left",
         "next_signal_names": ["Signal_212"],
         "conflicting_signals": null
     },
@@ -2995,7 +2995,7 @@
             134
         ],
         "signal_type": "auto",
-        "position": "right",
+        "signal_orientation": "right",
         "next_signal_names": ["Signal_194"],
         "conflicting_signals": null
     },
@@ -3010,7 +3010,7 @@
             742
         ],
         "signal_type": "auto",
-        "position": "left",
+        "signal_orientation": "left",
         "next_signal_names": ["Signal_213"],
         "conflicting_signals": null
     },
@@ -3025,7 +3025,7 @@
             822
         ],
         "signal_type": "auto",
-        "position": "right",
+        "signal_orientation": "right",
         "next_signal_names": ["Signal_181","Signal_178"],
         "conflicting_signals": null
     },
@@ -3040,7 +3040,7 @@
             662
         ],
         "signal_type": "manual",
-        "position": "right",
+        "signal_orientation": "right",
         "next_signal_names": ["Signal_180"],
         "conflicting_signals": null
     },
@@ -3055,7 +3055,7 @@
             694
         ],
         "signal_type": "manual",
-        "position": "right",
+        "signal_orientation": "right",
         "next_signal_names": ["Signal_179"],
         "conflicting_signals": null
     },
@@ -3070,7 +3070,7 @@
             70
         ],
         "signal_type": "auto",
-        "position": "left",
+        "signal_orientation": "left",
         "next_signal_names": ["Signal_211"],
         "conflicting_signals": null
     },
@@ -3085,7 +3085,7 @@
             630
         ],
         "signal_type": "manual",
-        "position": "right",
+        "signal_orientation": "right",
         "next_signal_names": ["Signal_180"],
         "conflicting_signals": null
     },
@@ -3100,7 +3100,7 @@
             726
         ],
         "signal_type": "manual",
-        "position": "right",
+        "signal_orientation": "right",
         "next_signal_names": ["Signal_179"],
         "conflicting_signals": null
     },
@@ -3115,7 +3115,7 @@
             134
         ],
         "signal_type": "auto",
-        "position": "right",
+        "signal_orientation": "right",
         "next_signal_names": ["Signal_200"],
         "conflicting_signals": null
     },
@@ -3130,7 +3130,7 @@
             326
         ],
         "signal_type": "auto",
-        "position": "left",
+        "signal_orientation": "left",
         "next_signal_names": ["Signal_217"],
         "conflicting_signals": null
     },
@@ -3145,7 +3145,7 @@
             390
         ],
         "signal_type": "auto",
-        "position": "right",
+        "signal_orientation": "right",
         "next_signal_names": ["Signal_197"],
         "conflicting_signals": null
     },
@@ -3160,7 +3160,7 @@
             70
         ],
         "signal_type": "auto",
-        "position": "left",
+        "signal_orientation": "left",
         "next_signal_names": ["Signal_203","Signal_204"],
         "conflicting_signals": null
     },
@@ -3175,7 +3175,7 @@
             134
         ],
         "signal_type": "auto",
-        "position": "right",
+        "signal_orientation": "right",
         "next_signal_names": ["Signal_208"],
         "conflicting_signals": null
     },
@@ -3190,7 +3190,7 @@
             742
         ],
         "signal_type": "auto",
-        "position": "left",
+        "signal_orientation": "left",
         "next_signal_names": ["Signal_215"],
         "conflicting_signals": null
     },
@@ -3205,7 +3205,7 @@
             822
         ],
         "signal_type": "auto",
-        "position": "right",
+        "signal_orientation": "right",
         "next_signal_names": ["Signal_202"],
         "conflicting_signals": null
     },
@@ -3220,7 +3220,7 @@
             742
         ],
         "signal_type": "auto",
-        "position": "left",
+        "signal_orientation": "left",
         "next_signal_names": [""],
         "conflicting_signals": null
     },
@@ -3235,7 +3235,7 @@
             694
         ],
         "signal_type": "auto",
-        "position": "right",
+        "signal_orientation": "right",
         "next_signal_names": ["Signal_206","Signal_207"],
         "conflicting_signals": null
     },
@@ -3250,7 +3250,7 @@
             422
         ],
         "signal_type": "auto",
-        "position": "left",
+        "signal_orientation": "left",
         "next_signal_names": [""],
         "conflicting_signals": null
     },
@@ -3265,7 +3265,7 @@
             598
         ],
         "signal_type": "auto",
-        "position": "left",
+        "signal_orientation": "left",
         "next_signal_names": ["Signal_221"],
         "conflicting_signals": null
     },
@@ -3280,7 +3280,7 @@
             694
         ],
         "signal_type": "auto",
-        "position": "right",
+        "signal_orientation": "right",
         "next_signal_names": ["Signal_216"],
         "conflicting_signals": null
     },
@@ -3295,7 +3295,7 @@
             502
         ],
         "signal_type": "auto",
-        "position": "right",
+        "signal_orientation": "right",
         "next_signal_names": ["Signal_210"],
         "conflicting_signals": null
     },
@@ -3310,7 +3310,7 @@
             598
         ],
         "signal_type": "auto",
-        "position": "left",
+        "signal_orientation": "left",
         "next_signal_names": [""],
         "conflicting_signals": null
     },
@@ -3325,7 +3325,7 @@
             694
         ],
         "signal_type": "auto",
-        "position": "right",
+        "signal_orientation": "right",
         "next_signal_names": ["Signal_219"],
         "conflicting_signals": null
     }
