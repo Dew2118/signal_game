@@ -1,0 +1,62 @@
+[
+    {
+        "headcode_prefix": "4H",
+        "routes": [[
+            ["Signal_106"],
+            ["Signal_113"],
+            ["Signal_114"],
+            ["Signal_115"],
+            ["Signal_105"],
+            ["Signal_49"],
+            ["Signal_48"],
+            [["Signal_47","Signal_67"]],
+            ["Signal_66"],
+            ["Signal_65"],
+            ["Signal_64"],
+            ["Signal_63"],
+            ["Signal_62"],
+            [["Signal_61","Signal_70"]],
+            ["Signal_60"],
+            ["Signal_59"],
+            ["Signal_58"],
+            ["Signal_57"],
+            ["Signal_56"],
+            ["Signal_55"],
+            ["Signal_54"],
+            ["Signal_53"],
+            ["delete_and_spawn_train"]
+        ]],
+        "spawning_signals": ["Signal_106"]
+    },
+    {
+        "headcode_prefix": "4L",
+        "routes": [[
+            ["Signal_53"],
+            ["Signal_25"],
+            ["Signal_26"],
+            ["Signal_27"],
+            ["Signal_28"],
+            ["Signal_29"],
+            ["Signal_30"],
+            ["Signal_31"],
+            ["Signal_32"],
+            ["Signal_33"],
+            ["Signal_34"],
+            ["Signal_35"],
+            ["Signal_36"],
+            ["Signal_37"],
+            ["Signal_38"],
+            [["Signal_39","Signal_44"]],
+            ["Signal_40"],
+            ["Signal_41"],
+            ["Signal_42"],
+            ["Signal_127"],
+            ["Signal_126"],
+            ["Signal_125"],
+            ["Signal_124"],
+            ["Signal_131"],
+            ["delete"]
+        ]],
+        "spawning_signals": ["Signal_53"]
+    }
+]

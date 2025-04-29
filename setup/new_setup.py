@@ -145,4 +145,4 @@ def signal_position(file_path, char_width=8, char_height=16, y_offset=5):
     print("Output saved to output.json")
 
 # Example usage
-signal_position("paste_test.txt")
+signal_position("input.txt")

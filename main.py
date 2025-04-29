@@ -1,4 +1,3 @@
-from dataclasses import dataclass, asdict
 import json
 import tkinter as tk
 from PIL import Image, ImageTk
@@ -7,14 +6,15 @@ import random
 
 
 # constant
-SIGNAL_DETAILS_FILENAME = "signal_details_zone_A.json"
-ROUTES_MAPPING_FILENAME = "routes_mapping_zone_A.json"
-BACKDROP_PATH_FILENAME = "zone_A_beauty_pass.bmp"  # Use beauty_pass.bmp as the backdrop
+SIGNAL_DETAILS_FILENAME = "zone_F/zone_F_signal_details.json"
+ROUTES_MAPPING_FILENAME = "zone_F/zone_F_routes_mapping.json"
+BACKDROP_PATH_FILENAME = "zone_F/zone_F_beauty_pass.bmp"  # Use beauty_pass.bmp as the backdrop
 CHANCE = 1/4
 STANDARD_SIGNAL_DWELL_TIME = 5
 TRTS_TIME_BEFORE_DEPARTURE = 5
 CONFLICT_DURATION = 3
 MAX_TRAIN_NUMBER = 15
+PERIODIC_TRAIN_SPAWNING_SIGNALS = ["Signal_106"]
 
 class Drawer:
     def __init__(self, game):
@@ -181,7 +181,7 @@ class Drawer:
             self.canvas.create_oval(
                 x - radius, y - radius, x + radius, y + radius, fill=color, outline="", tags="signal"
             )
-            # self.create_signal_number(signal,radius,x,y)
+            self.create_signal_number(signal,radius,x,y)
 
             # Draw a small light blue dot at the signal position (with +2 to the y-coordinate) if rollback is True
             if signal.rollback:
@@ -387,8 +387,8 @@ class Game:
         # Draw signals
         self.drawer.draw_signals(self.signal_details)
         # Start periodic train spawning
-        self.periodic_train_spawning("Signal_220", 10000, CHANCE)  # Spawn trains at Signal_1 every 5 seconds with a 1/2 chance
-        self.periodic_train_spawning("Signal_183", 10000, CHANCE) 
+        for signal_name in PERIODIC_TRAIN_SPAWNING_SIGNALS:
+            self.periodic_train_spawning(signal_name, 10000, CHANCE)  # Spawn trains at Signal_1 every 5 seconds with a 1/2 chance
         # Start the main loop
         self.main_loop()
 
@@ -399,7 +399,7 @@ class Game:
         return self.signal_details    
 
 class SignalDetails:
-    def __init__(self,signal_name,signal_position,lamp_position,signal_type,signal_orientation,next_signal_names,conflicting_signals = None,next_signals_in_same_block = False):
+    def __init__(self,signal_name,signal_position,lamp_position,signal_type,signal_orientation,next_signal_names,conflicting_signals = None,next_signals_in_same_block = None):
         self.signal_name = signal_name
         self.signal_position = signal_position
         self.lamp_position = lamp_position
@@ -461,6 +461,12 @@ class SignalDetails:
                 # Reset the conflict timer
                 self.conflict_timer = 0
 
+    def get_signals_in_same_block(self, signal_name, signals_in_same_block):
+        for group in signals_in_same_block:
+            if signal_name in group:
+                return [s for s in group if s != signal_name]
+        return []
+
     def update(self, signal_details, current_time):
         """Update the signal's state based on its next and conflicting signals."""
         if not self.next_signal_names:  # Skip if next_signals is empty
@@ -476,6 +482,11 @@ class SignalDetails:
                 train_route_next_signal_names = []
             else:
                 train_route_next_signal_names = self.train_at_signal.get_next_route_element_name()
+            #add next_signals_in_same_block to train_route_next_signal_names
+            if self.next_signals_in_same_block:
+                train_route_next_signals = self.get_signal_object_from_named_list(signal_details, train_route_next_signal_names)
+                for signal in train_route_next_signals:
+                    train_route_next_signal_names.extend(self.get_signals_in_same_block(signal.signal_name, self.next_signals_in_same_block))
             available_signals = [signal.signal_name for signal in next_signals if signal.train_at_signal is None]
             if len(set(available_signals).intersection(set(train_route_next_signal_names))) > 0 and (not self.next_signals_in_same_block):
                 self.set_signal_color("yellow")

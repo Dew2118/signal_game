@@ -283,7 +283,7 @@
         "position": "left",
         "next_signals": ["Signal_20", "Signal_22"],
         "conflicting_signals": ["Signal_21"],
-        "next_signals_in_same_block": true
+        "next_signals_in_same_block": ["Signal_20", "Signal_22"]
     },
     {
         "signal_name": "Signal_20",

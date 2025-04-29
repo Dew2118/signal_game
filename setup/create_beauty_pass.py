@@ -16,4 +16,4 @@ def create_beauty_pass(input_file, output_file):
         print(f"An error occurred: {e}")
 
 # Example usage
-create_beauty_pass("paste_test.txt", "beauty_pass_output.txt")
+create_beauty_pass("input.txt", "beauty_pass_output.txt")
